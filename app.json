@@ -36,7 +36,8 @@
             "imageWidth": 76
           }
         }
-      ]
+      ],
+      ["expo-dev-client"]
     ],
     "experiments": {
       "typedRoutes": true,
