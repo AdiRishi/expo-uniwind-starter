@@ -32,7 +32,7 @@
           "ListFooterComponentClassName",
           "ListHeaderComponentClassName"
         ],
-        "classFunctions": ["useResolveClassNames"]
+        "classFunctions": ["useResolveClassNames", "tv"]
       }
     }
   }
