@@ -11,21 +11,16 @@ import { Typography } from "@/components/ui/typography";
 export function HomeScreen() {
   return (
     <StandardView className="flex-1">
-      <View className="mt-12 flex-1 gap-20">
+      <View className="mt-12 flex-1 gap-12">
         <View className="items-center gap-6">
           <BrandHeroIcon />
-          <Typography variant="display" align="center" className="text-[54px] leading-[56px]">
-            Welcome{"\n"}to Expo
+          <Typography variant="display" align="center">
+            Welcome to Expo
           </Typography>
         </View>
         <View className="gap-2">
-          <Typography
-            variant="caption"
-            tone="default"
-            className="tracking-[0.16em] text-foreground uppercase"
-            align="center"
-          >
-            get started
+          <Typography variant="h4" align="center">
+            Quick tips
           </Typography>
           <Card variant="tertiary">
             <Card.Body className="gap-3 p-4">
@@ -55,7 +50,7 @@ function HintRow({ title, hint }: { title: string; hint?: ReactNode }) {
         {title}
       </Typography>
 
-      <View className="max-w-[70%] rounded-md border border-border bg-default px-2 py-1">
+      <View className="max-w-[70%] shrink rounded-lg border border-border bg-background px-2.5 py-1">
         {hint}
       </View>
     </View>

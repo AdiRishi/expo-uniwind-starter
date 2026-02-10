@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { Image, StyleSheet, View } from "react-native";
-import { Dimensions } from "react-native";
+import { Dimensions, Image, StyleSheet, View } from "react-native";
 import Animated, { Easing, Keyframe } from "react-native-reanimated";
 import { scheduleOnRN } from "react-native-worklets";
 

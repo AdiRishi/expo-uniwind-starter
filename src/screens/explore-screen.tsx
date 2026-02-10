@@ -8,13 +8,13 @@ import { Typography } from "@/components/ui/typography";
 
 export function ExploreScreen() {
   return (
-    <StandardScrollView className="flex-1" contentContainerClassName="gap-6">
+    <StandardScrollView className="flex-1" contentContainerClassName="gap-8">
       <View className="items-center gap-3">
         <Typography variant="h2" align="center">
           Explore
         </Typography>
         <Typography variant="small" tone="muted" align="center">
-          This starter app includes example{"\n"}code to help you get started.
+          Learn about the key features and patterns in this template.
         </Typography>
 
         <ExternalLink href="https://docs.expo.dev" asChild>
@@ -34,13 +34,10 @@ export function ExploreScreen() {
             <Accordion.Content>
               <View className="gap-2">
                 <Typography variant="small">
-                  This app has two screens:{" "}
-                  <Typography variant="code">src/app/index.tsx</Typography> and{" "}
-                  <Typography variant="code">src/app/explore.tsx</Typography>
-                </Typography>
-                <Typography variant="small">
-                  The layout file in <Typography variant="code">src/app/_layout.tsx</Typography>{" "}
-                  sets up the tab navigator.
+                  Screens live in <Typography variant="code">src/app/</Typography> — each file
+                  becomes a route. The layout file in{" "}
+                  <Typography variant="code">src/app/_layout.tsx</Typography> sets up the tab
+                  navigator.
                 </Typography>
               </View>
             </Accordion.Content>
@@ -54,9 +51,9 @@ export function ExploreScreen() {
             <Accordion.Content>
               <View className="gap-3">
                 <Typography variant="small">
-                  You can open this project on Android, iOS, and the web. To open the web version,
-                  press <Typography variant="smallBold">w</Typography> in the terminal running this
-                  project.
+                  This project runs on Android, iOS, and the web. Press{" "}
+                  <Typography variant="smallBold">w</Typography> in your terminal to launch the web
+                  version.
                 </Typography>
                 <Image
                   source={require("@/assets/images/tutorial-web.png")}
@@ -74,9 +71,9 @@ export function ExploreScreen() {
             </Accordion.Trigger>
             <Accordion.Content>
               <Typography variant="small">
-                This template has light and dark mode support. The{" "}
-                <Typography variant="code">useColorScheme()</Typography> hook lets you inspect the
-                user&apos;s current color scheme, and adjust UI colors accordingly.
+                Light and dark mode are built in. Use the{" "}
+                <Typography variant="code">useColorScheme()</Typography> hook to read the current
+                theme and adapt your UI.
               </Typography>
             </Accordion.Content>
           </Accordion.Item>
@@ -88,9 +85,9 @@ export function ExploreScreen() {
             </Accordion.Trigger>
             <Accordion.Content>
               <Typography variant="small">
-                This template includes an example of an animated component. The{" "}
-                <Typography variant="code">react-native-reanimated</Typography> library powers
-                smooth animations throughout the app.
+                The animated Expo logo on the Home tab is powered by{" "}
+                <Typography variant="code">react-native-reanimated</Typography>, which is included
+                and ready to use.
               </Typography>
             </Accordion.Content>
           </Accordion.Item>

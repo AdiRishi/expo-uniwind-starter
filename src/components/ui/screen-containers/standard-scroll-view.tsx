@@ -17,6 +17,7 @@ type StandardScrollViewProps = ScrollViewProps & VariantProps<typeof standardScr
 
 export function StandardScrollView({
   className,
+  contentContainerClassName,
   insets,
   children,
   ...props
@@ -24,6 +25,7 @@ export function StandardScrollView({
   return (
     <ScrollView
       className={standardScrollViewVariants({ insets, class: className })}
+      contentContainerClassName={contentContainerClassName}
       contentInsetAdjustmentBehavior="never"
       automaticallyAdjustContentInsets={false}
       {...props}
