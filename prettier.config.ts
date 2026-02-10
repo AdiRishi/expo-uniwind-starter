@@ -6,6 +6,7 @@ const config: Config = {
   importOrderSeparation: true,
   importOrderSortSpecifiers: true,
   tailwindStylesheet: "./src/global.css",
+  tailwindFunctions: ["tv"],
 };
 
 export default config;

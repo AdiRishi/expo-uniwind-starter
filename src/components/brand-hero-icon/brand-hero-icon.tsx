@@ -1,11 +1,13 @@
-import { Image } from "expo-image";
 import { useState } from "react";
-import { Dimensions, StyleSheet, View } from "react-native";
+import { Image, StyleSheet, View } from "react-native";
+import { Dimensions } from "react-native";
 import Animated, { Easing, Keyframe } from "react-native-reanimated";
 import { scheduleOnRN } from "react-native-worklets";
 
 const INITIAL_SCALE_FACTOR = Dimensions.get("screen").height / 90;
 const DURATION = 600;
+const GLOW_SOURCE = require("../../../assets/images/logo-glow.png");
+const LOGO_SOURCE = require("../../../assets/images/expo-logo.png");
 
 const splashKeyframe = new Keyframe({
   0: {
@@ -26,7 +28,7 @@ const splashKeyframe = new Keyframe({
   },
 });
 
-export function AnimatedSplashOverlay() {
+export function BrandSplashOverlay() {
   const [visible, setVisible] = useState(true);
 
   if (!visible) return null;
@@ -80,16 +82,16 @@ const glowKeyframe = new Keyframe({
   },
 });
 
-export function AnimatedIcon() {
+export function BrandHeroIcon() {
   return (
     <View style={styles.iconContainer}>
       <Animated.View entering={glowKeyframe.duration(60 * 1000 * 4)} style={styles.glow}>
-        <Image style={styles.glow} source={require("@/assets/images/logo-glow.png")} />
+        <Image style={styles.glow} source={GLOW_SOURCE} />
       </Animated.View>
 
       <Animated.View entering={keyframe.duration(DURATION)} style={styles.background} />
       <Animated.View style={styles.imageContainer} entering={logoKeyframe.duration(DURATION)}>
-        <Image style={styles.image} source={require("@/assets/images/expo-logo.png")} />
+        <Image style={styles.image} source={LOGO_SOURCE} />
       </Animated.View>
     </View>
   );
@@ -119,7 +121,7 @@ const styles = StyleSheet.create({
   },
   background: {
     borderRadius: 40,
-    experimental_backgroundImage: `linear-gradient(180deg, #3C9FFE, #0274DF)`,
+    experimental_backgroundImage: "linear-gradient(180deg, #3C9FFE, #0274DF)",
     width: 128,
     height: 128,
     position: "absolute",
