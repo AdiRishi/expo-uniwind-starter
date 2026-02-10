@@ -22,6 +22,7 @@ yarn-error.*
 app-example
 /ios
 /android
+.claude/settings.local.json
 
 # Prettier specific ignores
 pnpm-lock.yaml

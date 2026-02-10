@@ -1,54 +1,116 @@
-# Welcome to your Expo app 👋
+# Expo Uniwind Starter
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A production-ready starter template for building cross-platform apps with **Expo 55**, **Uniwind** (Tailwind CSS v4 for React Native), and **HeroUI Native** — targeting iOS, Android, and web from a single codebase.
 
-## Get started
+## Why this starter?
 
-1. Install dependencies
+Setting up Tailwind-style styling in React Native is notoriously fiddly. This template does the hard work upfront — wiring Uniwind into Metro, configuring HeroUI Native's theme system, and establishing patterns that scale — so you can skip straight to building your app.
 
-   ```bash
-   npm install
-   ```
+**What you get out of the box:**
 
-2. Start the app
+- Tailwind CSS v4 styling via Uniwind with full dark mode support
+- HeroUI Native components (buttons, accordions, inputs, and more)
+- File-based routing with Expo Router and native tab navigation
+- React 19 with the React Compiler enabled
+- Typed routes, strict TypeScript, and opinionated formatting
+- A curated set of [Claude Code skills](#claude-code-skills) for AI-assisted development
 
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+## Quick start
 
 ```bash
-npm run reset-project
+# Clone and install
+pnpm install
+
+# Start development
+pnpm start
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Then press `i` for iOS simulator, `a` for Android emulator, or `w` for web.
 
-## Learn more
+> **Package manager:** This project uses [pnpm](https://pnpm.io/). The lockfile is committed, so stick with pnpm to avoid dependency drift.
 
-To learn more about developing your project with Expo, look at the following resources:
+## Tech stack
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+| Layer      | Technology                                         |
+| ---------- | -------------------------------------------------- |
+| Framework  | Expo 55 (preview) + React Native 0.83              |
+| Routing    | Expo Router (file-based, typed routes)             |
+| Styling    | Tailwind CSS v4 via Uniwind                        |
+| Components | HeroUI Native                                      |
+| Animations | React Native Reanimated 4.2                        |
+| Gestures   | React Native Gesture Handler                       |
+| Language   | TypeScript 5.9 (strict)                            |
+| Formatting | Prettier + import sorting + Tailwind class sorting |
+| Linting    | ESLint with Expo config                            |
 
-## Join the community
+## Project structure
 
-Join our community of developers creating universal apps.
+```
+src/
+  app/            Routes — minimal files that render screens
+  screens/        Screen-level components with page logic
+  components/     Shared components
+    ui/           Design system primitives (typography, containers)
+  hooks/          Custom hooks (theme colors, etc.)
+  global.css      Tailwind + Uniwind + HeroUI theme configuration
+```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+The `src/app/` directory drives routing. Each file maps to a route. The root `_layout.tsx` wraps the app in HeroUI's provider and gesture handler, then renders native tab navigation.
 
-## Known Divergence from Expo setup
+Screens live separately in `src/screens/` to keep route files thin — a pattern that scales well as your app grows.
 
-- react-native-svg is at 15.15.3 instead of 15.15.1 due to a bug that imported node buffer in previous versions.
+## Theming
+
+All theme tokens are defined in `src/global.css` using oklch colors with full light/dark mode variants. The theme covers:
+
+- **Surfaces & overlays** — distinct backgrounds for cards vs. modals
+- **Status colors** — success, warning, danger with accessible foregrounds
+- **Form fields** — dedicated background, border, and placeholder tokens
+- **Shadows** — light mode gets depth, dark mode uses subtle inset borders
+
+To customize the look of your app, edit the CSS variables in `global.css`. HeroUI Native components automatically pick up your theme.
+
+## Scripts
+
+```bash
+pnpm start           # Start Expo dev server
+pnpm run ios         # Build and run on iOS
+pnpm run android     # Build and run on Android
+pnpm run web         # Start web dev server
+pnpm run check       # Lint + format check + typecheck (CI-ready)
+pnpm run format      # Auto-format all files
+pnpm run reset-project   # Strip starter code and start fresh
+```
+
+## Starting fresh
+
+When you're ready to build your own app, run:
+
+```bash
+pnpm run reset-project
+```
+
+This moves the example code to an `example/` directory and gives you a blank `src/app/` with a minimal layout and index screen. You keep all the configuration and tooling.
+
+## Claude Code skills
+
+This starter ships with a set of skills for [Claude Code](https://claude.ai/code) that provide contextual guidance on:
+
+- **HeroUI Native** — component API and usage patterns
+- **Building native UI** — animations, controls, icons, and navigation
+- **Expo deployment** — App Store, Play Store, and EAS workflows
+- **Data fetching** — networking patterns, caching, and offline support
+- **React Native best practices** — performance, images, and platform-specific code
+
+These skills are available automatically when working in this project with Claude Code.
+
+## Known divergences
+
+- `react-native-svg` is pinned to **15.15.3** (not 15.15.1) to avoid a Node `buffer` import bug in prior versions.
+
+## Resources
+
+- [Expo documentation](https://docs.expo.dev/)
+- [Uniwind](https://uniwind.dev/)
+- [HeroUI Native](https://v3.heroui.com/docs/native/getting-started)
+- [Tailwind CSS v4](https://tailwindcss.com/)
