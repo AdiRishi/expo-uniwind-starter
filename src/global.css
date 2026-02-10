@@ -1,5 +1,11 @@
 @import "tailwindcss";
 @import "uniwind";
+
+@import "heroui-native/styles";
+
+/* Path to the heroui-native lib inside node_modules relative to global.css */
+@source "../node_modules/heroui-native/lib";
+
 :root {
     --font-display:
         Spline Sans, Inter, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji,

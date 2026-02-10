@@ -28,3 +28,4 @@ pnpm-lock.yaml
 .agents
 assets
 scripts
+src/uniwind-types.d.ts
