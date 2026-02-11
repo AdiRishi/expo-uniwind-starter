@@ -79,18 +79,7 @@ pnpm run android     # Build and run on Android
 pnpm run web         # Start web dev server
 pnpm run check       # Lint + format check + typecheck (CI-ready)
 pnpm run format      # Auto-format all files
-pnpm run reset-project   # Strip starter code and start fresh
 ```
-
-## Starting fresh
-
-When you're ready to build your own app, run:
-
-```bash
-pnpm run reset-project
-```
-
-This moves the example code to an `example/` directory and gives you a blank `src/app/` with a minimal layout and index screen. You keep all the configuration and tooling.
 
 ## Claude Code skills
 

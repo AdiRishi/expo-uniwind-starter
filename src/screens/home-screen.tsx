@@ -29,10 +29,6 @@ export function HomeScreen() {
                 hint={<Typography variant="code">src/app/index.tsx</Typography>}
               />
               <HintRow title="Dev tools" hint={getDevMenuHint()} />
-              <HintRow
-                title="Fresh start"
-                hint={<Typography variant="code">npm run reset-project</Typography>}
-              />
             </Card.Body>
           </Card>
         </View>
