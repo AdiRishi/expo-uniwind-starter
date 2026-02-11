@@ -11,7 +11,7 @@ import { Typography } from "@/components/ui/typography";
 export function HomeScreen() {
   return (
     <StandardView className="flex-1">
-      <View className="mt-12 flex-1 gap-12">
+      <View className="flex-1 gap-12 pt-12">
         <View className="items-center gap-6">
           <BrandHeroIcon />
           <Typography variant="display" align="center">
