@@ -4,6 +4,9 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  hermes-compiler: 250829098.0.4
+
 importers:
 
   .:
@@ -26,6 +29,9 @@ importers:
       expo:
         specifier: ~55.0.0-preview.10
         version: 55.0.0-preview.10(@babel/core@7.29.0)(@expo/dom-webview@55.0.3)(@expo/metro-runtime@55.0.5)(expo-router@55.0.0-preview.7)(react-dom@19.2.0(react@19.2.0))(react-native@0.83.1(@babel/core@7.29.0)(@types/react@19.2.13)(react@19.2.0))(react@19.2.0)
+      expo-build-properties:
+        specifier: ~55.0.6
+        version: 55.0.6(expo@55.0.0-preview.10)
       expo-constants:
         specifier: ~55.0.4
         version: 55.0.4(expo@55.0.0-preview.10)(react-native@0.83.1(@babel/core@7.29.0)(@types/react@19.2.13)(react@19.2.0))
@@ -715,8 +721,8 @@ packages:
     resolution: {integrity: sha512-43/qtrDUokr7LJqoF2c3+RInu/t4zfrpYdoSDfYyhg52rwLV6TnOvdG4fXm7IkSB3wErkcmJS9iEhjVtOSEjjA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@expo-google-fonts/material-symbols@0.4.20':
-    resolution: {integrity: sha512-6zdkqYjWcjUuM+CCaZG1Zf3ptia0vI0wAHrN3OwPUhINtY+aDWKS2LfF+xsT54RQhRP1Sn/ocMKwoKjcZWyfLQ==}
+  '@expo-google-fonts/material-symbols@0.4.21':
+    resolution: {integrity: sha512-nsbtsdihVp8AxFfkv0po3z59iSmeKt33cv/wgPxiFdOx2HI5xRgAi63f/4dW6bYbC2PF5Jv6rF7afqbqTrdUhg==}
 
   '@expo/cli@55.0.7':
     resolution: {integrity: sha512-RuhoB/M0LnD5dSTkd7lkVjCR1H2lpviZTDokLWhV/HbOzlOwXehKGA5MNjse8Jc3/ZoizFrs3b9ZYmX9APCNjA==}
@@ -2393,6 +2399,11 @@ packages:
       react: '*'
       react-native: '*'
 
+  expo-build-properties@55.0.6:
+    resolution: {integrity: sha512-DfNRMAOGK3a2yao5RmCgNIz4bvCBFS8uHBHwYbd6RZos0n3Qqs96/l+Y9XMWJ/j7xVlXrTacw2wwwstqBGbwYA==}
+    peerDependencies:
+      expo: '*'
+
   expo-constants@55.0.4:
     resolution: {integrity: sha512-zdPxsYnL8LrW91sXivdBIH5nouTDUG0npMZxaYhvEO/2p60iN0W4jK3n2sRFrPl31WctLWSs4ato/wIKnRuUFA==}
     peerDependencies:
@@ -2725,8 +2736,8 @@ packages:
     resolution: {integrity: sha512-XxwI8EOhVQgWp6iDL+3b0r86f4d6AX6zSU55HfB4ydCEuXLXc5FcYeOu+nnGftS4TEju/11rt4KJPTMgbfmv4A==}
     engines: {node: '>=10.13.0'}
 
-  glob@13.0.1:
-    resolution: {integrity: sha512-B7U/vJpE3DkJ5WXTgTpTRN63uV42DseiXXKMwG14LQBXmsdeIoHAPbU/MEo6II0k5ED74uc2ZGTC6MwHFQhF6w==}
+  glob@13.0.2:
+    resolution: {integrity: sha512-035InabNu/c1lW0tzPhAgapKctblppqsKKG9ZaNzbr+gXwWMjXoiyGSyB9sArzrjG7jY+zntRq5ZSUYemrnWVQ==}
     engines: {node: 20 || >=22}
 
   glob@7.2.3:
@@ -2783,8 +2794,8 @@ packages:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
     engines: {node: '>= 0.4'}
 
-  hermes-compiler@0.14.0:
-    resolution: {integrity: sha512-clxa193o+GYYwykWVFfpHduCATz8fR5jvU7ngXpfKHj+E9hr9vjLNtdLSEe8MUbObvVexV3wcyxQ00xTPIrB1Q==}
+  hermes-compiler@250829098.0.4:
+    resolution: {integrity: sha512-8PEHLTuGOXUAnv2zByUG7Vud0TbU21fPuVqlMuek8PZgdYwb7KFWjw3+6In9J93Tx/6c/nRf5I30vzbaHBlgAQ==}
 
   hermes-estree@0.29.1:
     resolution: {integrity: sha512-jl+x31n4/w+wEqm0I2r4CMimukLbLQEYpisys5oCre611CI5fc9TxhqkBBCJ1edDG4Kza0f7CgNz8xVMLZQOmQ==}
@@ -3296,8 +3307,8 @@ packages:
   lru-cache@10.4.3:
     resolution: {integrity: sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==}
 
-  lru-cache@11.2.5:
-    resolution: {integrity: sha512-vFrFJkWtJvJnD5hg+hJvVE8Lh/TcMzKnTgCWmtBipwI5yLX/iX+5UB2tfuyODF5E7k9xEzMdYgGqaSb1c0c5Yw==}
+  lru-cache@11.2.6:
+    resolution: {integrity: sha512-ESL2CrkS/2wTPfuend7Zhkzo2u0daGJ/A2VucJOgQ/C48S/zB8MMeMHSGKYpXhIjbPxfuezITkaBH1wqv00DDQ==}
     engines: {node: 20 || >=22}
 
   lru-cache@5.1.1:
@@ -5287,7 +5298,7 @@ snapshots:
       '@eslint/core': 0.17.0
       levn: 0.4.1
 
-  '@expo-google-fonts/material-symbols@0.4.20': {}
+  '@expo-google-fonts/material-symbols@0.4.21': {}
 
   '@expo/cli@55.0.7(@expo/dom-webview@55.0.3)(@expo/metro-runtime@55.0.5)(expo-constants@55.0.4)(expo-font@55.0.3)(expo-router@55.0.0-preview.7)(expo@55.0.0-preview.10)(react-dom@19.2.0(react@19.2.0))(react-native@0.83.1(@babel/core@7.29.0)(@types/react@19.2.13)(react@19.2.0))(react@19.2.0)':
     dependencies:
@@ -5327,7 +5338,7 @@ snapshots:
       expo-server: 55.0.3
       fetch-nodeshim: 0.4.5
       getenv: 2.0.0
-      glob: 13.0.1
+      glob: 13.0.2
       lan-network: 0.1.7
       minimatch: 9.0.5
       multitars: 0.2.4
@@ -5379,7 +5390,7 @@ snapshots:
       chalk: 4.1.2
       debug: 4.4.3
       getenv: 2.0.0
-      glob: 13.0.1
+      glob: 13.0.2
       resolve-from: 5.0.0
       semver: 7.7.4
       slugify: 1.6.6
@@ -5398,7 +5409,7 @@ snapshots:
       '@expo/json-file': 10.0.12
       deepmerge: 4.3.1
       getenv: 2.0.0
-      glob: 13.0.1
+      glob: 13.0.2
       require-from-string: 2.0.2
       resolve-from: 5.0.0
       resolve-workspace-root: 2.0.1
@@ -5443,7 +5454,7 @@ snapshots:
       chalk: 4.1.2
       debug: 4.4.3
       getenv: 2.0.0
-      glob: 13.0.1
+      glob: 13.0.2
       ignore: 5.3.2
       minimatch: 9.0.5
       resolve-from: 5.0.0
@@ -5496,7 +5507,7 @@ snapshots:
       chalk: 4.1.2
       debug: 4.4.3
       getenv: 2.0.0
-      glob: 13.0.1
+      glob: 13.0.2
       hermes-parser: 0.29.1
       jsc-safe-url: 0.2.4
       lightningcss: 1.31.1
@@ -7380,6 +7391,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  expo-build-properties@55.0.6(expo@55.0.0-preview.10):
+    dependencies:
+      '@expo/schema-utils': 55.0.2
+      expo: 55.0.0-preview.10(@babel/core@7.29.0)(@expo/dom-webview@55.0.3)(@expo/metro-runtime@55.0.5)(expo-router@55.0.0-preview.7)(react-dom@19.2.0(react@19.2.0))(react-native@0.83.1(@babel/core@7.29.0)(@types/react@19.2.13)(react@19.2.0))(react@19.2.0)
+      resolve-from: 5.0.0
+      semver: 7.7.4
+
   expo-constants@55.0.4(expo@55.0.0-preview.10)(react-native@0.83.1(@babel/core@7.29.0)(@types/react@19.2.13)(react@19.2.0)):
     dependencies:
       '@expo/config': 55.0.4
@@ -7554,7 +7572,7 @@ snapshots:
 
   expo-symbols@55.0.3(expo-font@55.0.3)(expo@55.0.0-preview.10)(react-native@0.83.1(@babel/core@7.29.0)(@types/react@19.2.13)(react@19.2.0))(react@19.2.0):
     dependencies:
-      '@expo-google-fonts/material-symbols': 0.4.20
+      '@expo-google-fonts/material-symbols': 0.4.21
       expo: 55.0.0-preview.10(@babel/core@7.29.0)(@expo/dom-webview@55.0.3)(@expo/metro-runtime@55.0.5)(expo-router@55.0.0-preview.7)(react-dom@19.2.0(react@19.2.0))(react-native@0.83.1(@babel/core@7.29.0)(@types/react@19.2.13)(react@19.2.0))(react@19.2.0)
       expo-font: 55.0.3(expo@55.0.0-preview.10)(react-native@0.83.1(@babel/core@7.29.0)(@types/react@19.2.13)(react@19.2.0))(react@19.2.0)
       react: 19.2.0
@@ -7766,7 +7784,7 @@ snapshots:
     dependencies:
       is-glob: 4.0.3
 
-  glob@13.0.1:
+  glob@13.0.2:
     dependencies:
       minimatch: 10.1.2
       minipass: 7.1.2
@@ -7818,7 +7836,7 @@ snapshots:
     dependencies:
       function-bind: 1.1.2
 
-  hermes-compiler@0.14.0: {}
+  hermes-compiler@250829098.0.4: {}
 
   hermes-estree@0.29.1: {}
 
@@ -8313,7 +8331,7 @@ snapshots:
 
   lru-cache@10.4.3: {}
 
-  lru-cache@11.2.5: {}
+  lru-cache@11.2.6: {}
 
   lru-cache@5.1.1:
     dependencies:
@@ -8739,7 +8757,7 @@ snapshots:
 
   path-scurry@2.0.1:
     dependencies:
-      lru-cache: 11.2.5
+      lru-cache: 11.2.6
       minipass: 7.1.2
 
   picocolors@1.1.1: {}
@@ -8945,7 +8963,7 @@ snapshots:
       commander: 12.1.0
       flow-enums-runtime: 0.0.6
       glob: 7.2.3
-      hermes-compiler: 0.14.0
+      hermes-compiler: 250829098.0.4
       invariant: 2.2.4
       jest-environment-node: 29.7.0
       memoize-one: 5.2.1

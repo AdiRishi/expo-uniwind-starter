@@ -61,3 +61,4 @@ Use the `useThemeColors()` hook from `src/hooks/use-theme-colors.ts` when you ne
 ## Known Pinned Versions
 
 - `react-native-svg` pinned to 15.15.3 (not 15.15.1) to avoid a Node `buffer` import bug
+- `hermes-compiler` overridden to 250829098.0.4 via `pnpm.overrides` — required for Hermes V1 runtime. This version must match the Hermes runtime built into React Native; do not bump independently. Native builds use `buildReactNativeFromSource` + `useHermesV1` via `expo-build-properties` in `app.json`

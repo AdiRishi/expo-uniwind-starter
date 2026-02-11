@@ -20,6 +20,7 @@
     "@react-navigation/elements": "^2.9.5",
     "@react-navigation/native": "^7.1.28",
     "expo": "~55.0.0-preview.10",
+    "expo-build-properties": "~55.0.6",
     "expo-constants": "~55.0.4",
     "expo-dev-client": "~55.0.5",
     "expo-device": "~55.0.6",
@@ -58,6 +59,11 @@
     "prettier": "^3.8.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
     "typescript": "~5.9.3"
+  },
+  "pnpm": {
+    "overrides": {
+      "hermes-compiler": "250829098.0.4"
+    }
   },
   "private": true,
   "packageManager": "pnpm@10.29.2"

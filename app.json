@@ -37,7 +37,14 @@
           }
         }
       ],
-      ["expo-dev-client"]
+      ["expo-dev-client"],
+      [
+        "expo-build-properties",
+        {
+          "buildReactNativeFromSource": true,
+          "useHermesV1": true
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true,
