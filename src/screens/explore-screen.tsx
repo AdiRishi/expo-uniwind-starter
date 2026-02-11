@@ -8,7 +8,7 @@ import { Typography } from "@/components/ui/typography";
 
 export function ExploreScreen() {
   return (
-    <StandardScrollView className="flex-1" contentContainerClassName="gap-8">
+    <StandardScrollView className="flex-1" contentContainerClassName="gap-8 mt-12">
       <View className="items-center gap-3">
         <Typography variant="h2" align="center">
           Explore
