@@ -19,17 +19,28 @@
 
 ## Quick start
 
-```bash
-pnpm install
-pnpm expo prebuild
+**1. Clone the template:**
 
-# Build your desired platform
-pnpm ios
-pnpm android
-pnpm web
+```bash
+npx degit AdiRishi/expo-uniwind-starter acme-mobile
+cd acme-mobile
+pnpm install
 ```
 
-Press **i** for iOS, **a** for Android, or **w** for web.
+**2. Rename the project** — updates package.json, app.json, and bundle identifiers:
+
+```bash
+pnpm run rename acme-mobile com.mycompany
+```
+
+**3. Build and run:**
+
+```bash
+pnpm expo prebuild
+pnpm ios              # iOS simulator
+pnpm android          # Android emulator
+pnpm web              # Web browser
+```
 
 ## Tech stack
 
