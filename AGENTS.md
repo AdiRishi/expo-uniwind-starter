@@ -17,6 +17,7 @@ pnpm run check           # Lint + format check + typecheck (CI-ready)
 pnpm run lint            # ESLint only
 pnpm run typecheck       # TypeScript strict check only
 pnpm run format          # Prettier auto-format
+pnpm run rename          # Rename project (updates package.json + app.json)
 ```
 
 Package manager is **pnpm** (pinned to 10.29.2). Do not use npm or yarn.
