@@ -22,7 +22,7 @@
       "package": "com.arishi.expouniwindstarter"
     },
     "web": {
-      "output": "static",
+      "output": "server",
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [

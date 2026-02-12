@@ -1,0 +1,42 @@
+name = "expo-uniwind-starter"
+main = "server/worker.ts"
+compatibility_date = "2026-02-12"
+compatibility_flags = ["nodejs_compat"]
+find_additional_modules = true
+base_dir = "."
+
+# Static client assets (JS/CSS bundles, images)
+[assets]
+directory = "./dist/client"
+
+# Expo server output — included as external modules for dynamic import()
+[[rules]]
+type = "CommonJS"
+globs = ["dist/server/**/*.js"]
+fallthrough = true
+
+[[rules]]
+type = "Text"
+globs = ["dist/server/**/*.html", "dist/server/**/*.json"]
+fallthrough = true
+
+# Environment variables
+# [vars]
+# API_KEY = "your-api-key"
+
+# Secrets (set via `wrangler secret put SECRET_NAME`)
+# Access in API routes: getCloudflareEnv().SECRET_NAME
+
+# Example bindings (uncomment as needed):
+# [[kv_namespaces]]
+# binding = "MY_KV"
+# id = "your-kv-namespace-id"
+
+# [[d1_databases]]
+# binding = "MY_DB"
+# database_name = "my-database"
+# database_id = "your-database-id"
+
+# [[r2_buckets]]
+# binding = "MY_BUCKET"
+# bucket_name = "my-bucket"

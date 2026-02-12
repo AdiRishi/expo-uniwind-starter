@@ -20,6 +20,7 @@ yarn-error.*
 .env*.local
 *.tsbuildinfo
 app-example
+.wrangler/
 /ios
 /android
 .claude/settings.local.json

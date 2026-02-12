@@ -23,6 +23,11 @@ export function AppTabs() {
         <NativeTabs.Trigger.Label>Explore</NativeTabs.Trigger.Label>
         <NativeTabs.Trigger.Icon sf="magnifyingglass" md="explore" />
       </NativeTabs.Trigger>
+
+      <NativeTabs.Trigger name="api-routes">
+        <NativeTabs.Trigger.Label>API</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon sf="server.rack" md="dns" />
+      </NativeTabs.Trigger>
     </NativeTabs>
   );
 }

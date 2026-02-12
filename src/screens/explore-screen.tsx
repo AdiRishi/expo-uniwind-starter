@@ -91,6 +91,20 @@ export function ExploreScreen() {
               </Typography>
             </Accordion.Content>
           </Accordion.Item>
+
+          <Accordion.Item value="api-routes">
+            <Accordion.Trigger>
+              <Typography variant="small">API routes</Typography>
+              <Accordion.Indicator />
+            </Accordion.Trigger>
+            <Accordion.Content>
+              <Typography variant="small">
+                Files ending in <Typography variant="code">+api.ts</Typography> inside{" "}
+                <Typography variant="code">src/app/</Typography> become server-side endpoints. Try
+                the interactive demos in the API tab.
+              </Typography>
+            </Accordion.Content>
+          </Accordion.Item>
         </Accordion>
       </View>
     </StandardScrollView>
