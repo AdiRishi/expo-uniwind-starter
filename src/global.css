@@ -8,7 +8,7 @@
 
 /*
 The following section re-defines the HeroUI Native theme colors. Feel free to customize these to match your app's design.
-Source - https://github.com/heroui-inc/heroui-native/blob/beta/src/styles/variables.css
+Source - https://github.com/heroui-inc/heroui-native/blob/rc/src/styles/variables.css
  */
 @theme {
     /* Primitive Colors (Do not change between light and dark) */
@@ -39,6 +39,12 @@ Source - https://github.com/heroui-inc/heroui-native/blob/beta/src/styles/variab
             /* Surface: Used for non-overlay components (cards, accordions, disclosure groups) */
             --surface: var(--white);
             --surface-foreground: var(--foreground);
+
+            --surface-secondary: oklch(0.9524 0.0013 286.37);
+            --surface-secondary-foreground: var(--foreground);
+
+            --surface-tertiary: oklch(0.9373 0.0013 286.37);
+            --surface-tertiary-foreground: var(--foreground);
 
             /* Overlay: Used for floating/overlay components (dialogs, popovers, modals, menus) */
             --overlay: var(--white);
@@ -82,7 +88,7 @@ Source - https://github.com/heroui-inc/heroui-native/blob/beta/src/styles/variab
             --surface-shadow:
                 0 2px 4px 0 rgba(0, 0, 0, 0.04), 0 1px 2px 0 rgba(0, 0, 0, 0.06), 0 0 1px 0 rgba(0, 0, 0, 0.06);
             --overlay-shadow:
-                0 2px 8px 0 rgba(0, 0, 0, 0.04), 0 -6px 12px 0 rgba(0, 0, 0, 0.02), 0 14px 28px 0 rgba(0, 0, 0, 0.06);
+                0 2px 8px 0 rgba(0, 0, 0, 0.02), 0 -6px 12px 0 rgba(0, 0, 0, 0.01), 0 14px 28px 0 rgba(0, 0, 0, 0.03);
             --field-shadow:
                 0 2px 4px 0 rgba(0, 0, 0, 0.04), 0 1px 2px 0 rgba(0, 0, 0, 0.06), 0 0 1px 0 rgba(0, 0, 0, 0.06);
         }
@@ -95,6 +101,12 @@ Source - https://github.com/heroui-inc/heroui-native/blob/beta/src/styles/variab
             /* Surface: Used for non-overlay components (cards, accordions, disclosure groups) */
             --surface: oklch(0.2103 0.0059 285.89);
             --surface-foreground: var(--foreground);
+
+            --surface-secondary: oklch(0.257 0.0037 286.14);
+            --surface-secondary-foreground: var(--foreground);
+
+            --surface-tertiary: oklch(0.2721 0.0024 247.91);
+            --surface-tertiary-foreground: var(--foreground);
 
             /* Overlay: Used for floating/overlay components (dialogs, popovers, modals, menus) - lighter for contrast */
             --overlay: oklch(0.2103 0.0059 285.89);
