@@ -59,18 +59,6 @@ const typographyVariants = tv({
 
 export type TypographyProps = TextProps & VariantProps<typeof typographyVariants>;
 
-export function Typography({
-  className,
-  variant,
-  tone,
-  align,
-  truncate,
-  ...props
-}: TypographyProps) {
-  return (
-    <Text
-      className={typographyVariants({ variant, tone, align, truncate, class: className })}
-      {...props}
-    />
-  );
+export function Typography({ className, variant, tone, align, truncate, ...props }: TypographyProps) {
+  return <Text className={typographyVariants({ variant, tone, align, truncate, class: className })} {...props} />;
 }

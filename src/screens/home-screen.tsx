@@ -24,10 +24,7 @@ export function HomeScreen() {
           </Typography>
           <Card variant="tertiary">
             <Card.Body className="gap-3 p-4">
-              <HintRow
-                title="Try editing"
-                hint={<Typography variant="code">src/app/index.tsx</Typography>}
-              />
+              <HintRow title="Try editing" hint={<Typography variant="code">src/app/index.tsx</Typography>} />
               <HintRow title="Dev tools" hint={getDevMenuHint()} />
             </Card.Body>
           </Card>
@@ -46,9 +43,7 @@ function HintRow({ title, hint }: { title: string; hint?: ReactNode }) {
         {title}
       </Typography>
 
-      <View className="max-w-[70%] shrink rounded-lg border border-border bg-background px-2.5 py-1">
-        {hint}
-      </View>
+      <View className="max-w-[70%] shrink rounded-lg border border-border bg-background px-2.5 py-1">{hint}</View>
     </View>
   );
 }

@@ -2,12 +2,19 @@
   "name": "server",
   "private": true,
   "type": "module",
+  "exports": {
+    ".": "./trpc/router.ts"
+  },
   "scripts": {
     "dev": "nitro dev",
     "build": "nitro build"
   },
+  "dependencies": {
+    "@trpc/server": "^11.10.0",
+    "zod": "^4.3.6"
+  },
   "devDependencies": {
-    "nitro": "latest",
-    "rolldown": "latest"
+    "nitro": "^3.0.1-alpha.2",
+    "rolldown": "^1.0.0-rc.4"
   }
 }

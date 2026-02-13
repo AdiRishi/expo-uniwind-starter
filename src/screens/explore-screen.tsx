@@ -34,10 +34,8 @@ export function ExploreScreen() {
             <Accordion.Content>
               <View className="gap-2">
                 <Typography variant="small">
-                  Screens live in <Typography variant="code">src/app/</Typography> — each file
-                  becomes a route. The layout file in{" "}
-                  <Typography variant="code">src/app/_layout.tsx</Typography> sets up the tab
-                  navigator.
+                  Screens live in <Typography variant="code">src/app/</Typography> — each file becomes a route. The
+                  layout file in <Typography variant="code">src/app/_layout.tsx</Typography> sets up the tab navigator.
                 </Typography>
               </View>
             </Accordion.Content>
@@ -51,9 +49,8 @@ export function ExploreScreen() {
             <Accordion.Content>
               <View className="gap-3">
                 <Typography variant="small">
-                  This project runs on Android, iOS, and the web. Press{" "}
-                  <Typography variant="smallBold">w</Typography> in your terminal to launch the web
-                  version.
+                  This project runs on Android, iOS, and the web. Press <Typography variant="smallBold">w</Typography>{" "}
+                  in your terminal to launch the web version.
                 </Typography>
                 <Image
                   source={require("@/assets/images/tutorial-web.png")}
@@ -71,9 +68,8 @@ export function ExploreScreen() {
             </Accordion.Trigger>
             <Accordion.Content>
               <Typography variant="small">
-                Light and dark mode are built in. Use the{" "}
-                <Typography variant="code">useColorScheme()</Typography> hook to read the current
-                theme and adapt your UI.
+                Light and dark mode are built in. Use the <Typography variant="code">useColorScheme()</Typography> hook
+                to read the current theme and adapt your UI.
               </Typography>
             </Accordion.Content>
           </Accordion.Item>
@@ -86,8 +82,7 @@ export function ExploreScreen() {
             <Accordion.Content>
               <Typography variant="small">
                 The animated Expo logo on the Home tab is powered by{" "}
-                <Typography variant="code">react-native-reanimated</Typography>, which is included
-                and ready to use.
+                <Typography variant="code">react-native-reanimated</Typography>, which is included and ready to use.
               </Typography>
             </Accordion.Content>
           </Accordion.Item>
@@ -99,11 +94,10 @@ export function ExploreScreen() {
             </Accordion.Trigger>
             <Accordion.Content>
               <Typography variant="small">
-                A standalone Nitro v3 server lives in{" "}
-                <Typography variant="code">server/</Typography>. Routes in{" "}
-                <Typography variant="code">server/routes/</Typography> become endpoints via
-                file-system routing — deploy to Cloudflare, Vercel, Node, or any supported preset.
-                Try the interactive demo in the API tab.
+                A standalone Nitro v3 server lives in <Typography variant="code">server/</Typography>. Type-safe
+                endpoints are defined as tRPC procedures in <Typography variant="code">server/trpc/routers/</Typography>{" "}
+                with end-to-end TypeScript inference. Traditional REST routes are also supported in{" "}
+                <Typography variant="code">server/routes/</Typography>. Try the interactive demo in the API tab.
               </Typography>
             </Accordion.Content>
           </Accordion.Item>

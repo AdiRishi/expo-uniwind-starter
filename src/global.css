@@ -80,14 +80,11 @@ Source - https://github.com/heroui-inc/heroui-native/blob/beta/src/styles/variab
 
             /* Shadows */
             --surface-shadow:
-                0 2px 4px 0 rgba(0, 0, 0, 0.04), 0 1px 2px 0 rgba(0, 0, 0, 0.06),
-                0 0 1px 0 rgba(0, 0, 0, 0.06);
+                0 2px 4px 0 rgba(0, 0, 0, 0.04), 0 1px 2px 0 rgba(0, 0, 0, 0.06), 0 0 1px 0 rgba(0, 0, 0, 0.06);
             --overlay-shadow:
-                0 2px 8px 0 rgba(0, 0, 0, 0.04), 0 -6px 12px 0 rgba(0, 0, 0, 0.02),
-                0 14px 28px 0 rgba(0, 0, 0, 0.06);
+                0 2px 8px 0 rgba(0, 0, 0, 0.04), 0 -6px 12px 0 rgba(0, 0, 0, 0.02), 0 14px 28px 0 rgba(0, 0, 0, 0.06);
             --field-shadow:
-                0 2px 4px 0 rgba(0, 0, 0, 0.04), 0 1px 2px 0 rgba(0, 0, 0, 0.06),
-                0 0 1px 0 rgba(0, 0, 0, 0.06);
+                0 2px 4px 0 rgba(0, 0, 0, 0.04), 0 1px 2px 0 rgba(0, 0, 0, 0.06), 0 0 1px 0 rgba(0, 0, 0, 0.06);
         }
 
         @variant dark {
@@ -147,11 +144,9 @@ Source - https://github.com/heroui-inc/heroui-native/blob/beta/src/styles/variab
 
 :root {
     --font-display:
-        Spline Sans, Inter, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji,
-        Segoe UI Symbol, Noto Color Emoji;
-    --font-mono:
-        ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New,
-        monospace;
+        Spline Sans, Inter, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol,
+        Noto Color Emoji;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
     --font-rounded: "SF Pro Rounded", "Hiragino Maru Gothic ProN", Meiryo, "MS PGothic", sans-serif;
     --font-serif: Georgia, "Times New Roman", serif;
 }

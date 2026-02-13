@@ -1,14 +1,14 @@
-import {
-  QueryClient,
-  QueryClientProvider,
-  focusManager,
-  onlineManager,
-} from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider, focusManager, onlineManager } from "@tanstack/react-query";
+import { createTRPCClient, httpBatchLink } from "@trpc/client";
 import * as Network from "expo-network";
 import { HeroUINativeConfig, HeroUINativeProvider } from "heroui-native";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { AppState, Platform } from "react-native";
 import type { AppStateStatus } from "react-native";
+import type { AppRouter } from "server";
+
+import { ENV } from "@/lib/env";
+import { TRPCProvider } from "@/lib/trpc";
 
 // ── HeroUI Native ────────────────────────────────────────────────
 const heroUINativeConfig: HeroUINativeConfig = {
@@ -31,7 +31,7 @@ function onAppStateChange(status: AppStateStatus) {
   }
 }
 
-// --- Final Providers Setup ------------------------------------------
+// --- Providers Setup -----------------------------------------------
 
 export function AppProviders({ children }: { children: React.ReactNode }) {
   useEffect(() => {
@@ -39,9 +39,21 @@ export function AppProviders({ children }: { children: React.ReactNode }) {
     return () => subscription.remove();
   }, []);
 
+  const [trpcClient] = useState(() =>
+    createTRPCClient<AppRouter>({
+      links: [
+        httpBatchLink({
+          url: `${ENV.API_URL}/api/trpc`,
+        }),
+      ],
+    }),
+  );
+
   return (
     <QueryClientProvider client={queryClient}>
-      <HeroUINativeProvider config={heroUINativeConfig}>{children}</HeroUINativeProvider>
+      <TRPCProvider trpcClient={trpcClient} queryClient={queryClient}>
+        <HeroUINativeProvider config={heroUINativeConfig}>{children}</HeroUINativeProvider>
+      </TRPCProvider>
     </QueryClientProvider>
   );
 }

@@ -5,23 +5,11 @@ import { View } from "react-native";
 import { ExternalLink } from "@/components/external-link";
 import { StandardScrollView } from "@/components/ui/screen-containers/standard-scroll-view";
 import { Typography } from "@/components/ui/typography";
-import { ENV } from "@/lib/env";
-
-type HelloResponse = {
-  message: string;
-  timestamp: string;
-};
+import { useTRPC } from "@/lib/trpc";
 
 export function ApiRoutesScreen() {
-  const { data, error, isFetching, isSuccess, isError, refetch } = useQuery<HelloResponse>({
-    queryKey: ["hello"],
-    queryFn: async () => {
-      const res = await fetch(`${ENV.API_URL}/api/hello`);
-      if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
-      return res.json();
-    },
-    enabled: false,
-  });
+  const trpc = useTRPC();
+  const { data, error, isFetching, isSuccess, isError, refetch } = useQuery(trpc.hello.greet.queryOptions());
 
   return (
     <StandardScrollView className="flex-1" contentContainerClassName="gap-8 pt-12">
@@ -30,13 +18,13 @@ export function ApiRoutesScreen() {
           Nitro API
         </Typography>
         <Typography variant="small" tone="muted" align="center">
-          Routes in <Typography variant="code">server/routes/</Typography> become server-side
-          endpoints via Nitro file-system routing.
+          Type-safe procedures in <Typography variant="code">server/trpc/routers/</Typography> with end-to-end
+          TypeScript inference via tRPC.
         </Typography>
 
-        <ExternalLink href="https://v3.nitro.build/docs/routing" asChild>
+        <ExternalLink href="https://trpc.io/docs" asChild>
           <Button variant="tertiary" size="sm">
-            Nitro routing documentation
+            tRPC documentation
           </Button>
         </ExternalLink>
       </View>
@@ -46,13 +34,9 @@ export function ApiRoutesScreen() {
           <Card.Body className="gap-4 p-4">
             <View className="flex-row items-center justify-between">
               <Typography variant="code" tone="accent">
-                GET /api/hello
+                trpc.hello.greet
               </Typography>
-              <Chip
-                size="sm"
-                color={isSuccess ? "success" : isError ? "danger" : "default"}
-                variant="soft"
-              >
+              <Chip size="sm" color={isSuccess ? "success" : isError ? "danger" : "default"} variant="soft">
                 {isSuccess ? "200 OK" : isError ? "Error" : "Ready"}
               </Chip>
             </View>
@@ -74,18 +58,18 @@ export function ApiRoutesScreen() {
               </Typography>
             ) : (
               <Typography variant="small" tone="muted">
-                Tap the button to call the API endpoint and see the response.
+                Tap the button to call the tRPC procedure and see the typed response.
               </Typography>
             )}
 
             <Button variant="primary" size="sm" onPress={() => refetch()} isDisabled={isFetching}>
-              {isFetching ? "Calling..." : isSuccess ? "Call again" : "Call endpoint"}
+              {isFetching ? "Calling..." : isSuccess ? "Call again" : "Call procedure"}
             </Button>
           </Card.Body>
         </Card>
 
         <Typography variant="caption" tone="muted" align="center">
-          Defined in <Typography variant="code">server/routes/api/hello.get.ts</Typography>
+          Defined in <Typography variant="code">server/trpc/routers/hello.ts</Typography>
         </Typography>
       </View>
     </StandardScrollView>
