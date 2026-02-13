@@ -2,5 +2,5 @@ packages:
   - server
 
 onlyBuiltDependencies:
-  - unrs-resolver
+  - esbuild
   - unrs-resolver

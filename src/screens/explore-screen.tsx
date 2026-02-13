@@ -99,9 +99,11 @@ export function ExploreScreen() {
             </Accordion.Trigger>
             <Accordion.Content>
               <Typography variant="small">
-                Files ending in <Typography variant="code">+api.ts</Typography> inside{" "}
-                <Typography variant="code">src/app/</Typography> become server-side endpoints. Try
-                the interactive demos in the API tab.
+                A standalone Nitro v3 server lives in{" "}
+                <Typography variant="code">server/</Typography>. Routes in{" "}
+                <Typography variant="code">server/routes/</Typography> become endpoints via
+                file-system routing — deploy to Cloudflare, Vercel, Node, or any supported preset.
+                Try the interactive demo in the API tab.
               </Typography>
             </Accordion.Content>
           </Accordion.Item>
