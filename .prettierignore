@@ -25,6 +25,13 @@ app-example
 /android
 .claude/settings.local.json
 
+# Server (Nitro) build artifacts
+.nitro
+.output
+.cache
+.data
+.env
+
 # Prettier specific ignores
 pnpm-lock.yaml
 .agents

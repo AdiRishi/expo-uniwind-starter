@@ -1,5 +1,5 @@
+import { useQuery } from "@tanstack/react-query";
 import { Button, Card, Chip, Separator } from "heroui-native";
-import { useState } from "react";
 import { View } from "react-native";
 
 import { ExternalLink } from "@/components/external-link";
@@ -13,21 +13,15 @@ type HelloResponse = {
 };
 
 export function ApiRoutesScreen() {
-  const [response, setResponse] = useState<HelloResponse | null>(null);
-  const [loading, setLoading] = useState(false);
-
-  async function callApi() {
-    setLoading(true);
-    try {
+  const { data, error, isFetching, isSuccess, isError, refetch } = useQuery<HelloResponse>({
+    queryKey: ["hello"],
+    queryFn: async () => {
       const res = await fetch(`${ENV.API_URL}/api/hello`);
-      const data: HelloResponse = await res.json();
-      setResponse(data);
-    } catch {
-      setResponse(null);
-    } finally {
-      setLoading(false);
-    }
-  }
+      if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
+      return res.json();
+    },
+    enabled: false,
+  });
 
   return (
     <StandardScrollView className="flex-1" contentContainerClassName="gap-8 pt-12">
@@ -54,30 +48,38 @@ export function ApiRoutesScreen() {
               <Typography variant="code" tone="accent">
                 GET /api/hello
               </Typography>
-              <Chip size="sm" color={response ? "success" : "default"} variant="soft">
-                {response ? "200 OK" : "Ready"}
+              <Chip
+                size="sm"
+                color={isSuccess ? "success" : isError ? "danger" : "default"}
+                variant="soft"
+              >
+                {isSuccess ? "200 OK" : isError ? "Error" : "Ready"}
               </Chip>
             </View>
 
             <Separator />
 
-            {response ? (
+            {isSuccess && data ? (
               <View className="gap-2">
                 <Typography variant="body" className="font-semibold">
-                  {response.message}
+                  {data.message}
                 </Typography>
                 <Typography variant="caption" tone="muted">
-                  {new Date(response.timestamp).toLocaleString()}
+                  {new Date(data.timestamp).toLocaleString()}
                 </Typography>
               </View>
+            ) : isError ? (
+              <Typography variant="small" tone="danger">
+                {error.message}
+              </Typography>
             ) : (
               <Typography variant="small" tone="muted">
                 Tap the button to call the API endpoint and see the response.
               </Typography>
             )}
 
-            <Button variant="primary" size="sm" onPress={callApi} isDisabled={loading}>
-              {loading ? "Calling..." : response ? "Call again" : "Call endpoint"}
+            <Button variant="primary" size="sm" onPress={() => refetch()} isDisabled={isFetching}>
+              {isFetching ? "Calling..." : isSuccess ? "Call again" : "Call endpoint"}
             </Button>
           </Card.Body>
         </Card>
