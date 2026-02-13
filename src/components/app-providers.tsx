@@ -5,7 +5,8 @@ import { HeroUINativeConfig, HeroUINativeProvider } from "heroui-native";
 import { useEffect, useState } from "react";
 import { AppState, Platform } from "react-native";
 import type { AppStateStatus } from "react-native";
-import type { AppRouter } from "server";
+
+import type { AppRouter } from "@repo/server";
 
 import { ENV } from "@/lib/env";
 import { TRPCProvider } from "@/lib/trpc";
