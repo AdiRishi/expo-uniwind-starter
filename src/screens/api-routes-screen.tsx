@@ -48,9 +48,14 @@ export function ApiRoutesScreen() {
                 <Typography variant="body" className="font-semibold">
                   {data.message}
                 </Typography>
-                <Typography variant="caption" tone="muted">
-                  {new Date(data.timestamp).toLocaleString()}
-                </Typography>
+                <View className="flex-row items-center gap-2">
+                  <Typography variant="caption" tone="muted">
+                    {new Date(data.timestamp).toLocaleString()}
+                  </Typography>
+                  <Chip size="sm" variant="soft">
+                    {data.runtime}
+                  </Chip>
+                </View>
               </View>
             ) : isError ? (
               <Typography variant="small" tone="danger">

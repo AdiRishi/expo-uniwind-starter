@@ -2,25 +2,18 @@ import { defineConfig } from "nitro";
 
 export default defineConfig({
   serverDir: "./",
-  compatibilityDate: "2025-05-01",
+  compatibilityDate: "2026-02-12",
 
   // ── Deploy target ──────────────────────────────────────────────
-  // Default: Cloudflare Workers (change to fit your hosting)
+  // Nitro defaults to "node-server". Uncomment a preset to target
+  // a specific platform:
   //
-  //   "cloudflare_module"  — Cloudflare Workers (default)
-  //   "cloudflare_pages"   — Cloudflare Pages
-  //   "node"               — standalone Node.js server
-  //   "vercel"             — Vercel serverless
-  //   "netlify"            — Netlify functions
-  //   "deno"               — Deno Deploy
-  //   "bun"                — Bun runtime
-  //
-  preset: "cloudflare_module",
-
-  cloudflare: {
-    deployConfig: true,
-    nodeCompat: true,
-  },
+  //   preset: "cloudflare_module",  — Cloudflare Workers
+  //   preset: "cloudflare_pages",   — Cloudflare Pages
+  //   preset: "vercel",             — Vercel serverless
+  //   preset: "netlify",            — Netlify functions
+  //   preset: "deno",               — Deno Deploy
+  //   preset: "bun",                — Bun runtime
 
   // ── CORS ───────────────────────────────────────────────────────
   // Allows the Expo dev client (native + web) to reach the API
