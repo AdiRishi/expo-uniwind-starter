@@ -5,6 +5,7 @@ import { View } from "react-native";
 import { ExternalLink } from "@/components/external-link";
 import { StandardScrollView } from "@/components/ui/screen-containers/standard-scroll-view";
 import { Typography } from "@/components/ui/typography";
+import { ENV } from "@/lib/env";
 
 type HelloResponse = {
   message: string;
@@ -18,7 +19,7 @@ export function ApiRoutesScreen() {
   async function callApi() {
     setLoading(true);
     try {
-      const res = await fetch("/api/hello");
+      const res = await fetch(`${ENV.API_URL}/api/hello`);
       const data: HelloResponse = await res.json();
       setResponse(data);
     } catch {
@@ -32,16 +33,16 @@ export function ApiRoutesScreen() {
     <StandardScrollView className="flex-1" contentContainerClassName="gap-8 pt-12">
       <View className="items-center gap-3">
         <Typography variant="h2" align="center">
-          API Routes
+          Nitro API
         </Typography>
         <Typography variant="small" tone="muted" align="center">
-          Files ending in <Typography variant="code">+api.ts</Typography> become server-side
-          endpoints. They never ship to the client bundle.
+          Routes in <Typography variant="code">server/routes/</Typography> become server-side
+          endpoints via Nitro file-system routing.
         </Typography>
 
-        <ExternalLink href="https://docs.expo.dev/router/reference/api-routes/" asChild>
+        <ExternalLink href="https://v3.nitro.build/docs/routing" asChild>
           <Button variant="tertiary" size="sm">
-            API routes documentation
+            Nitro routing documentation
           </Button>
         </ExternalLink>
       </View>
@@ -82,7 +83,7 @@ export function ApiRoutesScreen() {
         </Card>
 
         <Typography variant="caption" tone="muted" align="center">
-          Defined in <Typography variant="code">src/app/api/hello+api.ts</Typography>
+          Defined in <Typography variant="code">server/routes/api/hello.get.ts</Typography>
         </Typography>
       </View>
     </StandardScrollView>

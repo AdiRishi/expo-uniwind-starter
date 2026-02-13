@@ -1,2 +1,6 @@
+packages:
+  - server
+
 onlyBuiltDependencies:
+  - unrs-resolver
   - unrs-resolver

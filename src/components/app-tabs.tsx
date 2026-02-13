@@ -14,17 +14,17 @@ export function AppTabs() {
         selected: { color: colors.foreground },
       }}
     >
-      <NativeTabs.Trigger name="index">
+      <NativeTabs.Trigger name="index" disableAutomaticContentInsets>
         <NativeTabs.Trigger.Label>Home</NativeTabs.Trigger.Label>
         <NativeTabs.Trigger.Icon sf="house.fill" md="home" />
       </NativeTabs.Trigger>
 
-      <NativeTabs.Trigger name="explore">
+      <NativeTabs.Trigger name="explore" disableAutomaticContentInsets>
         <NativeTabs.Trigger.Label>Explore</NativeTabs.Trigger.Label>
         <NativeTabs.Trigger.Icon sf="magnifyingglass" md="explore" />
       </NativeTabs.Trigger>
 
-      <NativeTabs.Trigger name="api-routes">
+      <NativeTabs.Trigger name="api-routes" disableAutomaticContentInsets>
         <NativeTabs.Trigger.Label>API</NativeTabs.Trigger.Label>
         <NativeTabs.Trigger.Icon sf="server.rack" md="dns" />
       </NativeTabs.Trigger>
