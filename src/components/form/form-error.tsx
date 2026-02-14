@@ -1,6 +1,6 @@
 import { Alert } from "heroui-native";
 
-import { useFormContext } from "@/hooks/form/form-context";
+import { getFormError, useFormContext } from "@/hooks/form/form-context";
 
 export function FormError() {
   const form = useFormContext();
@@ -8,8 +8,9 @@ export function FormError() {
   return (
     <form.Subscribe selector={(state) => state.errorMap.onSubmit}>
       {(error) => {
-        if (!error) return null;
-        const message = typeof error === "string" ? error : String(error);
+        const message = getFormError(error);
+        if (!message) return null;
+
         return (
           <Alert status="danger" className="items-center bg-danger/5">
             <Alert.Indicator className="pt-0" />

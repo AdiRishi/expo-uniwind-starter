@@ -1,81 +1,65 @@
-import * as Device from "expo-device";
-import { version as expoVersion } from "expo/package.json";
-import { Card } from "heroui-native";
-import { type ReactNode } from "react";
-import { Platform, View } from "react-native";
+import { useQuery } from "@tanstack/react-query";
+import { Card, Chip, Spinner } from "heroui-native";
+import { View } from "react-native";
 
 import { BrandHeroIcon } from "@/components/brand-hero-icon/brand-hero-icon";
-import { StandardView } from "@/components/ui/screen-containers/standard-view";
+import { StandardScrollView } from "@/components/ui/screen-containers/standard-scroll-view";
 import { Typography } from "@/components/ui/typography";
+import { useTRPC } from "@/lib/trpc";
+
+const TECH_STACK = ["Expo SDK 55", "React 19", "Tailwind v4", "tRPC v11", "HeroUI Native", "TypeScript"] as const;
 
 export function HomeScreen() {
+  const trpc = useTRPC();
+  const { data: greeting, isError, isPending } = useQuery(trpc.hello.greet.queryOptions());
+
   return (
-    <StandardView className="flex-1">
-      <View className="flex-1 gap-12 pt-12">
-        <View className="items-center gap-6">
-          <BrandHeroIcon />
+    <StandardScrollView className="flex-1" contentContainerClassName="items-center gap-10 pb-8 pt-12">
+      <View className="items-center gap-6">
+        <BrandHeroIcon />
+        <View className="items-center gap-2">
           <Typography variant="display" align="center">
-            Welcome to Expo
+            Expo Uniwind{"\n"}Starter
+          </Typography>
+          <Typography variant="small" tone="muted" align="center">
+            A production-ready foundation for cross-platform apps.
           </Typography>
         </View>
-        <View className="gap-2">
-          <Typography variant="h4" align="center">
-            Quick tips
-          </Typography>
-          <Card variant="tertiary">
-            <Card.Body className="gap-3 p-4">
-              <HintRow title="Try editing" hint={<Typography variant="code">src/app/index.tsx</Typography>} />
-              <HintRow title="Dev tools" hint={getDevMenuHint()} />
-            </Card.Body>
-          </Card>
-        </View>
-
-        {Platform.OS === "web" && <WebBadge />}
       </View>
-    </StandardView>
-  );
-}
 
-function HintRow({ title, hint }: { title: string; hint?: ReactNode }) {
-  return (
-    <View className="flex-row items-center justify-between gap-3">
-      <Typography variant="small" className="font-semibold">
-        {title}
-      </Typography>
+      <View className="flex-row flex-wrap justify-center gap-2">
+        {TECH_STACK.map((tech) => (
+          <Chip key={tech} variant="primary" color="default" size="sm">
+            {tech}
+          </Chip>
+        ))}
+      </View>
 
-      <View className="max-w-[70%] shrink rounded-lg border border-border bg-background px-2.5 py-1">{hint}</View>
-    </View>
-  );
-}
+      <Card className="w-full">
+        <Card.Body className="gap-1 p-4">
+          <View className="flex-row items-center gap-2">
+            {isPending ? (
+              <Spinner size="sm" />
+            ) : (
+              <View className={`size-2 rounded-full ${isError ? "bg-danger" : "bg-success"}`} />
+            )}
+            <Typography variant="smallBold">
+              {isPending ? "Connecting..." : isError ? "Server Disconnected" : "Server Connected"}
+            </Typography>
+          </View>
+          {!isPending && (
+            <Typography variant="caption" tone="muted">
+              {isError
+                ? "Start the server with pnpm run server:dev"
+                : `${greeting?.message} · Runtime: ${greeting?.runtime}`}
+            </Typography>
+          )}
+        </Card.Body>
+      </Card>
 
-function WebBadge() {
-  return (
-    <View className="items-center gap-2 py-5">
-      <Typography variant="code" tone="muted" align="center">
-        v{expoVersion}
-      </Typography>
       <Typography variant="caption" tone="muted" align="center">
-        Powered by Expo
+        Edit src/app/index.tsx to get started
       </Typography>
-    </View>
-  );
-}
-
-function getDevMenuHint(): ReactNode {
-  if (Platform.OS === "web") {
-    return <Typography variant="small">use browser devtools</Typography>;
-  }
-  if (Device.isDevice) {
-    return (
-      <Typography variant="small">
-        shake device or press <Typography variant="code">m</Typography> in terminal
-      </Typography>
-    );
-  }
-  const shortcut = Platform.OS === "android" ? "cmd+m (or ctrl+m)" : "cmd+d";
-  return (
-    <Typography variant="small">
-      press <Typography variant="code">{shortcut}</Typography>
-    </Typography>
+    </StandardScrollView>
   );
 }

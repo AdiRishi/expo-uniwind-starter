@@ -16,6 +16,18 @@ function getFieldError(error: unknown): string | undefined {
 }
 
 /**
+ * Extract a form-level error string from the errorMap.
+ */
+export function getFormError(error: unknown): string | undefined {
+  if (!error) return undefined;
+  if (typeof error === "string") return error;
+  if (typeof error === "object" && "form" in error && typeof (error as { form: string }).form === "string") {
+    return (error as { form: string }).form;
+  }
+  return undefined;
+}
+
+/**
  * Validation UX: "validate on submit, revalidate on change."
  *
  * Pair with `validators: { onSubmit: schema, onChange: schema }` in form options.
