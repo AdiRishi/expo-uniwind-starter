@@ -7,6 +7,12 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-Strict-blue?logo=typescript)](https://www.typescriptlang.org/)
 [![Uses pnpm](https://img.shields.io/badge/pnpm-10.x-orange?logo=pnpm)](https://pnpm.io/)
 
+<p align="left">
+  <img src="assets/readme/ios-home.png" alt="iOS" height="500" />
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="assets/readme/android-home.png" alt="Android" height="500" />
+</p>
+
 ## What's included
 
 - **Tailwind CSS v4** via [Uniwind](https://uniwind.dev/) — utility-first styling that works on native and web
