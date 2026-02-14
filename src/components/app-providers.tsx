@@ -5,6 +5,7 @@ import { HeroUINativeConfig, HeroUINativeProvider } from "heroui-native";
 import { useEffect, useState } from "react";
 import { AppState, Platform } from "react-native";
 import type { AppStateStatus } from "react-native";
+import superjson from "superjson";
 
 import type { AppRouter } from "@repo/server";
 
@@ -45,6 +46,7 @@ export function AppProviders({ children }: { children: React.ReactNode }) {
       links: [
         httpBatchLink({
           url: `${ENV.API_URL}/api/trpc`,
+          transformer: superjson,
         }),
       ],
     }),
