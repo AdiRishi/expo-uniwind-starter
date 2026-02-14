@@ -24,9 +24,9 @@ export function AppTabs() {
         <NativeTabs.Trigger.Icon sf="magnifyingglass" md="explore" />
       </NativeTabs.Trigger>
 
-      <NativeTabs.Trigger name="api-routes" disableAutomaticContentInsets>
-        <NativeTabs.Trigger.Label>API</NativeTabs.Trigger.Label>
-        <NativeTabs.Trigger.Icon sf="server.rack" md="dns" />
+      <NativeTabs.Trigger name="tasks" disableAutomaticContentInsets>
+        <NativeTabs.Trigger.Label>Tasks</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon sf="checklist" md="checklist" />
       </NativeTabs.Trigger>
     </NativeTabs>
   );

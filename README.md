@@ -13,6 +13,7 @@
 - **[HeroUI Native](https://v3.heroui.com/docs/native/getting-started)** — polished component library with buttons, inputs, accordions, and more
 - **Dark mode** — full light/dark theming via CSS variables, one file to customize
 - **Expo Router** — file-based routing with typed routes and native tab navigation
+- **[Tanstack Form](https://tanstack.com/form)** — composable, type-safe forms via `createFormHook` with Zod validation
 - **[Nitro](https://nitro.build/) + [tRPC](https://trpc.io/)** — type-safe API server in a monorepo workspace, deployable to Cloudflare Workers
 - **React 19 + React Compiler** — latest React with automatic optimizations
 - **Strict TypeScript, ESLint, Prettier** — opinionated DX with import and Tailwind class sorting
@@ -59,6 +60,7 @@ pnpm web              # Web browser
 | Components | HeroUI Native                          |
 | Animations | React Native Reanimated 4              |
 | Server     | Nitro 3 (Cloudflare Workers)           |
+| Forms      | Tanstack Form + Zod                    |
 | API        | tRPC v11 + TanStack Query              |
 | Language   | TypeScript 5.9 (strict)                |
 
@@ -66,15 +68,17 @@ pnpm web              # Web browser
 
 ```
 src/
-  app/           → Routes (thin files that render screens)
-  screens/       → Screen components with page logic
-  components/ui/ → Design system primitives
-  hooks/         → Custom hooks (theme colors, etc.)
-  lib/           → tRPC client, environment config
-  global.css     → Theme tokens — edit this to customize your app
+  app/             → Routes (thin files that render screens)
+  screens/         → Screen components with page logic
+  components/ui/   → Design system primitives
+  components/form/ → Tanstack Form field and form components
+  hooks/           → Custom hooks (theme colors, form context, etc.)
+  schemas/         → Zod validation schemas
+  lib/             → tRPC client, environment config
+  global.css       → Theme tokens — edit this to customize your app
 server/
-  routes/        → Nitro API routes
-  trpc/          → tRPC router and procedure definitions
+  routes/          → Nitro API routes
+  trpc/            → tRPC router and procedure definitions
 ```
 
 ## Resources
@@ -86,3 +90,4 @@ server/
 - [Nitro](https://nitro.build/)
 - [tRPC](https://trpc.io/)
 - [TanStack Query](https://tanstack.com/query)
+- [TanStack Form](https://tanstack.com/form)

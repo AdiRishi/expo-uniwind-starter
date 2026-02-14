@@ -32,6 +32,7 @@ pnpm expo prebuild        # Generate native projects (required before ios/androi
 - **Routing**: Expo Router with file-based routes in `src/app/`. Route files are thin — they render screen components from `src/screens/`
 - **Styling**: Tailwind CSS v4 via [Uniwind](https://uniwind.dev/). CSS entry point is `src/global.css` (theme tokens, dark mode variables). Metro is wrapped with `withUniwindConfig` in `metro.config.cjs`
 - **Components**: [HeroUI Native](https://v3.heroui.com/docs/native/getting-started) for UI primitives. Custom components in `src/components/ui/` use `tailwind-variants` (`tv()`) for variant-based styling
+- **Forms**: Tanstack Form via `createFormHook` (`src/hooks/form/use-app-form.ts`). Reusable field components in `src/components/form/` bind HeroUI Native primitives to form context. Zod schemas for client validation live in `src/schemas/`
 - **Data fetching**: tRPC client (`@trpc/client` + `@trpc/tanstack-react-query`) connected to the server workspace. Client setup in `src/lib/trpc.ts`, provider wiring in `src/components/app-providers.tsx`
 - **Tabs**: Native tabs via `expo-router/unstable-native-tabs` configured in `src/components/app-tabs.tsx`
 

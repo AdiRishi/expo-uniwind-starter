@@ -89,15 +89,16 @@ export function ExploreScreen() {
 
           <Accordion.Item value="api-routes">
             <Accordion.Trigger>
-              <Typography variant="small">API routes</Typography>
+              <Typography variant="small">Forms and API routes</Typography>
               <Accordion.Indicator />
             </Accordion.Trigger>
             <Accordion.Content>
               <Typography variant="small">
                 A standalone Nitro v3 server lives in <Typography variant="code">server/</Typography>. Type-safe
                 endpoints are defined as tRPC procedures in <Typography variant="code">server/trpc/routers/</Typography>{" "}
-                with end-to-end TypeScript inference. Traditional REST routes are also supported in{" "}
-                <Typography variant="code">server/routes/</Typography>. Try the interactive demo in the API tab.
+                with end-to-end TypeScript inference. The Tasks tab demonstrates Tanstack Form with tRPC mutations,
+                including client-side Zod validation, form composition via{" "}
+                <Typography variant="code">createFormHook</Typography>, and reusable field components.
               </Typography>
             </Accordion.Content>
           </Accordion.Item>
