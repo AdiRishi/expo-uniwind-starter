@@ -7,11 +7,13 @@ import { View } from "react-native";
 import { FormScrollView } from "@/components/ui/screen-containers/form-scroll-view";
 import { Typography } from "@/components/ui/typography";
 import { formOptions, useAppForm } from "@/hooks/form/use-app-form";
+import { useRefreshOnFocus } from "@/hooks/use-refresh-on-focus";
 import { useTRPC } from "@/lib/trpc";
 import { createTaskSchema } from "@/schemas/task";
 
 export function TasksScreen() {
   const trpc = useTRPC();
+  useRefreshOnFocus(trpc.tasks.pathKey());
   const queryClient = useQueryClient();
   const listQueryOptions = trpc.tasks.list.queryOptions();
   const { data: tasks = [] } = useQuery(listQueryOptions);

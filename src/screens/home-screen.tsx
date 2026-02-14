@@ -5,12 +5,14 @@ import { View } from "react-native";
 import { BrandHeroIcon } from "@/components/brand-hero-icon/brand-hero-icon";
 import { StandardScrollView } from "@/components/ui/screen-containers/standard-scroll-view";
 import { Typography } from "@/components/ui/typography";
+import { useRefreshOnFocus } from "@/hooks/use-refresh-on-focus";
 import { useTRPC } from "@/lib/trpc";
 
 const TECH_STACK = ["Expo SDK 55", "React 19", "Tailwind v4", "tRPC v11", "HeroUI Native", "TypeScript"] as const;
 
 export function HomeScreen() {
   const trpc = useTRPC();
+  useRefreshOnFocus(trpc.hello.pathKey());
   const { data: greeting, isError, isPending } = useQuery(trpc.hello.greet.queryOptions());
 
   return (
