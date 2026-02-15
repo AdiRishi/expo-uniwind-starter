@@ -17,6 +17,7 @@ export function HomeScreen() {
 
   return (
     <StandardScrollView className="flex-1" contentContainerClassName="items-center gap-10 pb-8 pt-12">
+      {/* Branding */}
       <View className="items-center gap-6">
         <BrandHeroIcon />
         <View className="items-center gap-2">
@@ -29,6 +30,7 @@ export function HomeScreen() {
         </View>
       </View>
 
+      {/* Tech Stack */}
       <View className="flex-row flex-wrap justify-center gap-2">
         {TECH_STACK.map((tech) => (
           <Chip key={tech} variant="primary" color="default" size="sm">
@@ -37,6 +39,7 @@ export function HomeScreen() {
         ))}
       </View>
 
+      {/* Server Status */}
       <Card className="w-full">
         <Card.Body className="gap-1 p-4">
           <View className="flex-row items-center gap-2">

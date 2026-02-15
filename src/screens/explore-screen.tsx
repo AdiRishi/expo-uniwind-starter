@@ -17,6 +17,7 @@ const FEATURES = [
 export function ExploreScreen() {
   return (
     <StandardScrollView className="flex-1" contentContainerClassName="gap-8 pb-8 pt-12">
+      {/* Header */}
       <View className="items-center gap-3">
         <Typography variant="h2" align="center">
           What&apos;s Inside
@@ -26,6 +27,7 @@ export function ExploreScreen() {
         </Typography>
       </View>
 
+      {/* Features */}
       <Card>
         <Card.Body className="p-0">
           {FEATURES.map((feature, index) => (
@@ -45,6 +47,7 @@ export function ExploreScreen() {
         </Card.Body>
       </Card>
 
+      {/* Documentation Link */}
       <View className="items-center">
         <ExternalLink href="https://docs.expo.dev" asChild>
           <Button variant="tertiary" size="sm">
