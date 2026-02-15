@@ -65,6 +65,10 @@ pnpm expo prebuild        # Generate native projects (required before ios/androi
   - `src/components/screens/<screen-name>/` — Components specific to a single screen (e.g. `components/screens/home/kpi-card.tsx`)
   - `src/components/` — App-level components shared across screens but not purely UI primitives (providers, tabs, etc.)
   - Prefer extracting components into files rather than co-locating them inline in screen files. Screen files (`src/screens/`) should focus on data fetching, state, and composition
+- **Comments**: Explain WHY, not WHAT — prefer clearer code over comments that restate logic
+- **Section comments**: Use section comments (e.g. `{/* Branding */}`, `{/* Tech Stack */}`, `{/* Server Status */}`) to delineate logical blocks in large JSX files — keep them short and meaningful
+- **Formatting**: Follow `.editorconfig` for indentation and line endings
+- **Docs research**: Prefer Context7 for up-to-date library documentation and examples before implementing or refactoring
 
 ## Commit Convention
 
