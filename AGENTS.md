@@ -90,6 +90,35 @@ Use [Conventional Commits](https://www.conventionalcommits.org/) with **title on
 
 **Rules**: lowercase after the colon, imperative mood ("add X" not "added X"), no trailing period, no description body — title only.
 
+## Skills
+
+Invoke skills proactively — don't wait for the user to ask.
+
+### Mandatory Skills (must ALWAYS be loaded)
+
+> **CRITICAL**: Before writing ANY UI code, components, or screens, you MUST load the three foundational skills below. This applies to:
+>
+> - Planning phases (load skills BEFORE writing plans)
+> - Every implementation plan (each plan MUST include loading these skills as a first step)
+> - Any code involving components, screens, navigation, styling, or React Native patterns
+
+- **heroui-native** — ALWAYS load this skill. Provides component APIs, theming, and usage patterns for HeroUI Native — the primary UI library in this project. Load before writing any component code.
+- **building-native-ui** — ALWAYS load this skill. Provides Expo Router patterns for screens, navigation stacks, styling, animations, and native tabs. Load before building any screen or layout.
+- **vercel-react-native-skills** — ALWAYS load this skill. Provides React Native and Expo best practices for performance, animations, native modules, and monorepo structure. Load before writing any React Native code.
+- **vercel-composition-patterns** — ALWAYS load this skill. Provides scalable React composition patterns — compound components, context providers, state lifting, and React 19 APIs. Load before writing or refactoring any component code.
+
+### Other Skills
+
+- **native-data-fetching** — Use when implementing any network request, API call, React Query setup, caching, auth tokens, or offline support
+- **expo-api-routes** — Use when creating server-side API routes in Expo Router with EAS Hosting
+- **frontend-design** — Use when building polished web UIs — landing pages, dashboards, or any web component requiring distinctive design
+- **use-dom** — Use when embedding web-only libraries (charts, syntax highlighters) in native via DOM components
+- **app-icon** — Use when generating app icons, configuring iOS 26 Liquid Glass, or Android adaptive icons
+- **expo-deployment** — Use when deploying to App Store, Play Store, TestFlight, or web hosting via EAS
+- **expo-dev-client** — Use when building custom dev clients for testing native code on physical devices
+- **expo-cicd-workflows** — Use when writing or debugging EAS Workflow YAML files for CI/CD automation
+- **upgrading-expo** — Use when upgrading Expo SDK versions, migrating deprecated packages, or resolving dependency conflicts
+
 ## Pinned Versions
 
 - `react-native-svg` pinned to 15.15.3 (not 15.15.1) to avoid a Node `buffer` import bug
