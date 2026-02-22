@@ -90,8 +90,8 @@ importers:
         specifier: ~55.0.8
         version: 55.0.8(expo@55.0.0-preview.12)(react-native@0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(react@19.2.0))
       heroui-native:
-        specifier: 1.0.0-rc.1
-        version: 1.0.0-rc.1(233a388fb1760ae0e4d4cee6321f206d)
+        specifier: 1.0.0-rc.2
+        version: 1.0.0-rc.2(233a388fb1760ae0e4d4cee6321f206d)
       react:
         specifier: 19.2.0
         version: 19.2.0
@@ -3484,17 +3484,17 @@ packages:
   hermes-parser@0.33.3:
     resolution: {integrity: sha512-Yg3HgaG4CqgyowtYjX/FsnPAuZdHOqSMtnbpylbptsQ9nwwSKsy6uRWcGO5RK0EqiX12q8HvDWKgeAVajRO5DA==}
 
-  heroui-native@1.0.0-rc.1:
-    resolution: {integrity: sha512-0hrmXTOsq+aiZpz6jMFcjSSBVkda7uZ2igdA7Z+kp8KSVn9Vr+Jr4jhZ8HH4RjPXGQJNzOEXKF/InqWU4xcgAw==}
+  heroui-native@1.0.0-rc.2:
+    resolution: {integrity: sha512-gE/l8zVMxmTEJjfA1WDnZx7EKD7U+VwWFvb8+dmc05x70PphJLGd50p3pfXWn3D7nHBVDgMa+KOYOS0VJzjh9g==}
     peerDependencies:
       '@gorhom/bottom-sheet': ^5
       react: '>=19.0.0'
       react-native: '>=0.81.0'
-      react-native-reanimated: ~4.1.1
-      react-native-safe-area-context: ~5.6.0
+      react-native-reanimated: ^4.1.1
+      react-native-safe-area-context: ^5.6.0
       react-native-screens: '>=4'
-      react-native-svg: 15.12.1
-      react-native-worklets: 0.5.1
+      react-native-svg: ^15.12.1
+      react-native-worklets: '>=0.5.1'
       tailwind-merge: ^3.4.0
       tailwind-variants: ^3.2.2
 
@@ -9107,7 +9107,7 @@ snapshots:
     dependencies:
       hermes-estree: 0.33.3
 
-  heroui-native@1.0.0-rc.1(233a388fb1760ae0e4d4cee6321f206d):
+  heroui-native@1.0.0-rc.2(233a388fb1760ae0e4d4cee6321f206d):
     dependencies:
       '@gorhom/bottom-sheet': 5.2.8(@types/react@19.2.14)(react-native-gesture-handler@2.30.0(react-native@0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(react@19.2.0))(react@19.2.0))(react-native-reanimated@4.2.2(react-native-worklets@0.7.2(@babel/core@7.29.0)(react-native@0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(react@19.2.0))(react@19.2.0))(react-native@0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(react@19.2.0))(react@19.2.0))(react-native@0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(react@19.2.0))(react@19.2.0)
       react: 19.2.0
