@@ -25,6 +25,12 @@
 - **Strict TypeScript, ESLint, Prettier** — opinionated DX with import and Tailwind class sorting
 - **[Claude Code](https://claude.ai/code) skills** — AI-assisted development with context-aware guidance for HeroUI Native, navigation, deployment, and more
 
+## Prerequisites
+
+- Node.js version pinned in `.node-version`
+- pnpm pinned by `packageManager` in `package.json`
+- Xcode (for iOS simulator) and/or Android Studio (for Android emulator)
+
 ## Quick start
 
 **1. Clone the template:**

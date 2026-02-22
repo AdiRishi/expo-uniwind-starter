@@ -69,6 +69,7 @@ pnpm expo prebuild        # Generate native projects (required before ios/androi
 - **Section comments**: Use section comments (e.g. `{/* Branding */}`, `{/* Tech Stack */}`, `{/* Server Status */}`) to delineate logical blocks in large JSX files — keep them short and meaningful
 - **Formatting**: Follow `.editorconfig` for indentation and line endings
 - **Docs research**: Prefer Context7 for up-to-date library documentation and examples before implementing or refactoring
+- **Docs sync**: Keep `README.md` and this file aligned with `package.json` scripts and current tooling when commands or architecture change
 
 ## Commit Convention
 
@@ -96,7 +97,7 @@ Invoke skills proactively — don't wait for the user to ask.
 
 ### Mandatory Skills (must ALWAYS be loaded)
 
-> **CRITICAL**: Before writing ANY UI code, components, or screens, you MUST load the three foundational skills below. This applies to:
+> **CRITICAL**: Before writing ANY UI code, components, or screens, you MUST load the four foundational skills below. This applies to:
 >
 > - Planning phases (load skills BEFORE writing plans)
 > - Every implementation plan (each plan MUST include loading these skills as a first step)
