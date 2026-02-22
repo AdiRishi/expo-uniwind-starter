@@ -118,8 +118,9 @@ Invoke skills proactively — don't wait for the user to ask.
 - **expo-dev-client** — Use when building custom dev clients for testing native code on physical devices
 - **expo-cicd-workflows** — Use when writing or debugging EAS Workflow YAML files for CI/CD automation
 - **upgrading-expo** — Use when upgrading Expo SDK versions, migrating deprecated packages, or resolving dependency conflicts
+- **react-doctor** — Use after making React changes or before PR review to catch security, performance, and correctness issues early
+- **agent-browser** — Use when automating browser interactions — navigating pages, filling forms, taking screenshots, scraping data, or testing web apps
 
 ## Pinned Versions
 
-- `react-native-svg` pinned to 15.15.3 (not 15.15.1) to avoid a Node `buffer` import bug
 - `hermes-compiler` overridden to `250829098.0.4` via `pnpm.overrides` — must match the Hermes V1 runtime built into React Native; do not bump independently. Native builds use `buildReactNativeFromSource` + `useHermesV1` via `expo-build-properties` in `app.json`
