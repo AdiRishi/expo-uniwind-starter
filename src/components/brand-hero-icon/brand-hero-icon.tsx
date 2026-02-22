@@ -1,34 +1,50 @@
 import { useState } from "react";
-import { Dimensions, Image, StyleSheet, View } from "react-native";
+import { Image, StyleSheet, View, useWindowDimensions } from "react-native";
 import Animated, { Easing, Keyframe } from "react-native-reanimated";
 import { scheduleOnRN } from "react-native-worklets";
 
-const INITIAL_SCALE_FACTOR = Dimensions.get("screen").height / 90;
 const DURATION = 600;
 const GLOW_SOURCE = require("../../../assets/images/logo-glow.png");
 const LOGO_SOURCE = require("../../../assets/images/expo-logo.png");
 
-const splashKeyframe = new Keyframe({
-  0: {
-    transform: [{ scale: INITIAL_SCALE_FACTOR }],
-    opacity: 1,
-  },
-  20: {
-    opacity: 1,
-  },
-  70: {
-    opacity: 0,
-    easing: Easing.elastic(0.7),
-  },
-  100: {
-    opacity: 0,
-    transform: [{ scale: 1 }],
-    easing: Easing.elastic(0.7),
-  },
-});
+function createSplashKeyframe(initialScaleFactor: number) {
+  return new Keyframe({
+    0: {
+      transform: [{ scale: initialScaleFactor }],
+      opacity: 1,
+    },
+    20: {
+      opacity: 1,
+    },
+    70: {
+      opacity: 0,
+      easing: Easing.elastic(0.7),
+    },
+    100: {
+      opacity: 0,
+      transform: [{ scale: 1 }],
+      easing: Easing.elastic(0.7),
+    },
+  });
+}
+
+function createBackgroundKeyframe(initialScaleFactor: number) {
+  return new Keyframe({
+    0: {
+      transform: [{ scale: initialScaleFactor }],
+    },
+    100: {
+      transform: [{ scale: 1 }],
+      easing: Easing.elastic(0.7),
+    },
+  });
+}
 
 export function BrandSplashOverlay() {
   const [visible, setVisible] = useState(true);
+  const { height } = useWindowDimensions();
+  const initialScaleFactor = height / 90;
+  const splashKeyframe = createSplashKeyframe(initialScaleFactor);
 
   if (!visible) return null;
 
@@ -44,16 +60,6 @@ export function BrandSplashOverlay() {
     />
   );
 }
-
-const keyframe = new Keyframe({
-  0: {
-    transform: [{ scale: INITIAL_SCALE_FACTOR }],
-  },
-  100: {
-    transform: [{ scale: 1 }],
-    easing: Easing.elastic(0.7),
-  },
-});
 
 const logoKeyframe = new Keyframe({
   0: {
@@ -82,6 +88,10 @@ const glowKeyframe = new Keyframe({
 });
 
 export function BrandHeroIcon() {
+  const { height } = useWindowDimensions();
+  const initialScaleFactor = height / 90;
+  const keyframe = createBackgroundKeyframe(initialScaleFactor);
+
   return (
     <View style={styles.iconContainer}>
       <Animated.View entering={glowKeyframe.duration(60 * 1000 * 4)} style={styles.glow}>

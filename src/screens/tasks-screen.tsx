@@ -1,5 +1,5 @@
-import { Ionicons } from "@expo/vector-icons";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { SymbolView } from "expo-symbols";
 import { Button, Card, Checkbox, Separator, useThemeColor } from "heroui-native";
 import { useMemo } from "react";
 import { View } from "react-native";
@@ -176,7 +176,11 @@ function TaskItem({
         {title}
       </Typography>
       <Button isIconOnly variant="ghost" size="sm" onPress={() => onDelete(id)}>
-        <Ionicons name="trash-outline" size={16} color={dangerColor} />
+        <SymbolView
+          name={{ ios: "trash", android: "delete_outline", web: "delete_outline" }}
+          size={16}
+          tintColor={dangerColor}
+        />
       </Button>
     </View>
   );

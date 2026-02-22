@@ -1,4 +1,4 @@
-import { Ionicons } from "@expo/vector-icons";
+import { SymbolView } from "expo-symbols";
 import { Button, Card, useThemeColor } from "heroui-native";
 import { View } from "react-native";
 
@@ -30,7 +30,11 @@ export function GenericErrorScreen({
   return (
     <StandardView className="flex-1 items-center justify-center gap-6">
       <View className="size-24 items-center justify-center rounded-full bg-danger/10">
-        <Ionicons name="warning-outline" size={40} color={danger} />
+        <SymbolView
+          name={{ ios: "exclamationmark.triangle", android: "warning", web: "warning" }}
+          size={40}
+          tintColor={danger}
+        />
       </View>
 
       <View className="items-center gap-2">
@@ -46,7 +50,11 @@ export function GenericErrorScreen({
         <Card variant="tertiary" className="w-full max-w-[320px]">
           <Card.Body className="gap-2 p-3">
             <View className="flex-row items-center gap-1.5">
-              <Ionicons name="terminal-outline" size={14} color={danger} />
+              <SymbolView
+                name={{ ios: "terminal", android: "terminal", web: "terminal" }}
+                size={14}
+                tintColor={danger}
+              />
               <Typography variant="caption" tone="danger" className="font-semibold uppercase">
                 Error details
               </Typography>
