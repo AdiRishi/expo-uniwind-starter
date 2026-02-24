@@ -1,12 +1,23 @@
 import { useQuery } from "@tanstack/react-query";
 import { Card, Chip, Spinner } from "heroui-native";
 import { View } from "react-native";
+import { tv } from "tailwind-variants";
 
 import { BrandHeroIcon } from "@/components/brand-hero-icon/brand-hero-icon";
 import { StandardScrollView } from "@/components/ui/screen-containers/standard-scroll-view";
 import { Typography } from "@/components/ui/typography";
 import { useRefreshOnFocus } from "@/hooks/use-refresh-on-focus";
 import { useTRPC } from "@/lib/trpc";
+
+const statusDotVariants = tv({
+  base: "size-2 rounded-full",
+  variants: {
+    status: {
+      connected: "bg-success",
+      error: "bg-danger",
+    },
+  },
+});
 
 const TECH_STACK = ["Expo SDK 55", "React 19", "Tailwind v4", "tRPC v11", "HeroUI Native", "TypeScript"] as const;
 
@@ -46,7 +57,7 @@ export function HomeScreen() {
             {isPending ? (
               <Spinner size="sm" />
             ) : (
-              <View className={`size-2 rounded-full ${isError ? "bg-danger" : "bg-success"}`} />
+              <View className={statusDotVariants({ status: isError ? "error" : "connected" })} />
             )}
             <Typography variant="smallBold">
               {isPending ? "Connecting..." : isError ? "Server Disconnected" : "Server Connected"}

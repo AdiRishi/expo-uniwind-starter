@@ -80,17 +80,19 @@ pnpm web              # Web browser
 
 ```
 src/
-  app/             → Routes (thin files that render screens)
-  screens/         → Screen components with page logic
-  components/ui/   → Design system primitives
-  components/form/ → Tanstack Form field and form components
-  hooks/           → Custom hooks (theme colors, form context, etc.)
-  schemas/         → Zod validation schemas
-  lib/             → tRPC client, environment config
-  global.css       → Theme tokens — edit this to customize your app
+  app/                      → Routes (thin files that render screens)
+  screens/                  → Screen components with page logic
+  components/
+    ui/                     → Design system primitives (buttons, typography, containers)
+    form/                   → Tanstack Form field and form components
+    screens/<screen-name>/  → Components specific to a single screen
+  hooks/                    → Custom hooks (theme colors, form context, etc.)
+  schemas/                  → Zod validation schemas
+  lib/                      → tRPC client, environment config
+  global.css                → Theme tokens — edit this to customize your app
 server/
-  routes/          → Nitro API routes
-  trpc/            → tRPC router and procedure definitions
+  routes/                   → Nitro API routes
+  trpc/                     → tRPC router and procedure definitions
 ```
 
 ## Resources
