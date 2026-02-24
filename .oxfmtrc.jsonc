@@ -1,0 +1,32 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+
+  // Tailwind CSS class sorting (replaces prettier-plugin-tailwindcss)
+  "sortTailwindcss": {
+    "stylesheet": "./src/global.css",
+    "functions": ["tv"],
+  },
+
+  // Import sorting (replaces @trivago/prettier-plugin-sort-imports)
+  "sortImports": {
+    "customGroups": [
+      {
+        "groupName": "workspace",
+        "elementNamePattern": ["@repo/*"],
+      },
+    ],
+    "groups": [
+      "builtin",
+      "external",
+      "workspace",
+      "internal",
+      ["parent", "sibling", "index"],
+      "style",
+      "unknown",
+    ],
+    "newlinesBetween": true,
+  },
+
+  // Formatter-specific ignores (gitignored files are already excluded automatically)
+  "ignorePatterns": ["pnpm-lock.yaml", ".agents", "assets", "scripts", "src/uniwind-types.d.ts"],
+}

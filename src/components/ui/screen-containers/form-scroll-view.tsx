@@ -24,7 +24,10 @@ export function FormScrollView({
   ...props
 }: FormScrollViewProps) {
   return (
-    <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} className="flex-1 bg-background">
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      className="flex-1 bg-background"
+    >
       <ScrollView
         className={formScrollViewVariants({ insets, class: className })}
         contentContainerClassName={contentContainerClassName}

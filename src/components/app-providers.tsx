@@ -1,4 +1,9 @@
-import { QueryClient, QueryClientProvider, focusManager, onlineManager } from "@tanstack/react-query";
+import {
+  QueryClient,
+  QueryClientProvider,
+  focusManager,
+  onlineManager,
+} from "@tanstack/react-query";
 import { createTRPCClient, httpBatchLink } from "@trpc/client";
 import * as Network from "expo-network";
 import { HeroUINativeConfig, HeroUINativeProvider } from "heroui-native";

@@ -22,7 +22,7 @@
 - **[Tanstack Form](https://tanstack.com/form)** — composable, type-safe forms via `createFormHook` with Zod validation
 - **[Nitro](https://nitro.build/) + [tRPC](https://trpc.io/)** — type-safe API server in a monorepo workspace, deployable to Cloudflare Workers
 - **React 19 + React Compiler** — latest React with automatic optimizations
-- **Strict TypeScript, ESLint, Prettier** — opinionated DX with import and Tailwind class sorting
+- **Strict TypeScript, ESLint, [oxfmt](https://oxc.rs/)** — opinionated DX with import and Tailwind class sorting
 - **[Claude Code](https://claude.ai/code) skills** — AI-assisted development with context-aware guidance for HeroUI Native, navigation, deployment, and more
 
 ## Prerequisites

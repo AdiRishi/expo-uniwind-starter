@@ -4,6 +4,7 @@ import { HeroUINativeProvider } from "heroui-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 import { AppProviders } from "@/components/app-providers";
+
 import "@/global.css";
 import { GenericErrorScreen } from "@/screens/error/generic-error-screen";
 

@@ -1,6 +1,7 @@
 import { createFormHookContexts, useStore } from "@tanstack/react-form";
 
-export const { fieldContext, formContext, useFieldContext, useFormContext } = createFormHookContexts();
+export const { fieldContext, formContext, useFieldContext, useFormContext } =
+  createFormHookContexts();
 
 /**
  * Extract a displayable error string from a TanStack Form field error.
@@ -9,7 +10,11 @@ export const { fieldContext, formContext, useFieldContext, useFormContext } = cr
 function getFieldError(error: unknown): string | undefined {
   if (!error) return undefined;
   if (typeof error === "string") return error;
-  if (typeof error === "object" && "message" in error && typeof (error as { message: string }).message === "string") {
+  if (
+    typeof error === "object" &&
+    "message" in error &&
+    typeof (error as { message: string }).message === "string"
+  ) {
     return (error as { message: string }).message;
   }
   return undefined;
@@ -21,7 +26,11 @@ function getFieldError(error: unknown): string | undefined {
 export function getFormError(error: unknown): string | undefined {
   if (!error) return undefined;
   if (typeof error === "string") return error;
-  if (typeof error === "object" && "form" in error && typeof (error as { form: string }).form === "string") {
+  if (
+    typeof error === "object" &&
+    "form" in error &&
+    typeof (error as { form: string }).form === "string"
+  ) {
     return (error as { form: string }).form;
   }
   return undefined;

@@ -19,7 +19,14 @@ const statusDotVariants = tv({
   },
 });
 
-const TECH_STACK = ["Expo SDK 55", "React 19", "Tailwind v4", "tRPC v11", "HeroUI Native", "TypeScript"] as const;
+const TECH_STACK = [
+  "Expo SDK 55",
+  "React 19",
+  "Tailwind v4",
+  "tRPC v11",
+  "HeroUI Native",
+  "TypeScript",
+] as const;
 
 export function HomeScreen() {
   const trpc = useTRPC();
@@ -27,7 +34,10 @@ export function HomeScreen() {
   const { data: greeting, isError, isPending } = useQuery(trpc.hello.greet.queryOptions());
 
   return (
-    <StandardScrollView className="flex-1" contentContainerClassName="items-center gap-10 pb-8 pt-12">
+    <StandardScrollView
+      className="flex-1"
+      contentContainerClassName="items-center gap-10 pb-8 pt-12"
+    >
       {/* Branding */}
       <View className="items-center gap-6">
         <BrandHeroIcon />

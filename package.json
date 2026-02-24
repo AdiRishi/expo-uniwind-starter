@@ -1,8 +1,9 @@
 {
   "name": "expo-uniwind-starter",
-  "main": "expo-router/entry",
   "version": "1.0.0",
+  "private": true,
   "type": "module",
+  "main": "expo-router/entry",
   "scripts": {
     "start": "expo start",
     "android": "expo run:android",
@@ -10,8 +11,8 @@
     "web": "expo start --web",
     "lint": "expo lint",
     "typecheck": "tsc --noEmit",
-    "format": "prettier . --write",
-    "check": "expo lint && prettier . --check && tsc --noEmit",
+    "format": "oxfmt",
+    "check": "expo lint && oxfmt --check && tsc --noEmit",
     "rename": "tsx scripts/rename-project.ts",
     "server:dev": "pnpm --filter @repo/server dev",
     "server:build": "pnpm --filter @repo/server build"
@@ -62,22 +63,19 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
-    "@trivago/prettier-plugin-sort-imports": "^6.0.2",
     "@types/node": "^25.3.0",
     "@types/react": "~19.2.14",
     "eslint": "^9.39.3",
     "eslint-config-expo": "~55.0.0",
     "eslint-config-prettier": "^10.1.8",
-    "prettier": "^3.8.1",
-    "prettier-plugin-tailwindcss": "^0.7.2",
+    "oxfmt": "^0.35.0",
     "tsx": "^4.21.0",
     "typescript": "~5.9.3"
   },
+  "packageManager": "pnpm@10.30.1",
   "pnpm": {
     "overrides": {
       "hermes-compiler": "250829098.0.4"
     }
-  },
-  "private": true,
-  "packageManager": "pnpm@10.30.1"
+  }
 }

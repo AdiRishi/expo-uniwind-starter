@@ -1,5 +1,6 @@
 import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
 import { defineHandler } from "nitro/h3";
+
 import { createContext } from "~/trpc/context";
 import { appRouter } from "~/trpc/router";
 

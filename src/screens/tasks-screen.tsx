@@ -16,9 +16,15 @@ export function TasksScreen() {
 
   const invalidateList = () => queryClient.invalidateQueries(listQueryOptions);
 
-  const createMutation = useMutation(trpc.tasks.create.mutationOptions({ onSuccess: invalidateList }));
-  const toggleMutation = useMutation(trpc.tasks.toggle.mutationOptions({ onSuccess: invalidateList }));
-  const deleteMutation = useMutation(trpc.tasks.delete.mutationOptions({ onSuccess: invalidateList }));
+  const createMutation = useMutation(
+    trpc.tasks.create.mutationOptions({ onSuccess: invalidateList }),
+  );
+  const toggleMutation = useMutation(
+    trpc.tasks.toggle.mutationOptions({ onSuccess: invalidateList }),
+  );
+  const deleteMutation = useMutation(
+    trpc.tasks.delete.mutationOptions({ onSuccess: invalidateList }),
+  );
 
   return (
     <FormScrollView className="flex-1" contentContainerClassName="gap-8 pb-8 pt-12">

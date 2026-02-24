@@ -10,10 +10,10 @@ pnpm ios                  # Run on iOS simulator (requires prebuild)
 pnpm android              # Run on Android emulator (requires prebuild)
 pnpm web                  # Run on web
 
-pnpm run check            # Run all checks (lint + prettier + typecheck)
+pnpm run check            # Run all checks (lint + oxfmt + typecheck)
 pnpm run lint             # ESLint only (expo lint)
 pnpm run typecheck        # TypeScript only (tsc --noEmit)
-pnpm run format           # Auto-format with Prettier
+pnpm run format           # Auto-format with oxfmt
 
 pnpm run server:dev       # Start Nitro API server (localhost:3000)
 pnpm run server:build     # Build server for deployment
@@ -53,8 +53,8 @@ pnpm expo prebuild        # Generate native projects (required before ios/androi
 
 - **Package manager**: pnpm (v10.x). Always use `pnpm` for install/scripts
 - **TypeScript**: Strict mode. Server is excluded from root tsconfig
-- **Import order**: Enforced by Prettier plugin — third-party first, then `@repo/*`, then `@/*`, then relative
-- **Tailwind class sorting**: Enforced by `prettier-plugin-tailwindcss` with `tv()` function support
+- **Import order**: Enforced by oxfmt `sortImports` — third-party first, then `@repo/*`, then `@/*`, then relative
+- **Tailwind class sorting**: Enforced by oxfmt `sortTailwindcss` with `tv()` function support
 - **Variant styling**: Use `tailwind-variants` (`tv()`) for component variants, not conditional class strings
 - **Theme customization**: Edit CSS custom properties in `src/global.css` (light/dark variants under `@layer theme`)
 - **Platform-specific files**: Use `.ios.tsx`, `.android.tsx`, `.web.tsx` suffixes for platform overrides
