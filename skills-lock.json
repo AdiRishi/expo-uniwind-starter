@@ -4,7 +4,7 @@
     "agent-browser": {
       "source": "vercel-labs/agent-browser",
       "sourceType": "github",
-      "computedHash": "69e805b9bba58a76e3f9ac835d506a4f06f18a7867d2ba5e23e40638f6f351eb"
+      "computedHash": "2f771f8eb25f9856d2169a4de4766de94e2bdbff999f42c458c8f1e2ca405c03"
     },
     "app-icon": {
       "source": "code-with-beto/skills",
@@ -14,7 +14,7 @@
     "building-native-ui": {
       "source": "expo/skills",
       "sourceType": "github",
-      "computedHash": "37e9a7eb3464f210a0288f70bef5dbd350fbc62669ef6dca4967930a770450b5"
+      "computedHash": "342df93f481a0dba919f372d6c7b40d2b4bf5b51dd24363aea2e5d0bae27a6fa"
     },
     "expo-api-routes": {
       "source": "expo/skills",
@@ -49,7 +49,7 @@
     "native-data-fetching": {
       "source": "expo/skills",
       "sourceType": "github",
-      "computedHash": "a48656f4090305f3286ce40bbbc4f7fbc602954890bb9601e2e134dfeec00a70"
+      "computedHash": "6c14e4efb34a9c4759e8b959f82dec328f87dd89a022957c6737086984b9b106"
     },
     "react-doctor": {
       "source": "millionco/react-doctor",
