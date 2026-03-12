@@ -14,17 +14,17 @@ export function AppTabs() {
         selected: { color: colors.foreground },
       }}
     >
-      <NativeTabs.Trigger name="index" disableAutomaticContentInsets>
+      <NativeTabs.Trigger name="index">
         <NativeTabs.Trigger.Label>Home</NativeTabs.Trigger.Label>
         <NativeTabs.Trigger.Icon sf="house.fill" md="home" />
       </NativeTabs.Trigger>
 
-      <NativeTabs.Trigger name="explore" disableAutomaticContentInsets>
+      <NativeTabs.Trigger name="explore">
         <NativeTabs.Trigger.Label>Explore</NativeTabs.Trigger.Label>
         <NativeTabs.Trigger.Icon sf="magnifyingglass" md="explore" />
       </NativeTabs.Trigger>
 
-      <NativeTabs.Trigger name="tasks" disableAutomaticContentInsets>
+      <NativeTabs.Trigger name="tasks">
         <NativeTabs.Trigger.Label>Tasks</NativeTabs.Trigger.Label>
         <NativeTabs.Trigger.Icon sf="checklist" md="checklist" />
       </NativeTabs.Trigger>

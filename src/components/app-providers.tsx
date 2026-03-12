@@ -5,6 +5,8 @@ import { HeroUINativeConfig, HeroUINativeProvider } from "heroui-native";
 import { useEffect, useState } from "react";
 import { AppState, Platform } from "react-native";
 import type { AppStateStatus } from "react-native";
+import { KeyboardProvider } from "react-native-keyboard-controller";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 import superjson from "superjson";
 
 import type { AppRouter } from "@repo/server";
@@ -53,10 +55,14 @@ export function AppProviders({ children }: { children: React.ReactNode }) {
   );
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <TRPCProvider trpcClient={trpcClient} queryClient={queryClient}>
-        <HeroUINativeProvider config={heroUINativeConfig}>{children}</HeroUINativeProvider>
-      </TRPCProvider>
-    </QueryClientProvider>
+    <SafeAreaProvider>
+      <KeyboardProvider>
+        <QueryClientProvider client={queryClient}>
+          <TRPCProvider trpcClient={trpcClient} queryClient={queryClient}>
+            <HeroUINativeProvider config={heroUINativeConfig}>{children}</HeroUINativeProvider>
+          </TRPCProvider>
+        </QueryClientProvider>
+      </KeyboardProvider>
+    </SafeAreaProvider>
   );
 }

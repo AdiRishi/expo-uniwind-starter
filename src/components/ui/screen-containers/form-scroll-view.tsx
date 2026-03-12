@@ -1,41 +1,51 @@
-import { KeyboardAvoidingView, Platform, ScrollView, ScrollViewProps } from "react-native";
+import { useThemeColor } from "heroui-native";
+import { View } from "react-native";
+import { KeyboardAwareScrollView, type KeyboardAwareScrollViewProps } from "react-native-keyboard-controller";
 import { VariantProps, tv } from "tailwind-variants";
 
+import { useScreenContainerScrollInsets } from "./use-screen-container-insets";
+
 const formScrollViewVariants = tv({
-  base: "bg-background px-4",
-  variants: {
-    insets: {
-      safe: "py-safe",
-      unsafe: "",
-    },
-  },
-  defaultVariants: {
-    insets: "safe",
-  },
+  base: "flex-1 bg-background px-4",
 });
 
-type FormScrollViewProps = ScrollViewProps & VariantProps<typeof formScrollViewVariants>;
+type FormScrollViewProps = KeyboardAwareScrollViewProps &
+  VariantProps<typeof formScrollViewVariants> & {
+    edgeToEdge?: boolean;
+  };
 
 export function FormScrollView({
+  automaticallyAdjustsScrollIndicatorInsets,
   className,
+  contentInsetAdjustmentBehavior,
   contentContainerClassName,
-  insets,
+  edgeToEdge,
   children,
+  showsVerticalScrollIndicator = false,
+  showsHorizontalScrollIndicator = false,
+  style,
+  bottomOffset = 24,
   ...props
 }: FormScrollViewProps) {
+  const safeAreaInsets = useScreenContainerScrollInsets(edgeToEdge);
+  const backgroundColor = useThemeColor("background");
+
   return (
-    <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} className="flex-1 bg-background">
-      <ScrollView
-        className={formScrollViewVariants({ insets, class: className })}
+    <View style={[{ flex: 1, backgroundColor }, safeAreaInsets]}>
+      <KeyboardAwareScrollView
+        className={formScrollViewVariants({ class: className })}
         contentContainerClassName={contentContainerClassName}
-        contentInsetAdjustmentBehavior="never"
-        automaticallyAdjustContentInsets={false}
+        contentInsetAdjustmentBehavior={contentInsetAdjustmentBehavior ?? (edgeToEdge ? "never" : "automatic")}
+        automaticallyAdjustsScrollIndicatorInsets={automaticallyAdjustsScrollIndicatorInsets ?? !edgeToEdge}
         keyboardShouldPersistTaps="handled"
-        showsVerticalScrollIndicator={false}
+        showsVerticalScrollIndicator={showsVerticalScrollIndicator}
+        showsHorizontalScrollIndicator={showsHorizontalScrollIndicator}
+        style={style}
+        bottomOffset={bottomOffset}
         {...props}
       >
         {children}
-      </ScrollView>
-    </KeyboardAvoidingView>
+      </KeyboardAwareScrollView>
+    </View>
   );
 }
