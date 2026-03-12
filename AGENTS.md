@@ -124,4 +124,4 @@ Invoke skills proactively — don't wait for the user to ask.
 
 ## Pinned Versions
 
-- `hermes-compiler` overridden to `250829098.0.4` via `pnpm.overrides` — must match the Hermes V1 runtime built into React Native; do not bump independently. Native builds use `buildReactNativeFromSource` + `useHermesV1` via `expo-build-properties` in `app.json`
+- `react-native-screens` has been updated to `4.24.0` to ensure safe area fixes work

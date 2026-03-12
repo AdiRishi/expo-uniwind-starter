@@ -19,38 +19,38 @@
   "dependencies": {
     "@expo/vector-icons": "^15.1.1",
     "@gorhom/bottom-sheet": "^5.2.8",
-    "@react-navigation/bottom-tabs": "^7.15.2",
-    "@react-navigation/elements": "^2.9.8",
-    "@react-navigation/native": "^7.1.31",
+    "@react-navigation/bottom-tabs": "^7.15.5",
+    "@react-navigation/elements": "^2.9.10",
+    "@react-navigation/native": "^7.1.33",
     "@repo/server": "workspace:*",
-    "@tanstack/react-form": "^1.28.3",
+    "@tanstack/react-form": "^1.28.4",
     "@tanstack/react-query": "^5.90.21",
-    "@trpc/client": "^11.10.0",
-    "@trpc/tanstack-react-query": "^11.10.0",
+    "@trpc/client": "^11.12.0",
+    "@trpc/tanstack-react-query": "^11.12.0",
     "expo": "~55.0.4",
     "expo-build-properties": "~55.0.9",
     "expo-constants": "~55.0.7",
-    "expo-dev-client": "~55.0.10",
+    "expo-dev-client": "~55.0.16",
     "expo-device": "~55.0.9",
     "expo-font": "~55.0.4",
-    "expo-glass-effect": "~55.0.7",
-    "expo-image": "~55.0.5",
+    "expo-glass-effect": "~55.0.8",
+    "expo-image": "~55.0.6",
     "expo-linking": "~55.0.7",
     "expo-network": "~55.0.8",
-    "expo-router": "~55.0.3",
+    "expo-router": "~55.0.5",
     "expo-splash-screen": "~55.0.10",
     "expo-status-bar": "~55.0.4",
-    "expo-symbols": "~55.0.4",
+    "expo-symbols": "~55.0.5",
     "expo-system-ui": "~55.0.9",
     "expo-web-browser": "~55.0.9",
-    "heroui-native": "1.0.0-rc.3",
+    "heroui-native": "1.0.0-rc.4",
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "react-native": "0.83.2",
     "react-native-gesture-handler": "~2.30.0",
     "react-native-reanimated": "4.2.1",
     "react-native-safe-area-context": "~5.6.2",
-    "react-native-screens": "~4.23.0",
+    "react-native-screens": "~4.24.0",
     "react-native-svg": "15.15.3",
     "react-native-web": "~0.21.2",
     "react-native-worklets": "0.7.2",
@@ -58,12 +58,12 @@
     "tailwind-merge": "^3.5.0",
     "tailwind-variants": "^3.2.2",
     "tailwindcss": "^4.2.1",
-    "uniwind": "^1.4.0",
+    "uniwind": "^1.5.0",
     "zod": "^4.3.6"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^6.0.2",
-    "@types/node": "^25.3.2",
+    "@types/node": "^25.4.0",
     "@types/react": "~19.2.14",
     "eslint": "^9.39.3",
     "eslint-config-expo": "~55.0.0",
@@ -73,11 +73,15 @@
     "tsx": "^4.21.0",
     "typescript": "~5.9.3"
   },
-  "pnpm": {
-    "overrides": {
-      "hermes-compiler": "250829098.0.4"
+  "private": true,
+  "expo": {
+    "install": {
+      "exclude": [
+        "react-native-screens",
+        "@react-navigation/bottom-tabs",
+        "@react-navigation/native"
+      ]
     }
   },
-  "private": true,
-  "packageManager": "pnpm@10.30.3"
+  "packageManager": "pnpm@10.32.1"
 }
