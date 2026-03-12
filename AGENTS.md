@@ -93,22 +93,13 @@ Use [Conventional Commits](https://www.conventionalcommits.org/) with **title on
 
 ## Skills
 
-Invoke skills proactively — don't wait for the user to ask.
+Invoke skills proactively — don't wait for the user to ask. Load whichever skills from the list below are relevant to the task at hand.
 
-### Mandatory Skills (must ALWAYS be loaded)
-
-> **CRITICAL**: Before writing ANY UI code, components, or screens, you MUST load the four foundational skills below. This applies to:
->
-> - Planning phases (load skills BEFORE writing plans)
-> - Every implementation plan (each plan MUST include loading these skills as a first step)
-> - Any code involving components, screens, navigation, styling, or React Native patterns
-
-- **heroui-native** — ALWAYS load this skill. Provides component APIs, theming, and usage patterns for HeroUI Native — the primary UI library in this project. Load before writing any component code.
-- **building-native-ui** — ALWAYS load this skill. Provides Expo Router patterns for screens, navigation stacks, styling, animations, and native tabs. Load before building any screen or layout.
-- **vercel-react-native-skills** — ALWAYS load this skill. Provides React Native and Expo best practices for performance, animations, native modules, and monorepo structure. Load before writing any React Native code.
-- **vercel-composition-patterns** — ALWAYS load this skill. Provides scalable React composition patterns — compound components, context providers, state lifting, and React 19 APIs. Load before writing or refactoring any component code.
-
-### Other Skills
+- **heroui-native** — Use when working with HeroUI Native components, theming, and usage patterns.
+- **uniwind** — Use when adding, building, or styling components in a React Native project that uses Tailwind with `className`, or when working with Uniwind setup, theming, and styling/debugging.
+- **building-native-ui** — Use when building screens, navigation stacks, styling, animations, or native tabs with Expo Router.
+- **vercel-react-native-skills** — Use for React Native and Expo best practices, performance, animations, native modules, and monorepo structure.
+- **vercel-composition-patterns** — Use for scalable React composition patterns, including compound components, providers, and React 19 APIs.
 
 - **native-data-fetching** — Use when implementing any network request, API call, React Query setup, caching, auth tokens, or offline support
 - **expo-api-routes** — Use when creating server-side API routes in Expo Router with EAS Hosting
