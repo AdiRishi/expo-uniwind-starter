@@ -85,6 +85,11 @@ agent-browser download @e1 ./file.pdf          # Click element to trigger downlo
 agent-browser wait --download ./output.zip     # Wait for any download to complete
 agent-browser --download-path ./downloads open <url>  # Set default download directory
 
+# Viewport & Device Emulation
+agent-browser set viewport 1920 1080          # Set viewport size (default: 1280x720)
+agent-browser set viewport 1920 1080 2        # 2x retina (same CSS size, higher res screenshots)
+agent-browser set device "iPhone 14"          # Emulate device (viewport + user agent)
+
 # Capture
 agent-browser screenshot              # Screenshot to temp dir
 agent-browser screenshot --full       # Full page screenshot
@@ -219,6 +224,29 @@ AGENT_BROWSER_COLOR_SCHEME=dark agent-browser open https://example.com
 agent-browser set media dark
 ```
 
+### Viewport & Responsive Testing
+
+```bash
+# Set a custom viewport size (default is 1280x720)
+agent-browser set viewport 1920 1080
+agent-browser screenshot desktop.png
+
+# Test mobile-width layout
+agent-browser set viewport 375 812
+agent-browser screenshot mobile.png
+
+# Retina/HiDPI: same CSS layout at 2x pixel density
+# Screenshots stay at logical viewport size, but content renders at higher DPI
+agent-browser set viewport 1920 1080 2
+agent-browser screenshot retina.png
+
+# Device emulation (sets viewport + user agent in one step)
+agent-browser set device "iPhone 14"
+agent-browser screenshot device.png
+```
+
+The `scale` parameter (3rd argument) sets `window.devicePixelRatio` without changing CSS layout. Use it when testing retina rendering or capturing higher-resolution screenshots.
+
 ### Visual Browser (Debugging)
 
 ```bash
@@ -228,6 +256,8 @@ agent-browser record start demo.webm # Record session
 agent-browser profiler start         # Start Chrome DevTools profiling
 agent-browser profiler stop trace.json # Stop and save profile (path optional)
 ```
+
+Use `AGENT_BROWSER_HEADED=1` to enable headed mode via environment variable. Browser extensions work in both headed and headless mode.
 
 ### Local Files (PDFs, HTML)
 
@@ -484,6 +514,43 @@ Priority (lowest to highest): `~/.agent-browser/config.json` < `./agent-browser.
 | [references/video-recording.md](references/video-recording.md) | Recording workflows for debugging and documentation |
 | [references/profiling.md](references/profiling.md) | Chrome DevTools profiling for performance analysis |
 | [references/proxy-support.md](references/proxy-support.md) | Proxy configuration, geo-testing, rotating proxies |
+
+## Experimental: Native Mode
+
+agent-browser has an experimental native Rust daemon that communicates with Chrome directly via CDP, bypassing Node.js and Playwright entirely. It is opt-in and not recommended for production use yet.
+
+```bash
+# Enable via flag
+agent-browser --native open example.com
+
+# Enable via environment variable (avoids passing --native every time)
+export AGENT_BROWSER_NATIVE=1
+agent-browser open example.com
+```
+
+The native daemon supports Chromium and Safari (via WebDriver). Firefox and WebKit are not yet supported. All core commands (navigate, snapshot, click, fill, screenshot, cookies, storage, tabs, eval, etc.) work identically in native mode. Use `agent-browser close` before switching between native and default mode within the same session.
+
+## Browser Engine Selection
+
+Use `--engine` to choose a local browser engine. The default is `chrome`.
+
+```bash
+# Use Lightpanda (fast headless browser, requires separate install)
+agent-browser --engine lightpanda open example.com
+
+# Via environment variable
+export AGENT_BROWSER_ENGINE=lightpanda
+agent-browser open example.com
+
+# With custom binary path
+agent-browser --engine lightpanda --executable-path /path/to/lightpanda open example.com
+```
+
+Supported engines:
+- `chrome` (default) -- Chrome/Chromium via CDP
+- `lightpanda` -- Lightpanda headless browser via CDP (10x faster, 10x less memory than Chrome)
+
+Lightpanda does not support `--extension`, `--profile`, `--state`, or `--allow-file-access`. Install Lightpanda from https://lightpanda.io/docs/open-source/installation.
 
 ## Ready-to-Use Templates
 
