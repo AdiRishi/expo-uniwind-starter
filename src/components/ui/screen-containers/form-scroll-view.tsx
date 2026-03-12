@@ -24,6 +24,7 @@ export function FormScrollView({
   showsVerticalScrollIndicator = false,
   showsHorizontalScrollIndicator = false,
   style,
+  // KeyboardAwareScrollViewProps
   bottomOffset = 24,
   ...props
 }: FormScrollViewProps) {
@@ -41,6 +42,7 @@ export function FormScrollView({
         showsVerticalScrollIndicator={showsVerticalScrollIndicator}
         showsHorizontalScrollIndicator={showsHorizontalScrollIndicator}
         style={style}
+        // KeyboardAwareScrollViewProps
         bottomOffset={bottomOffset}
         {...props}
       >

@@ -23,12 +23,12 @@ export function TasksScreen() {
   return (
     <FormScrollView className="flex-1" contentContainerClassName="gap-8 pb-8 pt-12">
       <TasksHeader />
-      <CreateTaskForm onSubmit={(title) => createMutation.mutateAsync({ title })} />
       <TaskList
         tasks={tasks}
         onToggle={(id) => toggleMutation.mutate({ id })}
         onDelete={(id) => deleteMutation.mutate({ id })}
       />
+      <CreateTaskForm onSubmit={(title) => createMutation.mutateAsync({ title })} />
     </FormScrollView>
   );
 }

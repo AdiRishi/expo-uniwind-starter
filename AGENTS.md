@@ -54,6 +54,7 @@ pnpm expo prebuild        # Generate native projects (required before ios/androi
 - **Package manager**: pnpm (v10.x). Always use `pnpm` for install/scripts
 - **Variant styling**: Use `tailwind-variants` (`tv()`) for component variants, not conditional class strings
 - **Theme customization**: Edit CSS custom properties in `src/global.css` (light/dark variants under `@layer theme`)
+- **Screen container safe areas**: Screen containers (`StandardView`, `StandardScrollView`, `FormScrollView`) own all safe-area handling via `useScreenContainerInsets`. Never wrap them in `SafeAreaView` or apply Uniwind safe-area utilities (`py-safe`, `pt-safe-*`, `pb-safe-*`). Top inset is skipped automatically when a stack header is shown; bottom inset is skipped on Android inside tabs. Use the `edgeToEdge` prop only for intentional full-bleed screens. Content spacing (`pt-*`, `pb-*`) belongs in `contentContainerClassName`, not on the container itself
 - **Environment**: `EXPO_PUBLIC_API_URL` sets the API base URL (defaults to `http://localhost:3000`). Access via `src/lib/env.ts`
 - **Component organization**:
   - `src/components/ui/` — Generic, reusable components (buttons, rows, typography, screen containers)
