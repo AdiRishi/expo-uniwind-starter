@@ -65,6 +65,9 @@ Source - https://github.com/heroui-inc/heroui-native/blob/rc/src/styles/variable
             --field-border: transparent; /* no border by default on form fields */
 
             /* Status Colors */
+            --info: oklch(0.7329 0.1935 150.81);
+            --info-foreground: var(--eclipse);
+
             --success: oklch(0.7329 0.1935 150.81);
             --success-foreground: var(--eclipse);
 
@@ -127,6 +130,9 @@ Source - https://github.com/heroui-inc/heroui-native/blob/rc/src/styles/variable
             --field-border: transparent; /* no border by default on form fields */
 
             /* Status Colors */
+            --info: oklch(0.6204 0.195 253.83);
+            --info-foreground: var(--snow);
+
             --success: oklch(0.7329 0.1935 150.81);
             --success-foreground: var(--eclipse);
 
