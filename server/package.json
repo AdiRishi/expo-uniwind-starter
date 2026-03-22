@@ -10,7 +10,7 @@
     "build": "nitro build"
   },
   "dependencies": {
-    "@trpc/server": "^11.13.4",
+    "@trpc/server": "^11.14.1",
     "superjson": "^2.2.6",
     "zod": "^4.3.6"
   },
