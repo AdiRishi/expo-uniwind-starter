@@ -4,12 +4,17 @@
     "agent-browser": {
       "source": "vercel-labs/agent-browser",
       "sourceType": "github",
-      "computedHash": "1c40cac8fc7b0f3e4187881b256525ffc6b19fa4859f5f7847c9a87448ccf56a"
+      "computedHash": "da901a619fa097fa5c70bedccfd728c03901e409bcbb375006cceba5aad535b9"
+    },
+    "agent-device": {
+      "source": "callstackincubator/agent-device",
+      "sourceType": "github",
+      "computedHash": "387b86864fc102ab725191f26debbdafb3388a4621c8686026946f34ca9397ff"
     },
     "app-icon": {
       "source": "code-with-beto/skills",
       "sourceType": "github",
-      "computedHash": "35aa33f2253c543f5251f48f921856b089b86b3e4b4073ea5b26b96ec5a7c15b"
+      "computedHash": "dc551a26318622c831286711961a4cab90e134bf3378083d9cfe1e52bb466524"
     },
     "building-native-ui": {
       "source": "expo/skills",
@@ -36,6 +41,11 @@
       "sourceType": "github",
       "computedHash": "234e2633b7fbcef2d479f8fe8ab20d53d08ed3e4beec7c965da4aff5b43affe7"
     },
+    "expo-module": {
+      "source": "expo/skills",
+      "sourceType": "github",
+      "computedHash": "c05fad40fb94ea3b1f735a75c57f66b9a808780865d5aebb7f8fafe9227f83ed"
+    },
     "frontend-design": {
       "source": "anthropics/skills",
       "sourceType": "github",
@@ -49,7 +59,7 @@
     "native-data-fetching": {
       "source": "expo/skills",
       "sourceType": "github",
-      "computedHash": "6c14e4efb34a9c4759e8b959f82dec328f87dd89a022957c6737086984b9b106"
+      "computedHash": "3cd0ba91f359f9f84cd40f36f356287994a0e952520fac6e03ef7952d0397879"
     },
     "react-doctor": {
       "source": "millionco/react-doctor",

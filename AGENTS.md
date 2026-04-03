@@ -82,6 +82,7 @@ Use [Conventional Commits](https://www.conventionalcommits.org/) with **title on
 
 Invoke skills proactively — don't wait for the user to ask. Load whichever skills from the list below are relevant to the task at hand.
 
+- **agent-device** — Use when automating interactions with iOS, Android, tvOS, or macOS apps — navigating, tapping, typing, scrolling, taking snapshots, or extracting UI info on real or simulated devices
 - **heroui-native** — Use when working with HeroUI Native components, theming, and usage patterns.
 - **uniwind** — Use when adding, building, or styling components in a React Native project that uses Tailwind with `className`, or when working with Uniwind setup, theming, and styling/debugging.
 - **building-native-ui** — Use when building screens, navigation stacks, styling, animations, or native tabs with Expo Router.
@@ -99,6 +100,7 @@ Invoke skills proactively — don't wait for the user to ask. Load whichever ski
 - **upgrading-expo** — Use when upgrading Expo SDK versions, migrating deprecated packages, or resolving dependency conflicts
 - **react-doctor** — Use after making React changes or before PR review to catch security, performance, and correctness issues early
 - **agent-browser** — Use when automating browser interactions — navigating pages, filling forms, taking screenshots, scraping data, or testing web apps
+- **expo-module** — Use when building or modifying Expo native modules and views using the Expo Modules API (Swift, Kotlin, TypeScript), including config plugins, lifecycle hooks, and autolinking
 
 ## Pinned Versions
 
