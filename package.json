@@ -18,8 +18,8 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^15.1.1",
-    "@gorhom/bottom-sheet": "^5.2.11",
-    "@react-navigation/bottom-tabs": "^7.15.10",
+    "@gorhom/bottom-sheet": "^5.2.13",
+    "@react-navigation/bottom-tabs": "^7.15.11",
     "@react-navigation/elements": "^2.9.15",
     "@react-navigation/native": "^7.2.2",
     "@repo/server": "workspace:*",
@@ -60,7 +60,7 @@
     "tailwind-variants": "^3.2.2",
     "tailwindcss": "^4.2.4",
     "uniwind": "^1.6.3",
-    "zod": "^4.3.6"
+    "zod": "^4.4.1"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^6.0.2",
