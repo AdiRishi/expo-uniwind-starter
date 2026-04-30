@@ -2,10 +2,10 @@ version = 1
 name = "expo-uniwind-starter"
 
 [setup]
-script = "pnpm install --frozen-lockfile"
+script = "pnpm install --frozen-lockfile && pnpm expo prebuild --clean"
 
 [[actions]]
-name = "Run"
+name = "Run IOS"
 icon = "run"
 command = "pnpm ios"
 
