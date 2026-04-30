@@ -74,7 +74,7 @@ export function HomeScreen() {
       </Card>
 
       <Typography variant="caption" tone="muted" align="center">
-        Edit src/app/index.tsx to get started
+        Edit src/screens/home-screen.tsx to customize this screen
       </Typography>
     </StandardScrollView>
   );
