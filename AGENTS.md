@@ -105,4 +105,4 @@ Invoke skills proactively — don't wait for the user to ask. Load whichever ski
 ## Pinned Versions
 
 - `react-native-screens` has been updated to `4.24.0` to ensure safe area fixes work
-- `react-native-keyboard-controller` has been pinned to patch versions around `~1.20.7` since `1.21.0` raises errors
+- `react-native-keyboard-controller` uses `~1.21.6` as it is the latest version and is compatible with SDK 55

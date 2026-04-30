@@ -41,6 +41,9 @@ export function StandardScrollView({
         showsHorizontalScrollIndicator={showsHorizontalScrollIndicator}
         style={style}
         bottomOffset={bottomOffset}
+        // Use spacer-based keyboard space so screen layouts reflow and settle back
+        // on keyboard dismissal instead of retaining an inset-driven scroll offset.
+        mode="layout"
         {...props}
       >
         {children}

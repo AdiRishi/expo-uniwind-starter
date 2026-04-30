@@ -44,6 +44,9 @@ export function FormScrollView({
         style={style}
         // KeyboardAwareScrollViewProps
         bottomOffset={bottomOffset}
+        // Use spacer-based keyboard space so form layouts reflow and settle back
+        // on keyboard dismissal instead of retaining an inset-driven scroll offset.
+        mode="layout"
         {...props}
       >
         {children}
