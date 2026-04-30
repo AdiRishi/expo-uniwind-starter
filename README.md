@@ -32,11 +32,6 @@
 - pnpm pinned by `packageManager` in `package.json`
 - Xcode (for iOS simulator) and/or Android Studio (for Android emulator)
 
-## Agent validation
-
-This starter includes a Codex harness for validating native changes end-to-end. Agents can launch the app, drive the iOS simulator through the Browser Use plugin, verify the result, run checks, and clean up.
-
-[Watch the Codex validation demo](assets/readme/expo-automation-demo-2.5x.mp4)
 
 ## Quick start
 
@@ -101,6 +96,12 @@ server/
   routes/                   → Nitro API routes
   trpc/                     → tRPC router and procedure definitions
 ```
+
+## Agent validation
+
+This starter includes a Codex harness for validating native changes end-to-end. Agents can launch the app, drive the iOS simulator through the Browser Use plugin, verify the result, run checks, and clean up.
+
+https://github.com/user-attachments/assets/0b875e4d-f8d2-4b47-bb69-2270725f9c9e
 
 ## Resources
 
