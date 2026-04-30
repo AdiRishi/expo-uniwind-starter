@@ -35,7 +35,35 @@ Use the Browser Use plugin against the Codex in-app browser.
 5. Check browser console warnings and errors for issues introduced by the validated flow.
 6. Run the `Check` action, or run `pnpm run check` from the shell.
 
-The simulator preview streams a native app, so Browser Use may not be able to target normal DOM controls inside the app. Prefer CUA clicks and keyboard actions for the simulator surface when DOM locators cannot target the native UI.
+The simulator preview streams a native app, not a DOM page. Treat the app surface like an interactive simulator that happens to be visible in the browser.
+
+### Text Entry In Native Fields
+
+For native app text fields, use the Browser Use cursor and keyboard APIs:
+
+1. Click the native input with `tab.cua.click({ x, y })`.
+2. Confirm the field is visibly focused in the simulator preview.
+3. Type using hardware-style key events, one key at a time, with a short delay between characters so the streamed simulator, native input, and React state updates can settle:
+
+```js
+const text = "Clear Tasks flow";
+
+for (const char of text) {
+  await tab.cua.keypress({ keys: [char] });
+  await tab.playwright.waitForTimeout(150);
+}
+```
+
+After typing, visually confirm the field shows the expected text before submitting the form. If characters are missing or out of order, clear the field and retry with a longer delay, such as `200` ms.
+
+Use the same `keypress` path for editing keys such as `Backspace`, `Enter`, and `Escape`:
+
+```js
+await tab.cua.keypress({ keys: ["Backspace"] });
+await tab.cua.keypress({ keys: ["Enter"] });
+```
+
+Do not use DOM form helpers for native fields. In particular, do not use browser DOM `fill`, Playwright form locators, or `tab.cua.type(...)` for simulator text entry.
 
 ## Cleanup
 
@@ -55,4 +83,5 @@ Both commands should print no listening process for servers you started. If eith
 - If the simulator preview does not load, confirm the app server is still running and Metro is listening on port `8081`.
 - If API-backed app behavior fails, confirm the API server is still running and listening on port `3000`.
 - If `/.sim` shows simulator endpoint errors, inspect `metro.config.cjs` before changing app code.
-- If Browser Use cannot type into the native app, focus the input with a CUA click and send keyboard input instead of relying on DOM form helpers.
+- If `tab.cua.keypress(...)` does not type after the field is focused, click the input again, confirm the caret is visible, and retry with a single printable key before trying a longer string.
+- If native text entry drops characters, slow the per-character delay and verify the visible field value before tapping a submit button. Dropped text usually means simulator input events were sent faster than the native field processed them.

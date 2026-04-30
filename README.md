@@ -23,13 +23,20 @@
 - **[Nitro](https://nitro.build/) + [tRPC](https://trpc.io/)** — type-safe API server in a monorepo workspace, deployable to Cloudflare Workers
 - **React 19 + React Compiler** — latest React with automatic optimizations
 - **Strict TypeScript, ESLint, Prettier** — opinionated DX with import and Tailwind class sorting
-- **[Claude Code](https://claude.ai/code) skills** — AI-assisted development with context-aware guidance for HeroUI Native, navigation, deployment, and more
+- **Agent skills** — context-aware guidance for HeroUI Native, React correctness, and reusable composition patterns
+- **Codex harness instructions** — local iOS simulator validation through the Browser Use plugin
 
 ## Prerequisites
 
 - Node.js version pinned in `.node-version`
 - pnpm pinned by `packageManager` in `package.json`
 - Xcode (for iOS simulator) and/or Android Studio (for Android emulator)
+
+## Agent validation
+
+This starter includes a Codex harness for validating native changes end-to-end. Agents can launch the app, drive the iOS simulator through the Browser Use plugin, verify the result, run checks, and clean up.
+
+[Watch the Codex validation demo](assets/readme/expo-automation-demo-2.5x.mp4)
 
 ## Quick start
 
