@@ -1,6 +1,6 @@
 # AGENTS.md
 
-This file is the repo entry point for AI agents. Keep detailed rules close to the code they govern.
+This file provides guidance to AI agents when working with code in this repository.
 
 Scoped guidance:
 
@@ -10,11 +10,7 @@ Scoped guidance:
 
 Repository knowledge:
 
-- `CONTEXT.md` — shared language for the starter app, app server, API server, simulator preview, and harness validation.
 - `docs/agents/local-validation.md` — procedure for starting local servers, validating changes through the simulator preview with Browser Use, running checks, and cleaning up.
-- `docs/agents/domain.md` — how to consume `CONTEXT.md` and ADRs.
-- `docs/agents/issue-tracker.md` — GitHub issue tracker expectations.
-- `docs/agents/triage-labels.md` — canonical triage labels.
 - `docs/adr/` — durable architecture and workflow decisions.
 
 ## Commands
@@ -55,7 +51,6 @@ Expo screen -> tRPC client -> server router -> procedure -> response
 
 Invoke relevant skills proactively:
 
-- `browser-use` — Codex in-app browser and serve-sim validation at `http://localhost:8081/.sim`.
 - `heroui-native` — HeroUI Native components and theming.
 - `react-doctor` — React correctness, security, and performance checks after React changes.
 
