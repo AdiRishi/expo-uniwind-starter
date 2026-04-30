@@ -11,7 +11,7 @@ Scoped guidance:
 Repository knowledge:
 
 - `CONTEXT.md` — shared language for the starter app, app server, API server, simulator preview, and harness validation.
-- `docs/agents/harness.md` — Codex app setup, server startup, serve-sim preview, and Browser Use validation.
+- `docs/agents/local-validation.md` — procedure for starting local servers, validating changes through the simulator preview with Browser Use, running checks, and cleaning up.
 - `docs/agents/domain.md` — how to consume `CONTEXT.md` and ADRs.
 - `docs/agents/issue-tracker.md` — GitHub issue tracker expectations.
 - `docs/agents/triage-labels.md` — canonical triage labels.

@@ -8,7 +8,7 @@ Read these first when a task touches architecture, harness setup, validation, or
 
 - `CONTEXT.md` for project language.
 - `docs/adr/` for accepted decisions.
-- `docs/agents/harness.md` before starting or validating the app through Codex.
+- `docs/agents/local-validation.md` before starting or validating the app through Codex.
 
 If a file is missing, proceed silently. Create new context or ADR entries only when a durable term or decision has actually been resolved.
 
