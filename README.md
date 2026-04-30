@@ -32,7 +32,6 @@
 - pnpm pinned by `packageManager` in `package.json`
 - Xcode (for iOS simulator) and/or Android Studio (for Android emulator)
 
-
 ## Quick start
 
 **1. Clone the template:**
