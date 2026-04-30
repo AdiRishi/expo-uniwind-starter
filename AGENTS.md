@@ -2,6 +2,17 @@
 
 This file provides guidance to AI agents when working with code in this repository.
 
+## Repository Knowledge Map
+
+Start here, then follow the smallest relevant doc:
+
+- `CONTEXT.md` — shared language for the starter app, app server, API server, simulator preview, and harness validation.
+- `docs/agents/harness.md` — full Codex app workflow for setup, server startup, simulator preview, and Browser Use validation.
+- `docs/agents/domain.md` — how to consume `CONTEXT.md` and ADRs.
+- `docs/agents/issue-tracker.md` — issue tracker expectations.
+- `docs/agents/triage-labels.md` — canonical issue triage labels.
+- `docs/adr/` — durable architecture and workflow decisions.
+
 ## Commands
 
 ```bash
@@ -21,6 +32,21 @@ pnpm run server:build     # Build server for deployment
 pnpm run rename           # Rename project (updates package.json, app.json, bundle IDs)
 pnpm expo prebuild        # Generate native projects (required before ios/android)
 ```
+
+## Codex Harness Workflow
+
+Before validating native app behavior from Codex, read `docs/agents/harness.md`.
+
+The standard harness loop is:
+
+1. Install dependencies with `pnpm install --frozen-lockfile`.
+2. Start the API server with `pnpm run server:dev`.
+3. Start the app server with `pnpm ios`.
+4. Open `http://localhost:8081/.sim` in the Codex in-app browser.
+5. Use Browser Use to validate Home, Explore, and Tasks flows.
+6. Run `pnpm run check`.
+
+The Codex app environment actions live in `.codex/environments/environment.toml`.
 
 ## Architecture
 
@@ -65,6 +91,8 @@ pnpm expo prebuild        # Generate native projects (required before ios/androi
 - **Section comments**: Use section comments (e.g. `{/* Branding */}`, `{/* Tech Stack */}`, `{/* Server Status */}`) to delineate logical blocks in large JSX files — keep them short and meaningful
 - **Docs research**: Prefer Context7 for up-to-date library documentation and examples before implementing or refactoring
 - **Docs sync**: Keep `README.md` and this file aligned with `package.json` scripts and current tooling when commands or architecture change
+- **Agent docs**: Keep long-running workflow details in `docs/agents/` and link them from this file instead of expanding `AGENTS.md` into a full manual
+- **ADRs**: Add short ADRs in `docs/adr/` only for decisions that are hard to reverse, surprising without context, and the result of a real trade-off
 
 ## Maintainability
 
@@ -99,7 +127,7 @@ Invoke skills proactively — don't wait for the user to ask. Load whichever ski
 - **expo-cicd-workflows** — Use when writing or debugging EAS Workflow YAML files for CI/CD automation
 - **upgrading-expo** — Use when upgrading Expo SDK versions, migrating deprecated packages, or resolving dependency conflicts
 - **react-doctor** — Use after making React changes or before PR review to catch security, performance, and correctness issues early
-- **agent-browser** — Use when automating browser interactions — navigating pages, filling forms, taking screenshots, scraping data, or testing web apps
+- **browser-use** — Use when automating the Codex in-app browser, including the serve-sim simulator preview at `http://localhost:8081/.sim`
 - **expo-module** — Use when building or modifying Expo native modules and views using the Expo Modules API (Swift, Kotlin, TypeScript), including config plugins, lifecycle hooks, and autolinking
 
 ## Pinned Versions
