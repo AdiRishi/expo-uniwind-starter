@@ -57,6 +57,19 @@ Use the Browser Use plugin against the Codex in-app browser.
 
 For the simulator stream, Browser Use is interacting with pixels from a native app, not normal DOM controls. Prefer CUA clicks and `keypress` for the simulator surface when DOM locators cannot target the app.
 
+## Cleanup
+
+If you started the API server or app server, stop them before your final response unless the user explicitly asked you to leave them running.
+
+After stopping the servers, verify the standard harness ports are clear:
+
+```bash
+lsof -iTCP:3000 -sTCP:LISTEN -n -P || true
+lsof -iTCP:8081 -sTCP:LISTEN -n -P || true
+```
+
+Both commands should print no listening process. If either port is still occupied by a process you started, stop it and check again.
+
 ## Healthy Signals
 
 - `pnpm run server:dev` serves Nitro on port 3000.
