@@ -150,6 +150,9 @@ importers:
       '@types/react':
         specifier: ~19.2.14
         version: 19.2.14
+      connect:
+        specifier: ^3.7.0
+        version: 3.7.0
       eslint:
         specifier: ^9.39.4
         version: 9.39.4(jiti@2.6.1)
@@ -165,6 +168,9 @@ importers:
       prettier-plugin-tailwindcss:
         specifier: ^0.8.0
         version: 0.8.0(@trivago/prettier-plugin-sort-imports@6.0.2(prettier@3.8.3))(prettier@3.8.3)
+      serve-sim:
+        specifier: ^0.1.4
+        version: 0.1.4
       tsx:
         specifier: ^4.21.0
         version: 4.21.0
@@ -4640,6 +4646,10 @@ packages:
   serialize-error@2.1.0:
     resolution: {integrity: sha512-ghgmKt5o4Tly5yEG/UJp8qTd0AN7Xalw4XBtDEKP655B699qMEtra1WlXeE6WIvdEG481JvRxULKsInq/iNysw==}
     engines: {node: '>=0.10.0'}
+
+  serve-sim@0.1.4:
+    resolution: {integrity: sha512-kWg9d+FZno0idqBxMq58vHaYx/0cTpW6L9XaJNXOpZl7UmMPuKj409wxy99EtAadbEASumvjEaAPKjxvHA+57w==}
+    hasBin: true
 
   serve-static@1.16.3:
     resolution: {integrity: sha512-x0RTqQel6g5SY7Lg6ZreMmsOzncHFU7nhnRWkKgWuMTu5NN0DR5oruckMqRvacAN9d5w6ARnRBXl9xhDCgfMeA==}
@@ -10260,6 +10270,8 @@ snapshots:
       - supports-color
 
   serialize-error@2.1.0: {}
+
+  serve-sim@0.1.4: {}
 
   serve-static@1.16.3:
     dependencies:
