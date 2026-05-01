@@ -23,6 +23,7 @@
 - **[Nitro](https://nitro.build/) + [tRPC](https://trpc.io/)** — type-safe API server in a monorepo workspace, deployable to Cloudflare Workers
 - **React 19 + React Compiler** — latest React with automatic optimizations
 - **Strict TypeScript, ESLint, Prettier** — opinionated DX with import and Tailwind class sorting
+- **Jest + React Native Testing Library** — frontend unit tests with app providers and tRPC test helpers
 - **Agent skills** — context-aware guidance for HeroUI Native, React correctness, and reusable composition patterns
 - **Codex harness instructions** — local iOS simulator validation through the Browser Use plugin
 
@@ -63,6 +64,17 @@ pnpm android          # Android emulator
 pnpm web              # Web browser
 ```
 
+## Testing
+
+Frontend unit tests run with Jest and React Native Testing Library:
+
+```bash
+pnpm run test
+pnpm run test:app:types
+```
+
+Tests live in the root `tests/` directory and mirror `src/` paths, with shared helpers in `tests/testing-utils/`.
+
 ## Tech stack
 
 | Layer      | Technology                             |
@@ -75,6 +87,7 @@ pnpm web              # Web browser
 | Server     | Nitro 3 (Cloudflare Workers)           |
 | Forms      | Tanstack Form + Zod                    |
 | API        | tRPC v11 + TanStack Query              |
+| Testing    | Jest + React Native Testing Library    |
 | Language   | TypeScript 5.9 (strict)                |
 
 ## Project structure

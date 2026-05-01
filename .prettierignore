@@ -19,6 +19,7 @@ yarn-error.*
 *.pem
 .env*.local
 *.tsbuildinfo
+coverage/
 app-example
 .wrangler/
 /ios

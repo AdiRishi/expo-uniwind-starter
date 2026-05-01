@@ -11,6 +11,7 @@ Scoped guidance:
 Repository knowledge:
 
 - `docs/agents/local-validation.md` — procedure for starting local servers, validating changes through the simulator preview with Browser Use, running checks, and cleaning up.
+- `docs/agents/testing.md` — frontend Jest and React Native Testing Library conventions.
 - `docs/adr/` — durable architecture and workflow decisions.
 
 ## Commands
@@ -22,7 +23,9 @@ pnpm install              # Install workspace dependencies
 
 pnpm run check            # Lint + Prettier check + TypeScript
 pnpm run lint             # Expo ESLint only
-pnpm run typecheck        # TypeScript only
+pnpm run test             # Jest app tests
+pnpm run test:app:types   # Type-check frontend tests
+pnpm run typecheck        # App + test TypeScript
 pnpm run format           # Prettier write
 
 pnpm run server:dev       # Start Nitro API server on localhost:3000
