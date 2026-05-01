@@ -9,15 +9,16 @@
     "ios": "expo run:ios",
     "web": "expo start --web",
     "lint": "expo lint",
-    "test": "pnpm run test:app",
+    "test": "pnpm run test:app && pnpm run server:test",
     "test:app": "jest",
     "test:app:types": "tsc --noEmit -p tests/tsconfig.json",
-    "typecheck": "tsc --noEmit && pnpm run test:app:types",
+    "typecheck": "tsc --noEmit && pnpm run test:app:types && pnpm --filter @repo/server typecheck",
     "format": "prettier . --write",
     "check": "expo lint && prettier . --check && pnpm run typecheck",
     "rename": "tsx scripts/rename-project.ts",
     "server:dev": "pnpm --filter @repo/server dev",
-    "server:build": "pnpm --filter @repo/server build"
+    "server:build": "pnpm --filter @repo/server build",
+    "server:test": "pnpm --filter @repo/server test"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.1.1",

@@ -7,7 +7,10 @@
   },
   "scripts": {
     "dev": "nitro dev",
-    "build": "nitro build"
+    "build": "nitro build",
+    "typecheck": "tsc --noEmit && pnpm run test:typecheck",
+    "test": "vitest run --coverage",
+    "test:typecheck": "tsc -p tests/tsconfig.json --noEmit"
   },
   "dependencies": {
     "@trpc/server": "^11.17.0",
@@ -15,7 +18,11 @@
     "zod": "^4.4.1"
   },
   "devDependencies": {
+    "@types/node": "^25.6.0",
+    "@vitest/coverage-v8": "^4.1.5",
     "nitro": "^3.0.260429-beta",
-    "rolldown": "^1.0.0-rc.18"
+    "rolldown": "^1.0.0-rc.18",
+    "typescript": "~5.9.3",
+    "vitest": "^4.1.5"
   }
 }

@@ -20,6 +20,7 @@ yarn-error.*
 .env*.local
 *.tsbuildinfo
 coverage/
+server/coverage/
 app-example
 .wrangler/
 /ios

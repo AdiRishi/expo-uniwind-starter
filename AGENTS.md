@@ -23,9 +23,10 @@ pnpm install              # Install workspace dependencies
 
 pnpm run check            # Lint + Prettier check + TypeScript
 pnpm run lint             # Expo ESLint only
-pnpm run test             # Jest app tests
+pnpm run test             # Jest app tests + Vitest server tests
+pnpm run server:test      # Vitest server tests
 pnpm run test:app:types   # Type-check frontend tests
-pnpm run typecheck        # App + test TypeScript
+pnpm run typecheck        # App, frontend test, server, and server test TypeScript
 pnpm run format           # Prettier write
 
 pnpm run server:dev       # Start Nitro API server on localhost:3000
