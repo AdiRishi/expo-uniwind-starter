@@ -37,6 +37,65 @@ Use the Browser Use plugin against the Codex in-app browser.
 
 The simulator preview streams a native app, not a DOM page. Treat the app surface like an interactive simulator that happens to be visible in the browser.
 
+### Native Scroll Gestures
+
+For native scroll views, prefer `tab.cua.drag(...)` over DOM scrolling. The simulator stream receives pointer drags like touch gestures; browser wheel/DOM scroll is not the control surface you want.
+
+Use browser viewport coordinates from the `/.sim` page. With the default Codex in-app browser preview for the iPhone simulator, the right side of the app content is a reliable scroll rail:
+
+```js
+const x = 365;
+```
+
+That x-coordinate avoids most form fields, cards, and buttons while staying inside the simulator screen. Start vertical drags above the iOS home indicator; in the default preview, avoid starting lower than about `y = 680`.
+
+To scroll down to later content, drag upward by decreasing `y`. Use multiple nearby points for controlled movement:
+
+```js
+await tab.cua.drag({
+  path: [
+    { x: 365, y: 610 },
+    { x: 365, y: 604 },
+    { x: 365, y: 598 },
+    { x: 365, y: 592 },
+    { x: 365, y: 586 },
+    { x: 365, y: 580 },
+    { x: 365, y: 574 },
+  ],
+});
+```
+
+Calibrated profiles:
+
+- High-control nudge: `32-44` px upward over `8-11` points, starting around `y = 610`. Drags around `24` px can be ignored by native scroll thresholds.
+- Reading step: `90-120` px upward over `8-10` points, starting around `y = 620-650`.
+- Fast page jump: `200-220` px upward over `5-6` points, starting around `y = 650-660`.
+- Reach-end swipe: `280-300` px upward over `4-5` points, starting around `y = 660-670`. Repeat, then verify visually so you do not overshoot important content.
+
+To scroll back up to earlier content, reverse the direction by dragging downward:
+
+```js
+await tab.cua.drag({
+  path: [
+    { x: 365, y: 390 },
+    { x: 365, y: 420 },
+    { x: 365, y: 450 },
+    { x: 365, y: 480 },
+    { x: 365, y: 510 },
+    { x: 365, y: 540 },
+    { x: 365, y: 570 },
+  ],
+});
+```
+
+For reverse scrolling near the end of a long form, use about `140-180` px over `7-9` points. Very small reverse drags, such as `80` px, may be swallowed near the footer or by native gesture thresholds.
+
+Always take a fresh screenshot after a scroll profile before choosing the next target:
+
+```js
+await display(await tab.cua.get_visible_screenshot());
+```
+
 ### Text Entry In Native Fields
 
 For native app text fields, use the Browser Use cursor and keyboard APIs:
