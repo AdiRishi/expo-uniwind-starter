@@ -11,7 +11,6 @@ Scoped guidance:
 Repository knowledge:
 
 - `docs/agents/local-validation.md` — procedure for starting local servers, validating changes through the simulator preview with Browser Use, running checks, and cleaning up.
-- `docs/agents/testing.md` — frontend Jest and React Native Testing Library conventions.
 - `docs/adr/` — durable architecture and workflow decisions.
 
 ## Commands
