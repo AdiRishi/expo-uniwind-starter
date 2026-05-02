@@ -50,7 +50,7 @@ renderWithTestProviders(<TasksScreen />, {
 });
 ```
 
-Keep mock responses scenario-explicit. Builders are useful once a domain shape becomes large, but the starter should not grow fixtures before it needs them.
+Keep mock responses local to the behavior under test. Builders are useful once a domain shape becomes large, but the starter should not grow fixtures before it needs them.
 
 ## Server Tests
 
