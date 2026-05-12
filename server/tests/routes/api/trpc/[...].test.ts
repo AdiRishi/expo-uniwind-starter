@@ -1,20 +1,47 @@
-import { describe, expect, it } from "vitest";
-import handler from "~/routes/api/trpc/[...]";
+import { beforeEach, describe, expect, it, vi } from "vitest";
+import trpcHandler from "~/routes/api/trpc/[...]";
+
+const routeMocks = vi.hoisted(() => ({
+  createContext: vi.fn(),
+  fetchRequestHandler: vi.fn(),
+}));
+
+vi.mock("@trpc/server/adapters/fetch", () => ({
+  fetchRequestHandler: routeMocks.fetchRequestHandler,
+}));
+
+vi.mock("~/trpc/context", () => ({
+  createContext: routeMocks.createContext,
+}));
 
 describe("routes/api/trpc/[...]", () => {
-  it("bridges Nitro requests into the app tRPC router", async () => {
-    const response = await handler({
-      req: new Request("http://localhost/api/trpc/hello.greet"),
-      runtime: {
-        name: "route-test-runtime",
-      },
-    } as never);
-    const body = await response.json();
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
 
-    expect(response.status).toBe(200);
-    expect(body.result.data.json).toMatchObject({
-      message: "Hello from tRPC!",
-      runtime: "route-test-runtime",
+  it("forwards the Nitro request into fetchRequestHandler and creates context lazily", async () => {
+    const response = new Response("ok");
+    const event = {
+      req: new Request("http://localhost/api/trpc/hello.greet"),
+    };
+
+    routeMocks.fetchRequestHandler.mockResolvedValue(response);
+    routeMocks.createContext.mockReturnValue({ event });
+
+    await expect(trpcHandler(event as Parameters<typeof trpcHandler>[0])).resolves.toBe(response);
+
+    expect(routeMocks.fetchRequestHandler).toHaveBeenCalledWith({
+      endpoint: "/api/trpc",
+      req: event.req,
+      router: expect.any(Object),
+      createContext: expect.any(Function),
     });
+
+    const options = routeMocks.fetchRequestHandler.mock.calls[0]?.[0] as {
+      createContext: () => unknown;
+    };
+
+    expect(options.createContext()).toEqual({ event });
+    expect(routeMocks.createContext).toHaveBeenCalledWith(event);
   });
 });

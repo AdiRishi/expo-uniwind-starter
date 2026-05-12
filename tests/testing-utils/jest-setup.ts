@@ -1,5 +1,10 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 
+// This file is intentionally limited to platform-level test doubles: native modules,
+// animation runtimes, and design-system primitives that cannot run inside Jest.
+// Feature-specific behavior, such as Expo Router navigation or native tabs, belongs
+// in the test or harness that needs it so each test keeps its assumptions visible.
+
 jest.mock("@tanstack/devtools-event-client", () => {
   class EventClient {
     createEventPayload(eventSuffix: string, payload: unknown) {
@@ -61,62 +66,6 @@ jest.mock("expo-network", () => ({
     remove: jest.fn(),
   }),
 }));
-
-jest.mock("expo-router", () => {
-  const React = require("react");
-  const { Pressable, Text, View } = require("react-native");
-
-  const router = {
-    back: jest.fn(),
-    push: jest.fn(),
-    replace: jest.fn(),
-  };
-
-  function Link({ children, onPress, ...props }: { children?: React.ReactNode; onPress?: (event: unknown) => void }) {
-    return React.createElement(
-      Pressable,
-      {
-        ...props,
-        onPress: () => onPress?.({ preventDefault: jest.fn() }),
-      },
-      children,
-    );
-  }
-
-  function Stack({ children }: { children?: React.ReactNode }) {
-    return React.createElement(View, null, children);
-  }
-
-  Stack.Screen = ({ name }: { name: string }) => React.createElement(Text, null, `Stack screen: ${name}`);
-
-  return {
-    Link,
-    Stack,
-    useFocusEffect: (callback: () => void | (() => void)) => callback(),
-    useRouter: () => router,
-  };
-});
-
-jest.mock("expo-router/unstable-native-tabs", () => {
-  const React = require("react");
-  const { Text, View } = require("react-native");
-
-  function NativeTabs({ children }: { children?: React.ReactNode }) {
-    return React.createElement(View, null, children);
-  }
-
-  function NativeTabsTrigger({ children, name }: { children?: React.ReactNode; name: string }) {
-    return React.createElement(View, { testID: `tab.${name}` }, children);
-  }
-
-  NativeTabsTrigger.Label = ({ children }: { children?: React.ReactNode }) => React.createElement(Text, null, children);
-  NativeTabsTrigger.Icon = () => null;
-  NativeTabs.Trigger = NativeTabsTrigger;
-
-  return {
-    NativeTabs,
-  };
-});
 
 jest.mock("expo-symbols", () => {
   const React = require("react");

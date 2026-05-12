@@ -75,7 +75,7 @@ pnpm run server:test    # server tests only
 pnpm run test:app:types
 ```
 
-App tests live in the root `tests/` directory and mirror `src/` paths, with shared helpers in `tests/testing-utils/`. Server tests live under `server/tests/` and mirror backend paths.
+App tests live in the root `tests/` directory and mirror `src/` paths, with shared helpers in `tests/testing-utils/`. Use small scenario-explicit builders for repeated data shapes, and keep feature-specific mocks in the test or harness that needs them. Server tests live under `server/tests/` and mirror backend paths.
 
 ## Tech stack
 

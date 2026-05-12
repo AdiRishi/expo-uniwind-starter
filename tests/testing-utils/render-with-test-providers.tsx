@@ -9,9 +9,9 @@ import {
 import { createTRPCClient, httpLink } from "@trpc/client";
 import type { ReactElement, ReactNode } from "react";
 import { type Metrics, SafeAreaProvider } from "react-native-safe-area-context";
-import superjson from "superjson";
 
 import type { AppRouter } from "@repo/server";
+import { superjsonTransformer } from "@repo/server/utils";
 
 import { TRPCProvider } from "@/lib/trpc";
 
@@ -59,6 +59,9 @@ export function createTestQueryClient() {
   });
 }
 
+// Screens should exercise the real TanStack Query + tRPC client path. Instead of
+// mocking hooks, this helper swaps only the HTTP transport with an explicit in-test
+// procedure map so cache invalidation, serialization, and loading behavior stay real.
 function getMockRequestType(method: string | undefined): MockTrpcCall["type"] {
   if (method === "POST") {
     return "mutation";
@@ -78,7 +81,7 @@ function readMockRequestInput(url: URL, init?: RequestInit) {
     return undefined;
   }
 
-  return superjson.deserialize(JSON.parse(rawInput));
+  return superjsonTransformer.deserialize(JSON.parse(rawInput));
 }
 
 function createMockTrpcResponse(data: unknown) {
@@ -86,7 +89,7 @@ function createMockTrpcResponse(data: unknown) {
     ok: true,
     json: async () => ({
       result: {
-        data: superjson.serialize(data),
+        data: superjsonTransformer.serialize(data),
       },
     }),
   };
@@ -129,7 +132,7 @@ export function createMockTrpcClient(options: MockTrpcOptions = {}) {
       links: [
         httpLink({
           url: "http://mock-trpc",
-          transformer: superjson,
+          transformer: superjsonTransformer,
           fetch,
         }),
       ],

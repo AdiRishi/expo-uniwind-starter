@@ -11,7 +11,7 @@ Scoped guidance:
 Repository knowledge:
 
 - `docs/agents/local-validation.md` — procedure for starting local servers, validating changes through the simulator preview with Browser Use, running checks, and cleaning up.
-- `docs/adr/` — durable architecture and workflow decisions.
+- `docs/adr/` — durable architecture and workflow decisions, including test layout and test-data builders.
 
 ## Commands
 

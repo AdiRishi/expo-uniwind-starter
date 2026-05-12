@@ -3,7 +3,8 @@
   "private": true,
   "type": "module",
   "exports": {
-    ".": "./trpc/router.ts"
+    ".": "./trpc/router.ts",
+    "./utils": "./utils/index.ts"
   },
   "scripts": {
     "dev": "nitro dev",

@@ -1,4 +1,5 @@
 import { fireEvent, render } from "@testing-library/react-native";
+import { createTaskMock } from "@tests/testing-utils/builders";
 
 import { TaskList } from "@/components/screens/tasks/task-list";
 
@@ -16,8 +17,8 @@ describe("<TaskList />", () => {
     const { getByLabelText, getByText } = render(
       <TaskList
         tasks={[
-          { id: "task-1", title: "Set up tests", completed: false },
-          { id: "task-2", title: "Ship starter", completed: true },
+          createTaskMock({ id: "task-1", title: "Set up tests", completed: false }),
+          createTaskMock({ id: "task-2", title: "Ship starter", completed: true }),
         ]}
         onToggle={onToggle}
         onDelete={onDelete}
