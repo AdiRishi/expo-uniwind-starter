@@ -42,7 +42,7 @@ pnpm expo prebuild        # Generate native projects
 This is a pnpm monorepo with two TypeScript projects:
 
 - **App (`src/`)** — Expo SDK 55 / React Native 0.83 / React 19 app using Expo Router, Uniwind, HeroUI Native, TanStack Form, TanStack Query, and a tRPC client.
-- **Server (`server/`)** — Nitro 3 API server with tRPC v11, default deployment target Cloudflare Workers.
+- **Server (`server/`)** — Nitro 3 API server with tRPC v11, deployable to Cloudflare Workers.
 
 The main request path is:
 
