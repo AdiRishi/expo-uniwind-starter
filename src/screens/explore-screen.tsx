@@ -51,7 +51,7 @@ export function ExploreScreen() {
       <View className="items-center">
         <ExternalLink href="https://docs.expo.dev" asChild>
           <Button variant="tertiary" size="sm">
-            Expo Documentation
+            <Button.Label>Expo Documentation</Button.Label>
           </Button>
         </ExternalLink>
       </View>

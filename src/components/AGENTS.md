@@ -19,7 +19,7 @@ HeroUI Native: `Card` extends `Surface`, which applies base padding. To remove d
 
 ## Safe Areas
 
-`StandardView`, `StandardScrollView`, and `FormScrollView` own screen safe-area handling through `useScreenContainerInsets`.
+`StandardView`, `StandardScrollView`, `FormScrollView`, and `AnimatedHeaderScrollView` own screen safe-area handling through `useScreenContainerInsets`. Keep scroll-view keyboard/safe-area mechanics centralized in `ScreenScrollViewBase`.
 
 Do not wrap these containers in `SafeAreaView` or apply Uniwind safe-area utilities (`py-safe`, `pt-safe-*`, `pb-safe-*`). Use `edgeToEdge` only for intentional full-bleed screens, and put content spacing in `contentContainerClassName`.
 

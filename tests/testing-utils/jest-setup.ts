@@ -158,7 +158,9 @@ jest.mock("heroui-native", () => {
     Indicator: createViewComponent("MockAlertIndicator"),
     Title: createTextComponent("MockAlertTitle"),
   });
-  const Button = createPressableComponent("MockButton");
+  const Button = Object.assign(createPressableComponent("MockButton"), {
+    Label: createTextComponent("MockButtonLabel"),
+  });
   const Card = Object.assign(createViewComponent("MockCard"), {
     Body: createViewComponent("MockCardBody"),
   });

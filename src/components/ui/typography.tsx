@@ -1,4 +1,4 @@
-import { Text, type TextProps } from "react-native";
+import { Text, type TextProps, type TextStyle } from "react-native";
 import { type VariantProps, tv } from "tailwind-variants";
 
 const typographyVariants = tv({
@@ -57,8 +57,28 @@ const typographyVariants = tv({
   },
 });
 
-export type TypographyProps = TextProps & VariantProps<typeof typographyVariants>;
+const TABULAR_NUMS_STYLE: TextStyle = { fontVariant: ["tabular-nums"] };
 
-export function Typography({ className, variant, tone, align, truncate, ...props }: TypographyProps) {
-  return <Text className={typographyVariants({ variant, tone, align, truncate, class: className })} {...props} />;
+export type TypographyProps = TextProps &
+  VariantProps<typeof typographyVariants> & {
+    tabularNums?: boolean;
+  };
+
+export function Typography({
+  className,
+  variant,
+  tone,
+  align,
+  truncate,
+  tabularNums = false,
+  style,
+  ...props
+}: TypographyProps) {
+  return (
+    <Text
+      className={typographyVariants({ variant, tone, align, truncate, class: className })}
+      style={tabularNums ? [TABULAR_NUMS_STYLE, style] : style}
+      {...props}
+    />
+  );
 }
