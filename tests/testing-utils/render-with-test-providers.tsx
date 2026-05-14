@@ -17,7 +17,8 @@ import { TRPCProvider } from "@/lib/trpc";
 
 export type MaybePromise<TValue> = TValue | Promise<TValue>;
 export type MockTrpcResolver = (input: unknown) => MaybePromise<unknown>;
-export type MockTrpcHandler = MockTrpcResolver | unknown;
+export type MockTrpcStaticResponse = object | string | number | boolean | null | undefined;
+export type MockTrpcHandler = MockTrpcResolver | MockTrpcStaticResponse;
 export type MockTrpcHandlerMap = Record<string, MockTrpcHandler>;
 
 export type MockTrpcOptions = {
@@ -121,7 +122,7 @@ export function createMockTrpcClient(options: MockTrpcOptions = {}) {
       );
     }
 
-    const data = typeof handler === "function" ? await (handler as MockTrpcResolver)(input) : handler;
+    const data = typeof handler === "function" ? await handler(input) : handler;
 
     return createMockTrpcResponse(data) as Response;
   };

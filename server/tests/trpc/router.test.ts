@@ -4,7 +4,7 @@ import { appRouter } from "~/trpc/router";
 import { createTestContext } from "../helpers/trpc";
 
 describe("trpc/router", () => {
-  it("exposes the starter routers through the app router", async () => {
+  it("exposes feature routers through the app router", async () => {
     const caller = appRouter.createCaller(createTestContext());
 
     await expect(caller.hello.greet()).resolves.toMatchObject({

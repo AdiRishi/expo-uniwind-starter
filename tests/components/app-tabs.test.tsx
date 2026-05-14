@@ -29,7 +29,7 @@ jest.mock("expo-router/unstable-native-tabs", () => {
 });
 
 describe("<AppTabs />", () => {
-  test("renders the starter tab workspaces", () => {
+  test("renders the app tab workspaces", () => {
     const { getByText } = render(<AppTabs />);
 
     getByText("Home");
