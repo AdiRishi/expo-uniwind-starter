@@ -9,12 +9,16 @@
     "ios": "expo run:ios",
     "web": "expo start --web",
     "lint": "expo lint",
-    "typecheck": "tsc --noEmit",
+    "test": "pnpm run test:app && pnpm run server:test",
+    "test:app": "jest",
+    "test:app:types": "tsc --noEmit -p tests/tsconfig.json",
+    "typecheck": "tsc --noEmit && pnpm run test:app:types && pnpm --filter @repo/server typecheck",
     "format": "prettier . --write",
-    "check": "expo lint && prettier . --check && tsc --noEmit",
+    "check": "expo lint && prettier . --check && pnpm run typecheck",
     "rename": "tsx scripts/rename-project.ts",
     "server:dev": "pnpm --filter @repo/server dev",
-    "server:build": "pnpm --filter @repo/server build"
+    "server:build": "pnpm --filter @repo/server build",
+    "server:test": "pnpm --filter @repo/server test"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.1.1",
@@ -63,13 +67,17 @@
     "zod": "^4.4.1"
   },
   "devDependencies": {
+    "@testing-library/react-native": "^13.3.3",
     "@trivago/prettier-plugin-sort-imports": "^6.0.2",
+    "@types/jest": "29.5.14",
     "@types/node": "^25.6.0",
     "@types/react": "~19.2.14",
     "connect": "^3.7.0",
     "eslint": "^9.39.4",
     "eslint-config-expo": "~55.0.0",
     "eslint-config-prettier": "^10.1.8",
+    "jest": "~29.7.0",
+    "jest-expo": "~55.0.16",
     "prettier": "^3.8.3",
     "prettier-plugin-tailwindcss": "^0.8.0",
     "serve-sim": "^0.1.4",
@@ -85,6 +93,45 @@
         "react-native-keyboard-controller",
         "react-native-screens"
       ]
+    }
+  },
+  "jest": {
+    "preset": "jest-expo",
+    "roots": [
+      "<rootDir>/tests"
+    ],
+    "setupFiles": [
+      "<rootDir>/tests/testing-utils/jest-setup.ts"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/tests/testing-utils/jest-after-env.ts"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx,js,jsx}",
+      "!src/**/*.d.ts",
+      "!src/**/*.test.{ts,tsx,js,jsx}",
+      "!src/**/*.spec.{ts,tsx,js,jsx}",
+      "!src/**/index.{ts,tsx,js,jsx}"
+    ],
+    "coverageDirectory": "coverage/app",
+    "coverageReporters": [
+      "text-summary",
+      "lcov"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "<rootDir>/server/"
+    ],
+    "testMatch": [
+      "<rootDir>/tests/**/*.test.[jt]s?(x)"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(?:.pnpm/)?((jest-)?react-native|@react-native(-community)?|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|native-base|react-native-svg|react-native-worklets|react-native-reanimated|react-native-keyboard-controller|react-native-gesture-handler|react-native-safe-area-context|heroui-native|uniwind|tailwind-variants|superjson|copy-anything|is-what))"
+    ],
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1",
+      "^@tests/(.*)$": "<rootDir>/tests/$1"
     }
   },
   "packageManager": "pnpm@10.33.2"

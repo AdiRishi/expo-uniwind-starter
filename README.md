@@ -23,6 +23,7 @@
 - **[Nitro](https://nitro.build/) + [tRPC](https://trpc.io/)** — type-safe API server in a monorepo workspace, deployable to Cloudflare Workers
 - **React 19 + React Compiler** — latest React with automatic optimizations
 - **Strict TypeScript, ESLint, Prettier** — opinionated DX with import and Tailwind class sorting
+- **Jest + React Native Testing Library + Vitest** — frontend and server unit tests with app providers and tRPC test helpers
 - **Agent skills** — context-aware guidance for HeroUI Native, React correctness, and reusable composition patterns
 - **Codex harness instructions** — local iOS simulator validation through the Browser Use plugin
 
@@ -63,19 +64,33 @@ pnpm android          # Android emulator
 pnpm web              # Web browser
 ```
 
+## Testing
+
+Frontend unit tests run with Jest and React Native Testing Library. Server unit tests run with Vitest.
+
+```bash
+pnpm run test           # app + server tests
+pnpm run test:app       # app tests only
+pnpm run server:test    # server tests only
+pnpm run test:app:types
+```
+
+App tests live in the root `tests/` directory and mirror `src/` paths, with shared helpers in `tests/testing-utils/`. Use small scenario-explicit builders for repeated data shapes, and keep feature-specific mocks in the test or harness that needs them. Server tests live under `server/tests/` and mirror backend paths.
+
 ## Tech stack
 
-| Layer      | Technology                             |
-| ---------- | -------------------------------------- |
-| Framework  | Expo 55 + React Native 0.83            |
-| Routing    | Expo Router (file-based, typed routes) |
-| Styling    | Tailwind CSS v4 via Uniwind            |
-| Components | HeroUI Native                          |
-| Animations | React Native Reanimated 4              |
-| Server     | Nitro 3 (Cloudflare Workers)           |
-| Forms      | Tanstack Form + Zod                    |
-| API        | tRPC v11 + TanStack Query              |
-| Language   | TypeScript 5.9 (strict)                |
+| Layer      | Technology                                   |
+| ---------- | -------------------------------------------- |
+| Framework  | Expo 55 + React Native 0.83                  |
+| Routing    | Expo Router (file-based, typed routes)       |
+| Styling    | Tailwind CSS v4 via Uniwind                  |
+| Components | HeroUI Native                                |
+| Animations | React Native Reanimated 4                    |
+| Server     | Nitro 3 (Cloudflare Workers)                 |
+| Forms      | Tanstack Form + Zod                          |
+| API        | tRPC v11 + TanStack Query                    |
+| Testing    | Jest + React Native Testing Library + Vitest |
+| Language   | TypeScript 5.9 (strict)                      |
 
 ## Project structure
 

@@ -11,7 +11,7 @@ Scoped guidance:
 Repository knowledge:
 
 - `docs/agents/local-validation.md` — procedure for starting local servers, validating changes through the simulator preview with Browser Use, running checks, and cleaning up.
-- `docs/adr/` — durable architecture and workflow decisions.
+- `docs/adr/` — durable architecture and workflow decisions, including test layout and test-data builders.
 
 ## Commands
 
@@ -22,7 +22,10 @@ pnpm install              # Install workspace dependencies
 
 pnpm run check            # Lint + Prettier check + TypeScript
 pnpm run lint             # Expo ESLint only
-pnpm run typecheck        # TypeScript only
+pnpm run test             # Jest app tests + Vitest server tests
+pnpm run server:test      # Vitest server tests
+pnpm run test:app:types   # Type-check frontend tests
+pnpm run typecheck        # App, frontend test, server, and server test TypeScript
 pnpm run format           # Prettier write
 
 pnpm run server:dev       # Start Nitro API server on localhost:3000
@@ -39,7 +42,7 @@ pnpm expo prebuild        # Generate native projects
 This is a pnpm monorepo with two TypeScript projects:
 
 - **App (`src/`)** — Expo SDK 55 / React Native 0.83 / React 19 app using Expo Router, Uniwind, HeroUI Native, TanStack Form, TanStack Query, and a tRPC client.
-- **Server (`server/`)** — Nitro 3 API server with tRPC v11, default deployment target Cloudflare Workers.
+- **Server (`server/`)** — Nitro 3 API server with tRPC v11, deployable to Cloudflare Workers.
 
 The main request path is:
 

@@ -32,11 +32,15 @@ export function TaskItem({
 
   return (
     <View className="flex-row items-center gap-3 px-4 py-3.5">
-      <Checkbox isSelected={completed} onSelectedChange={() => onToggle(id)} />
+      <Checkbox
+        accessibilityLabel={completed ? `Mark ${title} incomplete` : `Mark ${title} complete`}
+        isSelected={completed}
+        onSelectedChange={() => onToggle(id)}
+      />
       <Typography variant="small" className={taskTitleVariants({ completed })}>
         {title}
       </Typography>
-      <Button isIconOnly variant="ghost" size="sm" onPress={() => onDelete(id)}>
+      <Button accessibilityLabel={`Delete ${title}`} isIconOnly variant="ghost" size="sm" onPress={() => onDelete(id)}>
         <SymbolView
           name={{ ios: "trash", android: "delete_outline", web: "delete_outline" }}
           size={16}

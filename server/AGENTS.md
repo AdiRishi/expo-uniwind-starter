@@ -24,4 +24,6 @@ Run server commands from the repo root unless a package command explicitly requi
 ```bash
 pnpm run server:dev
 pnpm run server:build
+pnpm run server:test
+pnpm --filter @repo/server test:typecheck
 ```

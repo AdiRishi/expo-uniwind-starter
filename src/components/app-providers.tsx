@@ -7,9 +7,9 @@ import { AppState, Platform } from "react-native";
 import type { AppStateStatus } from "react-native";
 import { KeyboardProvider } from "react-native-keyboard-controller";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import superjson from "superjson";
 
 import type { AppRouter } from "@repo/server";
+import { superjsonTransformer } from "@repo/server/utils";
 
 import { ENV } from "@/lib/env";
 import { TRPCProvider } from "@/lib/trpc";
@@ -26,7 +26,7 @@ onlineManager.setEventListener((setOnline) => {
   const eventSubscription = Network.addNetworkStateListener((state) => {
     setOnline(!!state.isConnected);
   });
-  return eventSubscription.remove;
+  return () => eventSubscription.remove();
 });
 
 function onAppStateChange(status: AppStateStatus) {
@@ -35,12 +35,17 @@ function onAppStateChange(status: AppStateStatus) {
   }
 }
 
+function subscribeToAppStateFocus() {
+  const subscription = AppState.addEventListener("change", onAppStateChange);
+
+  return () => subscription.remove();
+}
+
 // --- Providers Setup -----------------------------------------------
 
 export function AppProviders({ children }: { children: React.ReactNode }) {
   useEffect(() => {
-    const subscription = AppState.addEventListener("change", onAppStateChange);
-    return () => subscription.remove();
+    return subscribeToAppStateFocus();
   }, []);
 
   const [trpcClient] = useState(() =>
@@ -48,7 +53,7 @@ export function AppProviders({ children }: { children: React.ReactNode }) {
       links: [
         httpBatchLink({
           url: `${ENV.API_URL}/api/trpc`,
-          transformer: superjson,
+          transformer: superjsonTransformer,
         }),
       ],
     }),
