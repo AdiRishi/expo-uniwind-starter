@@ -12,6 +12,7 @@
     "test": "pnpm run test:app && pnpm run server:test",
     "test:app": "jest",
     "test:app:types": "tsc --noEmit -p tests/tsconfig.json",
+    "pretypecheck": "expo customize tsconfig.json",
     "typecheck": "tsc --noEmit && pnpm run test:app:types && pnpm --filter @repo/server typecheck",
     "format": "prettier . --write",
     "check": "expo lint && prettier . --check && pnpm run typecheck",
