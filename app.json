@@ -18,7 +18,9 @@
         "backgroundImage": "./assets/images/android-icon-background.png",
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
+      "softwareKeyboardLayoutMode": "resize",
       "predictiveBackGestureEnabled": false,
+      "blockedPermissions": ["com.google.android.gms.permission.AD_ID"],
       "package": "com.arishi.expouniwindstarter"
     },
     "web": {
