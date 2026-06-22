@@ -2,10 +2,10 @@
 
 **Ship cross-platform apps with Tailwind CSS v4 styling, ready-made components, and zero config pain.**
 
-[![Expo SDK](https://img.shields.io/badge/Expo_SDK-55-blue?logo=expo)](https://expo.dev)
+[![Expo SDK](https://img.shields.io/badge/Expo_SDK-56-blue?logo=expo)](https://expo.dev)
 [![Platforms](https://img.shields.io/badge/Platforms-iOS_%7C_Android_%7C_Web-lightgrey?logo=react)](https://reactnative.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Strict-blue?logo=typescript)](https://www.typescriptlang.org/)
-[![Uses pnpm](https://img.shields.io/badge/pnpm-10.x-orange?logo=pnpm)](https://pnpm.io/)
+[![Uses pnpm](https://img.shields.io/badge/pnpm-11.x-orange?logo=pnpm)](https://pnpm.io/)
 
 <p align="left">
   <img src="assets/readme/ios-home.png" alt="iOS" height="500" />
@@ -81,7 +81,7 @@ App tests live in the root `tests/` directory and mirror `src/` paths, with shar
 
 | Layer      | Technology                                   |
 | ---------- | -------------------------------------------- |
-| Framework  | Expo 55 + React Native 0.83                  |
+| Framework  | Expo 56 + React Native 0.85                  |
 | Routing    | Expo Router (file-based, typed routes)       |
 | Styling    | Tailwind CSS v4 via Uniwind                  |
 | Components | HeroUI Native                                |
@@ -90,7 +90,7 @@ App tests live in the root `tests/` directory and mirror `src/` paths, with shar
 | Forms      | Tanstack Form + Zod                          |
 | API        | tRPC v11 + TanStack Query                    |
 | Testing    | Jest + React Native Testing Library + Vitest |
-| Language   | TypeScript 5.9 (strict)                      |
+| Language   | TypeScript 6.0 (strict)                      |
 
 ## Project structure
 

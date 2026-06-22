@@ -1,4 +1,4 @@
-import { HeaderShownContext } from "@react-navigation/elements";
+import { HeaderShownContext } from "expo-router/react-navigation";
 import { use } from "react";
 import type { ViewStyle } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";

@@ -4,9 +4,18 @@ const expoConfig = require("eslint-config-expo/flat");
 const eslintConfigPrettier = require("eslint-config-prettier");
 
 module.exports = defineConfig([
-  expoConfig,
   {
     ignores: ["dist/*"],
+  },
+  expoConfig,
+  {
+    settings: {
+      "import/resolver": {
+        typescript: {
+          project: ["./tsconfig.json", "./tests/tsconfig.json"],
+        },
+      },
+    },
   },
   eslintConfigPrettier,
 ]);

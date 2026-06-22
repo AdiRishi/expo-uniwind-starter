@@ -3,5 +3,6 @@
   "root": true,
   "workspaces": true,
   "target": "semver",
+  "cooldown": "1d",
   "reject": []
 }
