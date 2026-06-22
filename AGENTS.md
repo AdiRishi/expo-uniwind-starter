@@ -41,7 +41,7 @@ pnpm expo prebuild        # Generate native projects
 
 This is a pnpm monorepo with two TypeScript projects:
 
-- **App (`src/`)** — Expo SDK 55 / React Native 0.83 / React 19 app using Expo Router, Uniwind, HeroUI Native, TanStack Form, TanStack Query, and a tRPC client.
+- **App (`src/`)** — Expo SDK 56 / React Native 0.85 / React 19 app using Expo Router, Uniwind, HeroUI Native, TanStack Form, TanStack Query, and a tRPC client.
 - **Server (`server/`)** — Nitro 3 API server with tRPC v11, deployable to Cloudflare Workers.
 
 The main request path is:
@@ -49,17 +49,3 @@ The main request path is:
 ```text
 Expo screen -> tRPC client -> server router -> procedure -> response
 ```
-
-## Skills
-
-Invoke relevant skills proactively:
-
-- `heroui-native` — HeroUI Native components and theming.
-- `react-doctor` — React correctness, security, and performance checks after React changes.
-
-## Known tradeoffs
-
-### Pinned versions (do not bump casually)
-
-- `react-native-screens` is pinned to `4.24.0` for safe-area fixes.
-- `react-native-keyboard-controller` uses `~1.21.6`, currently compatible with SDK 55.

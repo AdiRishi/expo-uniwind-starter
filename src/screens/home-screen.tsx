@@ -19,7 +19,7 @@ const statusDotVariants = tv({
   },
 });
 
-const TECH_STACK = ["Expo SDK 55", "React 19", "Tailwind v4", "tRPC v11", "HeroUI Native", "TypeScript"] as const;
+const TECH_STACK = ["Expo SDK 56", "React 19", "Tailwind v4", "tRPC v11", "HeroUI Native", "TypeScript"] as const;
 
 export function HomeScreen() {
   const trpc = useTRPC();

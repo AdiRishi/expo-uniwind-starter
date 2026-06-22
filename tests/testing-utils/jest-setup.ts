@@ -38,15 +38,7 @@ jest.mock("react-native-reanimated", () => {
   };
 });
 
-jest.mock("@react-navigation/elements", () => {
-  const React = require("react");
-
-  return {
-    HeaderShownContext: React.createContext(false),
-  };
-});
-
-jest.mock("@react-navigation/native", () => {
+jest.mock("expo-router/react-navigation", () => {
   const React = require("react");
 
   return {
@@ -56,6 +48,7 @@ jest.mock("@react-navigation/native", () => {
     DefaultTheme: {
       colors: {},
     },
+    HeaderShownContext: React.createContext(false),
     ThemeProvider: ({ children }: { children?: React.ReactNode }) => children,
     useIsFocused: jest.fn(() => true),
   };

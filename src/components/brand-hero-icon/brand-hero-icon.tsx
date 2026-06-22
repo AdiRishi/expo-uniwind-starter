@@ -1,5 +1,6 @@
+import { Image } from "expo-image";
 import { useState } from "react";
-import { Image, StyleSheet, View, useWindowDimensions } from "react-native";
+import { StyleSheet, View, useWindowDimensions } from "react-native";
 import Animated, { Easing, Keyframe } from "react-native-reanimated";
 import { scheduleOnRN } from "react-native-worklets";
 
@@ -136,7 +137,7 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   backgroundSolidColor: {
-    ...StyleSheet.absoluteFillObject,
+    ...StyleSheet.absoluteFill,
     backgroundColor: "#208AEF",
     zIndex: 1000,
   },
