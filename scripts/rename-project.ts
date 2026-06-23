@@ -103,18 +103,18 @@ async function main(): Promise<void> {
   writeJSON("package.json", pkg);
   console.log("✓ package.json");
 
-  // Update app.json
-  const app = readJSON<AppJson>("app.json");
+  // Update mobile app.json
+  const app = readJSON<AppJson>("apps/mobile/app.json");
   app.expo.name = projectName;
   app.expo.slug = slug;
   app.expo.scheme = scheme;
   app.expo.ios.bundleIdentifier = bundleId;
   app.expo.android.package = bundleId;
-  writeJSON("app.json", app);
-  console.log("✓ app.json");
+  writeJSON("apps/mobile/app.json", app);
+  console.log("✓ apps/mobile/app.json");
 
   console.log("\nDone! You may also want to:");
-  console.log("  • Update the app icon and splash screen images in assets/");
+  console.log("  • Update the app icon and splash screen images in apps/mobile/assets/");
   console.log("  • Run `pnpm start` to verify everything works");
 }
 

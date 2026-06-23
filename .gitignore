@@ -35,17 +35,24 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+.turbo/
 coverage/
-server/coverage/
+apps/*/coverage/
+servers/*/coverage/
 
 app-example
 
 # generated native folders
 /ios
 /android
+apps/*/ios/
+apps/*/android/
 
 # Cloudflare
 .wrangler/
+servers/*/.output/
+servers/*/.nitro/
+servers/*/.cache/
 
 # AI
 .claude/settings.local.json
