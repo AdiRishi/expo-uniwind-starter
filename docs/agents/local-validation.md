@@ -2,7 +2,7 @@
 
 Use this procedure to validate local native app changes from the Codex app in a local checkout or Codex worktree.
 
-The project-local Codex environment lives at `.codex/environments/environment.toml`. Its setup script owns dependency installation and native prebuild work for new worktrees, so do not add an extra install step to normal harness validation.
+The project-local Codex environment lives at `.codex/environments/environment.toml`. Its setup script owns dependency installation and native prebuild work for new worktrees by running the root `prebuild` script, so do not add an extra install step to normal harness validation.
 
 `serve-sim` is the native validation harness. It streams the booted iOS Simulator into the browser, exposes simulator controls, and adds inspection tools that Browser Use can read. Before relying on a behavior, verify the installed version:
 
@@ -28,6 +28,8 @@ If you are not using Codex app actions, start the same long-running processes in
 pnpm run server:dev
 pnpm ios
 ```
+
+Use the root scripts for local validation. They compile shared packages before starting the server or app so the mobile app consumes current `packages/` output.
 
 When Metro is ready, the simulator preview is available at:
 
@@ -343,6 +345,14 @@ lsof -iTCP:8081 -sTCP:LISTEN -n -P || true
 ```
 
 Both commands should print no listening process for servers you started. If either port is still occupied by a process you started, stop it and check again. Do not kill a pre-existing process unless the user asks you to.
+
+Clean generated folders created during validation unless the user asks to keep them:
+
+```bash
+rm -rf apps/mobile/ios apps/mobile/android apps/mobile/.expo .turbo packages/*/.turbo packages/*/dist coverage apps/*/coverage servers/*/coverage
+```
+
+Do not delete `node_modules/` as part of normal cleanup.
 
 ## Troubleshooting
 

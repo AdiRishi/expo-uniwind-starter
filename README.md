@@ -19,10 +19,10 @@
 - **[HeroUI Native](https://v3.heroui.com/docs/native/getting-started)** — polished component library with buttons, inputs, accordions, and more
 - **Dark mode** — full light/dark theming via CSS variables, one file to customize
 - **Expo Router** — file-based routing with typed routes and native tab navigation
-- **[Tanstack Form](https://tanstack.com/form)** — composable, type-safe forms via `createFormHook` with Zod validation
-- **[Nitro](https://nitro.build/) + [tRPC](https://trpc.io/)** — type-safe API server in a monorepo workspace, deployable to Cloudflare Workers
+- **[TanStack Form](https://tanstack.com/form)** — composable, type-safe forms via `createFormHook` with Zod validation
+- **[Nitro](https://nitro.build/) + [tRPC](https://trpc.io/)** — type-safe API server in a monorepo, deployable to Cloudflare Workers
 - **React 19 + React Compiler** — latest React with automatic optimizations
-- **Strict TypeScript, ESLint, Oxlint, Oxfmt, Turborepo** — opinionated DX with import and Tailwind class sorting
+- **Strict TypeScript, Expo ESLint, Oxlint, Oxfmt, Turborepo** — opinionated DX with import and Tailwind class sorting
 - **Jest + React Native Testing Library + Vitest** — frontend and server unit tests with app providers and tRPC test helpers
 - **Agent skills** — context-aware guidance for HeroUI Native, React correctness, and reusable composition patterns
 - **Codex harness instructions** — local iOS simulator validation through the Browser Use plugin
@@ -58,11 +58,28 @@ pnpm run server:dev   # Nitro dev server on localhost:3000
 **4. Build and run** (in a separate terminal):
 
 ```bash
-pnpm --filter @repo/mobile exec expo prebuild
-pnpm ios              # iOS simulator
-pnpm android          # Android emulator
-pnpm web              # Web browser
+pnpm run prebuild     # Regenerate native projects when needed
+pnpm ios              # Compile packages, then run the iOS simulator
+pnpm android          # Compile packages, then run the Android emulator
+pnpm web              # Compile packages, then start Expo web
 ```
+
+Root scripts are the public interface for everyday work. They compile internal packages first, then delegate to the app or server workspace.
+
+## Development scripts
+
+```bash
+pnpm run compile        # Compile shared internal packages
+pnpm run lint           # App + server/shared package lint
+pnpm run lint:app       # Expo ESLint for the mobile app
+pnpm run lint:server    # Oxlint for the API and shared packages
+pnpm run typecheck      # TypeScript across all workspaces
+pnpm run format         # Oxfmt write
+pnpm run format:check   # Oxfmt check
+pnpm run check          # Lint + format check + typecheck
+```
+
+Native projects and task outputs are generated and ignored. `apps/mobile/ios/`, `apps/mobile/android/`, `.expo/`, `.turbo/`, `coverage/`, and package `dist/` folders can be deleted and regenerated from scripts.
 
 ## Testing
 
@@ -86,7 +103,7 @@ App tests live in `apps/mobile/tests/` and mirror `apps/mobile/src/` paths, with
 | Components | HeroUI Native                                |
 | Animations | React Native Reanimated 4                    |
 | Server     | Nitro 3 (Cloudflare Workers)                 |
-| Forms      | Tanstack Form + Zod                          |
+| Forms      | TanStack Form + Zod                          |
 | API        | tRPC v11 + TanStack Query                    |
 | Testing    | Jest + React Native Testing Library + Vitest |
 | Tooling    | Turborepo + Expo ESLint + Oxlint + Oxfmt     |
@@ -97,21 +114,24 @@ App tests live in `apps/mobile/tests/` and mirror `apps/mobile/src/` paths, with
 ```
 apps/
   mobile/
+    app.json                  → Expo app config and native plugin settings
     src/
       app/                      → Routes (thin files that render screens)
       screens/                  → Screen components with page logic
       components/
         ui/                     → Design system primitives (buttons, typography, containers)
-        form/                   → Tanstack Form field and form components
+        form/                   → TanStack Form field and form components
         screens/<screen-name>/  → Components specific to a single screen
       hooks/                    → Custom hooks (theme colors, form context, etc.)
       schemas/                  → Zod validation schemas
       lib/                      → tRPC client, environment config
       global.css                → Theme tokens — edit this to customize your app
+    tests/                    → Jest tests mirroring src/
 servers/
   api/
     routes/                   → Nitro API routes
     trpc/                     → tRPC router and procedure definitions
+    tests/                    → Vitest tests mirroring server paths
 packages/
   rpc/                      → Shared tRPC transport configuration
   typescript-config/        → Shared TypeScript defaults for packages

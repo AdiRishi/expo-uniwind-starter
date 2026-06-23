@@ -38,8 +38,10 @@ pnpm android              # Start the Android app server / emulator
 pnpm web                  # Start Expo web
 
 pnpm run rename           # Rename project and bundle IDs
-pnpm --filter @repo/mobile exec expo prebuild  # Generate native projects
+pnpm run prebuild         # Compile packages and regenerate native projects
 ```
+
+Generated folders such as `apps/mobile/ios/`, `apps/mobile/android/`, `.expo/`, `.turbo/`, `coverage/`, and package `dist/` outputs should stay uncommitted. Clean them up after validation unless the user explicitly wants generated native projects left on disk.
 
 ## Architecture
 
