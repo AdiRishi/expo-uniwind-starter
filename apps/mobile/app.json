@@ -40,7 +40,18 @@
         }
       ],
       ["expo-dev-client"],
-      "expo-build-properties",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "usePrecompiledHeaders": true
+          },
+          "ios": {
+            "useFrameworks": "static",
+            "usePrecompiledModules": true
+          }
+        }
+      ],
       "expo-font",
       "expo-image",
       "expo-web-browser"
