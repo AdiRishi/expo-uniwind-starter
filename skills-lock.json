@@ -11,7 +11,13 @@
       "source": "millionco/react-doctor",
       "sourceType": "github",
       "skillPath": "skills/react-doctor/SKILL.md",
-      "computedHash": "b8f396bd6db7404a899af03e649f2cf12f4c846ee7d85b6b9a475cb8175abb49"
+      "computedHash": "fa180e84006740f0ad139f3d11bc9b1ba43de91b376e73d4e40b5e09e37fa9ed"
+    },
+    "serve-sim": {
+      "source": "evanbacon/serve-sim",
+      "sourceType": "github",
+      "skillPath": "skills/serve-sim/SKILL.md",
+      "computedHash": "f36989794356ed42ce288b292f825c2b6261e9cbf4aba2ebdccefd672ffdc47f"
     },
     "vercel-composition-patterns": {
       "source": "vercel-labs/agent-skills",
