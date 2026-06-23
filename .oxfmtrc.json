@@ -1,0 +1,63 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "sortTailwindcss": {
+    "stylesheet": "./apps/mobile/src/global.css",
+    "functions": ["tv"]
+  },
+  "sortImports": {
+    "customGroups": [
+      {
+        "groupName": "workspace",
+        "elementNamePattern": ["@repo/**"]
+      },
+      {
+        "groupName": "app",
+        "elementNamePattern": ["@/**"]
+      },
+      {
+        "groupName": "server",
+        "elementNamePattern": ["~/**"]
+      }
+    ],
+    "groups": [
+      ["builtin", "external", "server"],
+      "workspace",
+      "app",
+      ["parent", "sibling", "index", "style"],
+      "unknown"
+    ]
+  },
+  "sortPackageJson": false,
+  "ignorePatterns": [
+    "node_modules/",
+    "apps/*/node_modules/",
+    "servers/*/node_modules/",
+    ".expo/",
+    "apps/*/.expo/",
+    ".turbo/",
+    "apps/*/.turbo/",
+    "servers/*/.turbo/",
+    ".nitro/",
+    "servers/*/.nitro/",
+    ".output/",
+    "servers/*/.output/",
+    ".cache/",
+    "servers/*/.cache/",
+    "dist/",
+    "dist-types/",
+    "packages/*/dist/",
+    "coverage/",
+    "apps/*/coverage/",
+    "servers/*/coverage/",
+    "ios/",
+    "android/",
+    "apps/*/ios/",
+    "apps/*/android/",
+    "expo-env.d.ts",
+    "apps/mobile/src/uniwind-types.d.ts",
+    "*.tsbuildinfo",
+    "pnpm-lock.yaml",
+    "apps/mobile/assets/",
+    "skills-lock.json"
+  ]
+}

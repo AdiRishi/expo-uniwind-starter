@@ -9,8 +9,8 @@ The project-local Codex environment lives at `.codex/environments/environment.to
 ```bash
 node -p "require('./node_modules/serve-sim/package.json').version"
 npm view serve-sim version dist-tags --json
-pnpm exec serve-sim --help
-pnpm exec serve-sim camera --help
+pnpm --filter @repo/mobile exec serve-sim --help
+pnpm --filter @repo/mobile exec serve-sim camera --help
 ```
 
 If this document and the CLI disagree, trust the installed CLI after validating it in `http://localhost:8081/.sim`.
@@ -84,7 +84,7 @@ After using `serve-sim tap`, ask the same question again for the next target. A 
 Useful probes:
 
 ```bash
-pnpm exec serve-sim --list
+pnpm --filter @repo/mobile exec serve-sim --list
 curl -s http://localhost:8081/.sim/api
 curl -s http://localhost:8081/.sim/grid/api
 curl -s http://localhost:8081/.sim/grid/api/memory
@@ -112,7 +112,7 @@ Do not enable AX just because the app is native. If the target is plainly visibl
 Do not assume clicking an AX overlay element performs the native action. In validation, clicking an overlay tab target may highlight/focus the overlay target without navigating. After a normal Browser click has failed or when a repeatable normalized coordinate is required, use `serve-sim tap`:
 
 ```bash
-pnpm exec serve-sim tap 0.32 0.955
+pnpm --filter @repo/mobile exec serve-sim tap 0.32 0.955
 ```
 
 Use AX to decide what to tap, then use Browser coordinate input first if the target is plainly visible. Escalate to `serve-sim tap` when Browser misses, when the panel/viewport makes coordinates unstable, or when you need a repeatable normalized coordinate. Turn AX off as soon as it has answered the question so screenshots and subsequent interactions are not cluttered by overlay boxes.
@@ -124,13 +124,13 @@ Default to Browser coordinate input for simple visible taps and ordinary text en
 Use `serve-sim` CLI input when Browser input has failed for the current target, when that target requires precise normalized coordinates, when testing hardware/device controls, or when a single action must be repeatable across viewport sizes. `serve-sim` coordinates are normalized to the simulator screen, not the browser viewport:
 
 ```bash
-pnpm exec serve-sim tap <x> <y>
-pnpm exec serve-sim button home
-pnpm exec serve-sim rotate portrait
-pnpm exec serve-sim rotate landscape_left
-pnpm exec serve-sim memory-warning
-pnpm exec serve-sim ca-debug blended on
-pnpm exec serve-sim ca-debug blended off
+pnpm --filter @repo/mobile exec serve-sim tap <x> <y>
+pnpm --filter @repo/mobile exec serve-sim button home
+pnpm --filter @repo/mobile exec serve-sim rotate portrait
+pnpm --filter @repo/mobile exec serve-sim rotate landscape_left
+pnpm --filter @repo/mobile exec serve-sim memory-warning
+pnpm --filter @repo/mobile exec serve-sim ca-debug blended on
+pnpm --filter @repo/mobile exec serve-sim ca-debug blended off
 ```
 
 Use `tap` for a single fallback tap, then go back to Browser for the next visible target. Do not turn a successful fallback into a CLI-tap mode for the rest of the flow. `gesture` sends one touch event per invocation, so do not build a drag by running separate `gesture begin`, `gesture move`, and `gesture end` commands. For drags, keep one WebSocket open and send the whole sequence.
@@ -150,7 +150,7 @@ Do not use DOM scrolling or mouse-wheel scrolling for native React Native scroll
 First confirm the stream and WebSocket URL:
 
 ```bash
-pnpm exec serve-sim --list
+pnpm --filter @repo/mobile exec serve-sim --list
 ```
 
 Then send one full gesture over the stream WebSocket. Use the right side of the app as a scroll rail:
@@ -269,16 +269,16 @@ The `Tools -> Camera` panel is still useful for discovering the capability, sele
 CLI examples:
 
 ```bash
-pnpm exec serve-sim camera com.arishi.expouniwindstarter
-pnpm exec serve-sim camera com.arishi.expouniwindstarter --file ~/Pictures/sample.png
-pnpm exec serve-sim camera com.arishi.expouniwindstarter --file ~/Movies/sample.mp4
-pnpm exec serve-sim camera com.arishi.expouniwindstarter --webcam
-pnpm exec serve-sim camera switch placeholder
-pnpm exec serve-sim camera switch ~/Movies/sample.mp4
-pnpm exec serve-sim camera mirror on
-pnpm exec serve-sim camera status
-pnpm exec serve-sim camera --list-webcams
-pnpm exec serve-sim camera --stop-webcam
+pnpm --filter @repo/mobile exec serve-sim camera com.arishi.expouniwindstarter
+pnpm --filter @repo/mobile exec serve-sim camera com.arishi.expouniwindstarter --file ~/Pictures/sample.png
+pnpm --filter @repo/mobile exec serve-sim camera com.arishi.expouniwindstarter --file ~/Movies/sample.mp4
+pnpm --filter @repo/mobile exec serve-sim camera com.arishi.expouniwindstarter --webcam
+pnpm --filter @repo/mobile exec serve-sim camera switch placeholder
+pnpm --filter @repo/mobile exec serve-sim camera switch ~/Movies/sample.mp4
+pnpm --filter @repo/mobile exec serve-sim camera mirror on
+pnpm --filter @repo/mobile exec serve-sim camera status
+pnpm --filter @repo/mobile exec serve-sim camera --list-webcams
+pnpm --filter @repo/mobile exec serve-sim camera --stop-webcam
 ```
 
 Images and videos are auto-detected. Videos loop at their native frame rate. Use `camera switch` for source changes after the helper is running; it hot-swaps without relaunching the app.
@@ -329,11 +329,11 @@ If you started the API server or app server, stop them before your final respons
 Stop simulator streams you started:
 
 ```bash
-pnpm exec serve-sim --list
-pnpm exec serve-sim --kill
+pnpm --filter @repo/mobile exec serve-sim --list
+pnpm --filter @repo/mobile exec serve-sim --kill
 ```
 
-`pnpm exec serve-sim --list` should show no running stream after the kill command. If it still lists a stream you started, run the kill command again with the listed device.
+`pnpm --filter @repo/mobile exec serve-sim --list` should show no running stream after the kill command. If it still lists a stream you started, run the kill command again with the listed device.
 
 After stopping servers that you started, verify the standard harness ports are clear:
 
@@ -348,10 +348,10 @@ Both commands should print no listening process for servers you started. If eith
 
 - If `/.sim` does not load, confirm Metro is listening on `8081`.
 - If API-backed app behavior fails, confirm the API server is listening on `3000`.
-- If `/.sim` shows no stream, use the simulator list on the page first, then confirm with `pnpm exec serve-sim --list`.
-- If a stream is listed but the preview is stuck, run `pnpm exec serve-sim --kill`, restart the stream from `/.sim`, and re-check `--list`.
+- If `/.sim` shows no stream, use the simulator list on the page first, then confirm with `pnpm --filter @repo/mobile exec serve-sim --list`.
+- If a stream is listed but the preview is stuck, run `pnpm --filter @repo/mobile exec serve-sim --kill`, restart the stream from `/.sim`, and re-check `--list`.
 - If AX overlay is empty during an accessibility/targeting escalation, confirm the stream is live and the target app is foreground. Toggle the overlay off/on once before deeper debugging.
-- If you already escalated to AX and clicks on AX elements only highlight without changing the app, turn AX off and try a normal Browser coordinate click on the visible simulator frame. Use `pnpm exec serve-sim tap` only if that normal Browser click also fails or if the target requires normalized precision.
+- If you already escalated to AX and clicks on AX elements only highlight without changing the app, turn AX off and try a normal Browser coordinate click on the visible simulator frame. Use `pnpm --filter @repo/mobile exec serve-sim tap` only if that normal Browser click also fails or if the target requires normalized precision.
 - If text entry drops characters, slow per-character key events or use `xcrun simctl pbcopy booted` plus native paste.
 - If WebKit DevTools has no targets, continue with the normal Browser visual workflow for native RN screens. Use AX only for accessibility or targeting escalation. Only debug the DevTools bridge when validating Safari or `WKWebView` content.
-- If `serve-sim` behavior changed after an upgrade, inspect `npm view serve-sim version dist-tags --json`, `pnpm exec serve-sim --help`, `pnpm exec serve-sim camera --help`, the local clone at `~/personal/forks/serve-sim`, and then update this document with validated behavior. GitHub may not have formal Releases even when npm versions are moving.
+- If `serve-sim` behavior changed after an upgrade, inspect `npm view serve-sim version dist-tags --json`, `pnpm --filter @repo/mobile exec serve-sim --help`, `pnpm --filter @repo/mobile exec serve-sim camera --help`, the local clone at `~/personal/forks/serve-sim`, and then update this document with validated behavior. GitHub may not have formal Releases even when npm versions are moving.

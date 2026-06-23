@@ -8,9 +8,9 @@
 [![Uses pnpm](https://img.shields.io/badge/pnpm-11.x-orange?logo=pnpm)](https://pnpm.io/)
 
 <p align="left">
-  <img src="assets/readme/ios-home.png" alt="iOS" height="500" />
+  <img src="apps/mobile/assets/readme/ios-home.png" alt="iOS" height="500" />
   &nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="assets/readme/android-home.png" alt="Android" height="500" />
+  <img src="apps/mobile/assets/readme/android-home.png" alt="Android" height="500" />
 </p>
 
 ## What's included
@@ -22,7 +22,7 @@
 - **[Tanstack Form](https://tanstack.com/form)** — composable, type-safe forms via `createFormHook` with Zod validation
 - **[Nitro](https://nitro.build/) + [tRPC](https://trpc.io/)** — type-safe API server in a monorepo workspace, deployable to Cloudflare Workers
 - **React 19 + React Compiler** — latest React with automatic optimizations
-- **Strict TypeScript, ESLint, Prettier** — opinionated DX with import and Tailwind class sorting
+- **Strict TypeScript, ESLint, Oxlint, Oxfmt, Turborepo** — opinionated DX with import and Tailwind class sorting
 - **Jest + React Native Testing Library + Vitest** — frontend and server unit tests with app providers and tRPC test helpers
 - **Agent skills** — context-aware guidance for HeroUI Native, React correctness, and reusable composition patterns
 - **Codex harness instructions** — local iOS simulator validation through the Browser Use plugin
@@ -43,7 +43,7 @@ cd acme-mobile
 pnpm install
 ```
 
-**2. Rename the project** — updates package.json, app.json, and bundle identifiers:
+**2. Rename the project** — updates the root `package.json`, the mobile `app.json`, and bundle identifiers:
 
 ```bash
 pnpm run rename acme-mobile com.mycompany
@@ -58,7 +58,7 @@ pnpm run server:dev   # Nitro dev server on localhost:3000
 **4. Build and run** (in a separate terminal):
 
 ```bash
-pnpm expo prebuild
+pnpm --filter @repo/mobile exec expo prebuild
 pnpm ios              # iOS simulator
 pnpm android          # Android emulator
 pnpm web              # Web browser
@@ -71,11 +71,10 @@ Frontend unit tests run with Jest and React Native Testing Library. Server unit 
 ```bash
 pnpm run test           # app + server tests
 pnpm run test:app       # app tests only
-pnpm run server:test    # server tests only
-pnpm run test:app:types
+pnpm run test:server    # server tests only
 ```
 
-App tests live in the root `tests/` directory and mirror `src/` paths, with shared helpers in `tests/testing-utils/`. Use small scenario-explicit builders for repeated data shapes, and keep feature-specific mocks in the test or harness that needs them. Server tests live under `server/tests/` and mirror backend paths.
+App tests live in `apps/mobile/tests/` and mirror `apps/mobile/src/` paths, with shared helpers in `apps/mobile/tests/testing-utils/`. Use small scenario-explicit builders for repeated data shapes, and keep feature-specific mocks in the test or harness that needs them. Server tests live under `servers/api/tests/` and mirror backend paths.
 
 ## Tech stack
 
@@ -90,25 +89,32 @@ App tests live in the root `tests/` directory and mirror `src/` paths, with shar
 | Forms      | Tanstack Form + Zod                          |
 | API        | tRPC v11 + TanStack Query                    |
 | Testing    | Jest + React Native Testing Library + Vitest |
+| Tooling    | Turborepo + Expo ESLint + Oxlint + Oxfmt     |
 | Language   | TypeScript 6.0 (strict)                      |
 
 ## Project structure
 
 ```
-src/
-  app/                      → Routes (thin files that render screens)
-  screens/                  → Screen components with page logic
-  components/
-    ui/                     → Design system primitives (buttons, typography, containers)
-    form/                   → Tanstack Form field and form components
-    screens/<screen-name>/  → Components specific to a single screen
-  hooks/                    → Custom hooks (theme colors, form context, etc.)
-  schemas/                  → Zod validation schemas
-  lib/                      → tRPC client, environment config
-  global.css                → Theme tokens — edit this to customize your app
-server/
-  routes/                   → Nitro API routes
-  trpc/                     → tRPC router and procedure definitions
+apps/
+  mobile/
+    src/
+      app/                      → Routes (thin files that render screens)
+      screens/                  → Screen components with page logic
+      components/
+        ui/                     → Design system primitives (buttons, typography, containers)
+        form/                   → Tanstack Form field and form components
+        screens/<screen-name>/  → Components specific to a single screen
+      hooks/                    → Custom hooks (theme colors, form context, etc.)
+      schemas/                  → Zod validation schemas
+      lib/                      → tRPC client, environment config
+      global.css                → Theme tokens — edit this to customize your app
+servers/
+  api/
+    routes/                   → Nitro API routes
+    trpc/                     → tRPC router and procedure definitions
+packages/
+  rpc/                      → Shared tRPC transport configuration
+  typescript-config/        → Shared TypeScript defaults for packages
 ```
 
 ## Agent validation

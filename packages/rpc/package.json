@@ -1,0 +1,26 @@
+{
+  "name": "@repo/rpc",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p tsconfig.json",
+    "build": "pnpm run compile",
+    "lint": "oxlint .",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "superjson": "^2.2.6"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "oxlint": "^1.70.0",
+    "oxlint-tsgolint": "^0.23.0",
+    "typescript": "~6.0.3"
+  }
+}
