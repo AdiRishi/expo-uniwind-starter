@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "pnpm run compile && pnpm --filter @repo/mobile start --clear",
-    "expo:prebuild": "pnpm run compile && pnpm --filter @repo/mobile exec expo prebuild --clean",
+    "prebuild": "pnpm run compile && pnpm --filter @repo/mobile exec expo prebuild --clean",
     "android": "pnpm run compile && pnpm --filter @repo/mobile android",
     "ios": "pnpm run compile && pnpm --filter @repo/mobile ios",
     "web": "pnpm run compile && pnpm --filter @repo/mobile web",

@@ -12,6 +12,7 @@
     "lint": "expo lint",
     "test": "jest",
     "test:types": "tsc --noEmit -p tests/tsconfig.json",
+    "eas-build-post-install": "pnpm --dir ../.. compile",
     "pretypecheck": "expo customize tsconfig.json",
     "typecheck": "tsc --noEmit && pnpm run test:types"
   },
