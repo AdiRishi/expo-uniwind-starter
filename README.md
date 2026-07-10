@@ -2,7 +2,7 @@
 
 **Ship cross-platform apps with Tailwind CSS v4 styling, ready-made components, and zero config pain.**
 
-[![Expo SDK](https://img.shields.io/badge/Expo_SDK-56-blue?logo=expo)](https://expo.dev)
+[![Expo SDK](https://img.shields.io/badge/Expo_SDK-57-blue?logo=expo)](https://expo.dev)
 [![Platforms](https://img.shields.io/badge/Platforms-iOS_%7C_Android_%7C_Web-lightgrey?logo=react)](https://reactnative.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Strict-blue?logo=typescript)](https://www.typescriptlang.org/)
 [![Uses pnpm](https://img.shields.io/badge/pnpm-11.x-orange?logo=pnpm)](https://pnpm.io/)
@@ -97,7 +97,7 @@ App tests live in `apps/mobile/tests/` and mirror `apps/mobile/src/` paths, with
 
 | Layer      | Technology                                   |
 | ---------- | -------------------------------------------- |
-| Framework  | Expo 56 + React Native 0.85                  |
+| Framework  | Expo 57 + React Native 0.86                  |
 | Routing    | Expo Router (file-based, typed routes)       |
 | Styling    | Tailwind CSS v4 via Uniwind                  |
 | Components | HeroUI Native                                |

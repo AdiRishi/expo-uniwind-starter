@@ -47,7 +47,7 @@ Generated folders such as `apps/mobile/ios/`, `apps/mobile/android/`, `.expo/`, 
 
 This is a pnpm/Turbo monorepo with three TypeScript workspaces:
 
-- **App (`apps/mobile/`)** — Expo SDK 56 / React Native 0.85 / React 19 app using Expo Router, Uniwind, HeroUI Native, TanStack Form, TanStack Query, and a tRPC client.
+- **App (`apps/mobile/`)** — Expo SDK 57 / React Native 0.86 / React 19 app using Expo Router, Uniwind, HeroUI Native, TanStack Form, TanStack Query, and a tRPC client.
 - **Server (`servers/api/`)** — Nitro 3 API server with tRPC v11, deployable to Cloudflare Workers.
 - **Shared packages (`packages/`)** — compiled internal packages for cross-workspace contracts such as `@repo/rpc`.
 
