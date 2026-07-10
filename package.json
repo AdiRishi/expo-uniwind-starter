@@ -26,8 +26,8 @@
   },
   "devDependencies": {
     "oxfmt": "^0.55.0",
-    "tsx": "^4.22.4",
-    "turbo": "^2.9.18"
+    "tsx": "^4.23.0",
+    "turbo": "^2.10.4"
   },
   "packageManager": "pnpm@11.8.0"
 }
