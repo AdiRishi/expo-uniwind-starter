@@ -28,6 +28,11 @@ export function AppTabs() {
         <NativeTabs.Trigger.Label>Tasks</NativeTabs.Trigger.Label>
         <NativeTabs.Trigger.Icon sf="checklist" md="checklist" />
       </NativeTabs.Trigger>
+
+      <NativeTabs.Trigger name="missions">
+        <NativeTabs.Trigger.Label>Missions</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon sf="scope" md="track_changes" />
+      </NativeTabs.Trigger>
     </NativeTabs>
   );
 }

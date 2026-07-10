@@ -35,5 +35,6 @@ describe("<AppTabs />", () => {
     getByText("Home");
     getByText("Explore");
     getByText("Tasks");
+    getByText("Missions");
   });
 });

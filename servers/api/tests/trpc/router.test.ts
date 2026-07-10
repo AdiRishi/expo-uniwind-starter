@@ -10,6 +10,9 @@ describe("trpc/router", () => {
     await expect(caller.hello.greet()).resolves.toMatchObject({
       message: "Hello from tRPC!",
     });
+    await expect(caller.missionControl.list()).resolves.toMatchObject({
+      items: [],
+    });
     await expect(caller.tasks.list()).resolves.toEqual([]);
   });
 });
