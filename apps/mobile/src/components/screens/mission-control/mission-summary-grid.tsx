@@ -16,7 +16,7 @@ export function MissionSummaryGrid({ summary }: { summary: MissionSummary }) {
     {
       label: "In flight",
       value: String(summary.active),
-      detail: `${summary.total} total missions`,
+      detail: `${summary.completed} complete · ${summary.total} total`,
       tone: "accent",
     },
     {

@@ -1,5 +1,5 @@
 import { Button, Card } from "heroui-native";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { View } from "react-native";
 
 import { Typography } from "@/components/ui/typography";
@@ -9,22 +9,18 @@ import { createMissionSchema, type CreateMissionInput } from "@/schemas/mission-
 
 export function CreateMissionForm({ onSubmit }: { onSubmit: (input: CreateMissionInput) => Promise<unknown> }) {
   const [isExpanded, setIsExpanded] = useState(false);
-  const formConfig = useMemo(
-    () =>
-      formOptions({
-        defaultValues: {
-          title: "",
-          objective: "",
-          owner: "",
-          targetDate: getSuggestedTargetDate(),
-        },
-        validators: {
-          onChange: createMissionSchema,
-          onSubmit: createMissionSchema,
-        },
-      }),
-    [],
-  );
+  const formConfig = formOptions({
+    defaultValues: {
+      title: "",
+      objective: "",
+      owner: "",
+      targetDate: getSuggestedTargetDate(),
+    },
+    validators: {
+      onChange: createMissionSchema,
+      onSubmit: createMissionSchema,
+    },
+  });
 
   const form = useAppForm({
     ...formConfig,

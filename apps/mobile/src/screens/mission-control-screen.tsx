@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Input, Label, Spinner, TextField } from "heroui-native";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { RefreshControl, View } from "react-native";
 
 import { CreateMissionForm } from "@/components/screens/mission-control/create-mission-form";
@@ -36,10 +36,7 @@ export function MissionControlScreen() {
   const resolveRisk = useMutation(trpc.missionControl.resolveRisk.mutationOptions({ onSuccess: invalidateList }));
   const deleteMission = useMutation(trpc.missionControl.delete.mutationOptions({ onSuccess: invalidateList }));
 
-  const missions = useMemo(
-    () => filterMissions(listQuery.data?.items ?? [], query, filter),
-    [filter, listQuery.data?.items, query],
-  );
+  const missions = filterMissions(listQuery.data?.items ?? [], query, filter);
 
   const handleStatusChange = (missionId: string, status: MissionStatus) => {
     setStatus.mutate({ missionId, status });
