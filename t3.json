@@ -1,0 +1,37 @@
+{
+  "$schema": "https://t3.codes/schema/t3.json",
+  "iconPath": "apps/mobile/assets/images/icon.png",
+  "scripts": [
+    {
+      "name": "Setup",
+      "command": "pnpm install --frozen-lockfile && pnpm run compile",
+      "icon": "configure",
+      "runOnWorktreeCreate": true
+    },
+    {
+      "name": "Run iOS",
+      "command": "pnpm ios",
+      "icon": "play"
+    },
+    {
+      "name": "API Server",
+      "command": "pnpm run server:dev",
+      "icon": "play"
+    },
+    {
+      "name": "Check",
+      "command": "pnpm run check",
+      "icon": "lint"
+    },
+    {
+      "name": "Test",
+      "command": "pnpm test",
+      "icon": "test"
+    },
+    {
+      "name": "Typecheck",
+      "command": "pnpm typecheck",
+      "icon": "build"
+    }
+  ]
+}
