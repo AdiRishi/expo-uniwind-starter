@@ -1,9 +1,6 @@
 import type { ErrorBoundaryProps } from "expo-router";
 import { Stack } from "expo-router";
-import { HeroUINativeProvider } from "heroui-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { KeyboardProvider } from "react-native-keyboard-controller";
-import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import { AppProviders } from "@/components/app-providers";
 import "@/global.css";
@@ -12,18 +9,14 @@ import { GenericErrorScreen } from "@/screens/error/generic-error-screen";
 export function ErrorBoundary({ error, retry }: ErrorBoundaryProps) {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <SafeAreaProvider>
-        <KeyboardProvider>
-          <HeroUINativeProvider>
-            <GenericErrorScreen
-              title="Something went wrong"
-              message="We encountered an unexpected issue while processing your request. The application has logged this event."
-              errorDetails={{ status: error.message }}
-              onRetry={retry}
-            />
-          </HeroUINativeProvider>
-        </KeyboardProvider>
-      </SafeAreaProvider>
+      <AppProviders>
+        <GenericErrorScreen
+          title="Something went wrong"
+          message="We encountered an unexpected issue while processing your request. The application has logged this event."
+          errorDetails={{ status: error.message }}
+          onRetry={retry}
+        />
+      </AppProviders>
     </GestureHandlerRootView>
   );
 }

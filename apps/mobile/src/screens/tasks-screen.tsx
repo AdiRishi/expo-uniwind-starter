@@ -1,18 +1,17 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { CreateTaskForm } from "@/components/screens/tasks/create-task-form";
 import { TaskList } from "@/components/screens/tasks/task-list";
 import { TasksHeader } from "@/components/screens/tasks/tasks-header";
 import { FormScrollView } from "@/components/ui/screen-containers/form-scroll-view";
-import { useRefreshOnFocus } from "@/hooks/use-refresh-on-focus";
+import { useScreenQuery } from "@/hooks/use-screen-query";
 import { useTRPC } from "@/lib/trpc";
 
 export function TasksScreen() {
   const trpc = useTRPC();
-  useRefreshOnFocus(trpc.tasks.pathKey());
   const queryClient = useQueryClient();
   const listQueryOptions = trpc.tasks.list.queryOptions();
-  const { data: tasks = [] } = useQuery(listQueryOptions);
+  const { data: tasks = [] } = useScreenQuery(listQueryOptions);
 
   const invalidateList = () => queryClient.invalidateQueries(listQueryOptions);
 

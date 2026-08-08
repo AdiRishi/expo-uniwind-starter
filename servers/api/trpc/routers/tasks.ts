@@ -1,20 +1,16 @@
 import { z } from "zod";
 
-import { publicProcedure, router } from "../init";
+import { type Task, createTaskSchema } from "@repo/contracts";
 
-type Task = {
-  id: string;
-  title: string;
-  completed: boolean;
-  createdAt: string;
-};
+import { requireFound } from "../errors";
+import { publicProcedure, router } from "../init";
 
 const tasks = new Map<string, Task>();
 
 export const tasksRouter = router({
   list: publicProcedure.query(() => [...tasks.values()].sort((a, b) => b.createdAt.localeCompare(a.createdAt))),
 
-  create: publicProcedure.input(z.object({ title: z.string().min(1, "Title is required") })).mutation(({ input }) => {
+  create: publicProcedure.input(createTaskSchema).mutation(({ input }) => {
     const task: Task = {
       id: crypto.randomUUID(),
       title: input.title,
@@ -26,15 +22,14 @@ export const tasksRouter = router({
   }),
 
   toggle: publicProcedure.input(z.object({ id: z.string() })).mutation(({ input }) => {
-    const task = tasks.get(input.id);
-    if (!task) throw new Error("Task not found");
+    const task = requireFound(tasks.get(input.id), "Task not found");
     task.completed = !task.completed;
     return task;
   }),
 
   delete: publicProcedure.input(z.object({ id: z.string() })).mutation(({ input }) => {
-    const deleted = tasks.delete(input.id);
-    if (!deleted) throw new Error("Task not found");
+    requireFound(tasks.get(input.id), "Task not found");
+    tasks.delete(input.id);
     return { id: input.id };
   }),
 });

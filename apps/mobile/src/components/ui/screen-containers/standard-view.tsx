@@ -13,13 +13,17 @@ type StandardViewProps = ViewProps &
     edgeToEdge?: boolean;
   };
 
-export function StandardView({ className, edgeToEdge, style, ...props }: StandardViewProps) {
+export function StandardView({ children, className, edgeToEdge, style, ...props }: StandardViewProps) {
   const safeAreaInsets = useScreenContainerInsets(edgeToEdge);
   const backgroundColor = useThemeColor("background");
 
+  // Two views on purpose: the outer one holds the safe-area padding so the background
+  // still bleeds under the notch, the inner one holds the content's own layout classes.
   return (
     <View style={[{ flex: 1, backgroundColor }, safeAreaInsets]}>
-      <View className={standardViewVariants({ class: className })} style={style} {...props}></View>
+      <View className={standardViewVariants({ class: className })} style={style} {...props}>
+        {children}
+      </View>
     </View>
   );
 }

@@ -19,6 +19,7 @@
   "dependencies": {
     "@gorhom/bottom-sheet": "^5.2.14",
     "@repo/api": "workspace:*",
+    "@repo/contracts": "workspace:*",
     "@repo/rpc": "workspace:*",
     "@tanstack/react-form": "^1.33.3",
     "@tanstack/react-query": "^5.101.4",

@@ -12,7 +12,7 @@
     "compile": "turbo run compile",
     "lint": "pnpm run lint:app && pnpm run lint:server",
     "lint:app": "turbo run lint --filter=@repo/mobile",
-    "lint:server": "turbo run lint --filter=@repo/api --filter=@repo/rpc",
+    "lint:server": "turbo run lint --filter=@repo/api --filter=@repo/rpc --filter=@repo/contracts",
     "test": "pnpm run test:app && pnpm run test:server",
     "test:app": "turbo run test --filter=@repo/mobile",
     "test:server": "turbo run test --filter=@repo/api",

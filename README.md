@@ -43,7 +43,7 @@ cd acme-mobile
 pnpm install
 ```
 
-**2. Rename the project** — updates the root `package.json`, the mobile `app.json`, and bundle identifiers:
+**2. Rename the project** — updates the root `package.json`, the mobile `app.config.ts`, and bundle identifiers:
 
 ```bash
 pnpm run rename acme-mobile com.mycompany
@@ -114,7 +114,8 @@ App tests live in `apps/mobile/tests/` and mirror `apps/mobile/src/` paths, with
 ```
 apps/
   mobile/
-    app.json                  → Expo app config and native plugin settings
+    app.config.ts             → Expo config: identity, build variants, native plugins
+    eas.json                  → EAS build profiles (development / preview / production)
     src/
       app/                      → Routes (thin files that render screens)
       screens/                  → Screen components with page logic
@@ -133,6 +134,7 @@ servers/
     trpc/                     → tRPC router and procedure definitions
     tests/                    → Vitest tests mirroring server paths
 packages/
+  contracts/                → Input schemas and payload types shared by app + server
   rpc/                      → Shared tRPC transport configuration
   typescript-config/        → Shared TypeScript defaults for packages
 ```

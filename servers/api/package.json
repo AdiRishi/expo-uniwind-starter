@@ -9,11 +9,12 @@
     "dev": "nitro dev",
     "build": "nitro build",
     "lint": "oxlint .",
-    "typecheck": "tsc --noEmit && pnpm run test:typecheck",
+    "typecheck": "tsc --noEmit && pnpm run test:types",
     "test": "vitest run --coverage",
-    "test:typecheck": "tsc -p tests/tsconfig.json --noEmit"
+    "test:types": "tsc -p tests/tsconfig.json --noEmit"
   },
   "dependencies": {
+    "@repo/contracts": "workspace:*",
     "@repo/rpc": "workspace:*",
     "@trpc/server": "^11.18.0",
     "zod": "^4.4.3"
