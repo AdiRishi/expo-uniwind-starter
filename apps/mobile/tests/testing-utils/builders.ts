@@ -1,4 +1,4 @@
-import type { Task } from "@/schemas/task";
+import type { Task } from "@repo/contracts";
 
 // Builders provide boring valid defaults while keeping scenario-defining fields
 // visible in each test. Prefer createTaskMock({ completed: true }) over shared

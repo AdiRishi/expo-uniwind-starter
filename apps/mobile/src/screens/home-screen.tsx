@@ -1,4 +1,3 @@
-import { useQuery } from "@tanstack/react-query";
 import { Card, Chip, Spinner } from "heroui-native";
 import { View } from "react-native";
 import { tv } from "tailwind-variants";
@@ -6,7 +5,7 @@ import { tv } from "tailwind-variants";
 import { BrandHeroIcon } from "@/components/brand-hero-icon/brand-hero-icon";
 import { StandardScrollView } from "@/components/ui/screen-containers/standard-scroll-view";
 import { Typography } from "@/components/ui/typography";
-import { useRefreshOnFocus } from "@/hooks/use-refresh-on-focus";
+import { useScreenQuery } from "@/hooks/use-screen-query";
 import { useTRPC } from "@/lib/trpc";
 
 const statusDotVariants = tv({
@@ -23,8 +22,7 @@ const TECH_STACK = ["Expo SDK 57", "React 19", "Tailwind v4", "tRPC v11", "HeroU
 
 export function HomeScreen() {
   const trpc = useTRPC();
-  useRefreshOnFocus(trpc.hello.pathKey());
-  const { data: greeting, isError, isPending } = useQuery(trpc.hello.greet.queryOptions());
+  const { data: greeting, isError, isPending } = useScreenQuery(trpc.hello.greet.queryOptions());
 
   return (
     <StandardScrollView className="flex-1" contentContainerClassName="items-center gap-10 pb-8 pt-12">

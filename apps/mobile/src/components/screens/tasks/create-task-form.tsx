@@ -1,33 +1,33 @@
-import { useMemo } from "react";
 import { View } from "react-native";
 
+import { createTaskSchema } from "@repo/contracts";
+
 import { formOptions, useAppForm } from "@/hooks/form/use-app-form";
-import { createTaskSchema } from "@/schemas/task";
+import { getTrpcErrorMessage } from "@/lib/trpc-error";
+
+const createTaskFormOptions = formOptions({
+  defaultValues: {
+    title: "",
+  },
+  validators: {
+    onSubmit: createTaskSchema,
+    onChange: createTaskSchema,
+  },
+});
 
 export function CreateTaskForm({ onSubmit }: { onSubmit: (title: string) => Promise<unknown> }) {
-  const createTaskFormOptions = useMemo(
-    () =>
-      formOptions({
-        defaultValues: {
-          title: "",
-        },
-        validators: {
-          onSubmit: createTaskSchema,
-          onChange: createTaskSchema,
-        },
-      }),
-    [],
-  );
-
   const form = useAppForm({
     ...createTaskFormOptions,
     async onSubmit({ value, formApi }) {
       try {
         await onSubmit(value.title);
         formApi.reset();
-      } catch {
+      } catch (error) {
         formApi.setErrorMap({
-          onSubmit: { form: "Failed to create task. Is the server running?", fields: {} },
+          onSubmit: {
+            form: getTrpcErrorMessage(error, "Failed to create task. Is the server running?"),
+            fields: {},
+          },
         });
       }
     },

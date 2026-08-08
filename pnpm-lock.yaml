@@ -26,6 +26,9 @@ importers:
       '@repo/api':
         specifier: workspace:*
         version: link:../../servers/api
+      '@repo/contracts':
+        specifier: workspace:*
+        version: link:../../packages/contracts
       '@repo/rpc':
         specifier: workspace:*
         version: link:../../packages/rpc
@@ -178,6 +181,25 @@ importers:
         specifier: ~6.0.3
         version: 6.0.3
 
+  packages/contracts:
+    dependencies:
+      zod:
+        specifier: ^4.4.3
+        version: 4.4.3
+    devDependencies:
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      oxlint:
+        specifier: ^1.77.0
+        version: 1.77.0(oxlint-tsgolint@7.0.2001)
+      oxlint-tsgolint:
+        specifier: ^7.0.2001
+        version: 7.0.2001
+      typescript:
+        specifier: ~6.0.3
+        version: 6.0.3
+
   packages/rpc:
     dependencies:
       superjson:
@@ -201,6 +223,9 @@ importers:
 
   servers/api:
     dependencies:
+      '@repo/contracts':
+        specifier: workspace:*
+        version: link:../../packages/contracts
       '@repo/rpc':
         specifier: workspace:*
         version: link:../../packages/rpc

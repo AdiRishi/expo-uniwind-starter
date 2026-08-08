@@ -3,12 +3,9 @@ import { createTaskMock } from "@tests/testing-utils/builders";
 import { renderWithTestProviders } from "@tests/testing-utils/render-with-test-providers";
 import { mergeTrpcMocks, trpcMutation, trpcQuery } from "@tests/testing-utils/trpc-test-utils";
 
-import type { Task } from "@/schemas/task";
-import { TasksScreen } from "@/screens/tasks-screen";
+import type { Task } from "@repo/contracts";
 
-jest.mock("expo-router", () => ({
-  useFocusEffect: (callback: () => void | (() => void)) => callback(),
-}));
+import { TasksScreen } from "@/screens/tasks-screen";
 
 describe("<TasksScreen />", () => {
   test("loads tasks through tRPC and shows a newly-created task after the list refetches", async () => {

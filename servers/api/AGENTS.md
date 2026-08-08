@@ -28,5 +28,5 @@ pnpm run server:dev
 pnpm run server:build
 pnpm run test:server
 pnpm --filter @repo/api lint
-pnpm --filter @repo/api test:typecheck
+pnpm --filter @repo/api test:types
 ```

@@ -1,4 +1,4 @@
-import { createTaskSchema } from "@/schemas/task";
+import { createTaskSchema } from "@repo/contracts";
 
 describe("createTaskSchema", () => {
   test("accepts a task title", () => {

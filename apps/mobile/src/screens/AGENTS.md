@@ -7,7 +7,7 @@ Screen modules should own:
 - data fetching and mutations
 - screen-local state
 - composition of screen-specific components
-- refresh behavior such as `useRefreshOnFocus`
+- data fetching through `useScreenQuery` rather than `useQuery`, so a blurred screen stops observing the cache
 
 Screen-specific presentational pieces belong in `src/components/screens/<screen-name>/`.
 

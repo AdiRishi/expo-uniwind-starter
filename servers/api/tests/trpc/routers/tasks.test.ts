@@ -70,7 +70,18 @@ describe("trpc/routers/tasks", () => {
     await expect(caller.create({ title: "" })).rejects.toMatchObject({
       code: "BAD_REQUEST",
     });
-    await expect(caller.toggle({ id: "missing-task" })).rejects.toThrow("Task not found");
-    await expect(caller.delete({ id: "missing-task" })).rejects.toThrow("Task not found");
+  });
+
+  it("reports missing tasks as NOT_FOUND rather than a server fault", async () => {
+    const caller = await createTasksCaller();
+
+    await expect(caller.toggle({ id: "missing-task" })).rejects.toMatchObject({
+      code: "NOT_FOUND",
+      message: "Task not found",
+    });
+    await expect(caller.delete({ id: "missing-task" })).rejects.toMatchObject({
+      code: "NOT_FOUND",
+      message: "Task not found",
+    });
   });
 });
