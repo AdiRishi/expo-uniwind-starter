@@ -18,17 +18,6 @@ const OLD_SCHEME = "expouniwindstarter";
 
 // ── Types ────────────────────────────────────────────────────────────
 
-interface AppJson {
-  expo: {
-    name: string;
-    slug: string;
-    scheme: string;
-    ios: { bundleIdentifier: string; [key: string]: unknown };
-    android: { package: string; [key: string]: unknown };
-    [key: string]: unknown;
-  };
-}
-
 interface PackageJson {
   name: string;
   [key: string]: unknown;
@@ -42,6 +31,31 @@ function readJSON<T>(relativePath: string): T {
 
 function writeJSON(relativePath: string, data: unknown): void {
   writeFileSync(resolve(ROOT, relativePath), JSON.stringify(data, null, 2) + "\n");
+}
+
+/**
+ * Rewrite `const NAME = "value";` declarations in app.config.ts.
+ *
+ * Targets each declaration by name rather than replacing raw strings, because the old
+ * bundle id contains the old scheme as a substring and a blind find-and-replace would
+ * corrupt it.
+ */
+function setConfigConstants(relativePath: string, values: Record<string, string>): void {
+  const path = resolve(ROOT, relativePath);
+  let content = readFileSync(path, "utf-8");
+
+  for (const [name, value] of Object.entries(values)) {
+    const pattern = new RegExp(`(const ${name} = )"[^"]*"`);
+
+    if (!pattern.test(content)) {
+      console.error(`Error: could not find "const ${name}" in ${relativePath}.`);
+      process.exit(1);
+    }
+
+    content = content.replace(pattern, `$1"${value}"`);
+  }
+
+  writeFileSync(path, content);
 }
 
 function toScheme(name: string): string {
@@ -103,15 +117,14 @@ async function main(): Promise<void> {
   writeJSON("package.json", pkg);
   console.log("✓ package.json");
 
-  // Update mobile app.json
-  const app = readJSON<AppJson>("apps/mobile/app.json");
-  app.expo.name = projectName;
-  app.expo.slug = slug;
-  app.expo.scheme = scheme;
-  app.expo.ios.bundleIdentifier = bundleId;
-  app.expo.android.package = bundleId;
-  writeJSON("apps/mobile/app.json", app);
-  console.log("✓ apps/mobile/app.json");
+  // Update mobile app.config.ts
+  setConfigConstants("apps/mobile/app.config.ts", {
+    APP_NAME: projectName,
+    APP_SLUG: slug,
+    BUNDLE_ID: bundleId,
+    SCHEME: scheme,
+  });
+  console.log("✓ apps/mobile/app.config.ts");
 
   console.log("\nDone! You may also want to:");
   console.log("  • Update the app icon and splash screen images in apps/mobile/assets/");

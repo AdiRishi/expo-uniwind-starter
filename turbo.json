@@ -27,6 +27,13 @@
       "dependsOn": ["^compile"],
       "outputs": ["coverage/**"]
     },
+    "@repo/mobile#test": {
+      "dependsOn": ["^compile"],
+      "outputs": ["coverage/**"],
+      // Babel inlines EXPO_PUBLIC_* into the bundle, so they belong in the cache key.
+      // Declare any new EXPO_PUBLIC_* variable here too.
+      "env": ["EXPO_OS", "EXPO_PUBLIC_API_URL"]
+    },
     "build": {
       "dependsOn": ["^compile"],
       "outputs": ["dist/**", ".output/**"]
@@ -34,10 +41,6 @@
     "@repo/api#build": {
       "dependsOn": ["^compile"],
       "outputs": [".output/**"]
-    },
-    "test:typecheck": {
-      "dependsOn": ["^compile"],
-      "outputs": []
     },
     "dev": {
       "cache": false,
